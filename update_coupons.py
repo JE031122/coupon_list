@@ -6,9 +6,9 @@ from datetime import datetime, timezone, timedelta
 
 # ===== 設定:チャンネルはここで管理します =====
 CHANNELS = [
-    "@ここに1つ目のハンドル",
-    "@ここに2つ目のハンドル",
-    "@ここに3つ目のハンドル",
+    "@YAMASAWA",
+    "@KanekinFitness",
+    "@SAIYAMAN-OverWork",
 ]
 MAX_VIDEOS = 15
 # ==========================================
