@@ -4,36 +4,36 @@ import requests
 import html
 from datetime import datetime, timezone, timedelta
 
-# ===== 設定:チャンネルはここで管理します =====
+# ===== 設定：チャンネルはここで管理します =====
 CHANNELS = [
-    "@KanekinFitness",
     "@YAMASAWA",
+    "@KanekinFitness",
     "@SAIYAMAN-OverWork",
 ]
 MAX_VIDEOS = 15
 # ==========================================
 
-# ===== ブランド辞書:新しいブランドはここに足します =====
-# 形式: "表示名": [概要欄に出てきそうな表記のリスト]
+# ===== ブランド辞書：新しいブランドはここに足します =====
+# 形式: "表示名": {"keys": [表記ゆれ], "url": "購入先URL（空欄""ならリンク非表示）"}
 BRANDS = {
-    "マイプロテイン":     ["マイプロテイン", "myprotein"],
-    "VALX":              ["valx", "バルクス"],
-    "REYS":              ["reys", "レイズ"],
-    "FIXIT":             ["fixit"],
-    "LYFT":              ["lyft", "リフト"],
-    "エクスプロージョン":  ["エクスプロージョン", "x-plosion", "explosion"],
-    "ビーレジェンド":      ["ビーレジェンド", "be legend", "belegend"],
-    "グロング":           ["グロング", "grong"],
-    "ザバス":             ["ザバス", "savas"],
-    "DNS":               ["dns"],
-    "ハレオ":             ["ハレオ", "haleo"],
-    "マッスルデリ":        ["マッスルデリ", "muscle deli"],
-    "ナチュラカン":        ["naturecan", "ナチュラカン"],
-    "バイタス":           ["バイタス", "vitas"],
-    "ALL OUT":           ["all out", "allout", "オールアウト"],
-    "ペコダックチキン":    ["ペコダックチキン"],
-    "Over Work":         ["over work", "overwork", "オーバーワーク"],
-    "SUPLIX":    ["SUPLIX", "サプリンクス"],
+    "マイプロテイン":     {"keys": ["マイプロテイン", "myprotein"], "url": "https://www.myprotein.jp/"},
+    "VALX":              {"keys": ["valx", "バルクス"], "url": "https://valx.jp/"},
+    "REYS":              {"keys": ["reys", "レイズ"], "url": ""},
+    "FIXIT":             {"keys": ["fixit"], "url": "https://store.fix-it.jp/"},
+    "LYFT":              {"keys": ["lyft", "リフト"], "url": "https://lyft-fit.com/"},
+    "エクスプロージョン":  {"keys": ["エクスプロージョン", "x-plosion", "explosion"], "url": "https://store.x-plosion.jp/"},
+    "ビーレジェンド":      {"keys": ["ビーレジェンド", "be legend", "belegend"], "url": "https://store.belegend.jp/"},
+    "グロング":           {"keys": ["グロング", "grong"], "url": "https://shop.grong.jp/"},
+    "ザバス":             {"keys": ["ザバス", "savas"], "url": "https://www.meiji.co.jp/sports/savas/"},
+    "DNS":               {"keys": ["dns"], "url": "https://shop.dnszone.jp/shop/default.aspx"},
+    "ハレオ":             {"keys": ["ハレオ", "haleo"], "url": "https://haleo.jp/"},
+    "マッスルデリ":        {"keys": ["マッスルデリ", "muscle deli"], "url": "https://muscledeli.jp/"},
+    "ネイチャーカン":        {"keys": ["naturecan", "ネイチャーカン"], "url": "https://www.naturecan.jp/"},
+    "バイタス":           {"keys": ["バイタス", "vitas"], "url": "https://vitas.fitness/"},
+    "ALL OUT":           {"keys": ["all out", "allout", "オールアウト"], "url": "https://allout-official.com/"},
+    "ペコダックチキン":    {"keys": ["ペコダックチキン"], "url": "https://pekodak.com/"},
+    "Over Work":         {"keys": ["over work", "overwork", "オーバーワーク"], "url": "https://overwork.official.ec/"},
+    "SUPLINX":    {"keys": ["SUPLINX", "サプリンクス"], "url": "https://www.suplinx.com/shop/"},
 }
 # ====================================================
 
@@ -62,11 +62,12 @@ def get_json(endpoint, params):
 
 def brands_in_text(text):
     text = text.lower()
-    return [b for b, keys in BRANDS.items() if any(k.lower() in text for k in keys)]
+    return [b for b, info in BRANDS.items()
+            if any(k.lower() in text for k in info["keys"])]
 
 
 def find_brand(lines, idx, window=2):
-    """コードが見つかった行の前後からブランドを推定する(2段構え)"""
+    """コードが見つかった行の前後からブランドを推定する（2段構え）"""
     start, end = max(0, idx - window), min(len(lines), idx + window + 1)
     near = brands_in_text(" ".join(lines[start:end]))
     if near:
@@ -91,14 +92,14 @@ def valid_code(token, line):
 
 
 def codes_in_description(description):
-    """概要欄から (コード, ブランド) のリストを返す(コードの重複なし)"""
+    """概要欄から (コード, ブランド) のリストを返す（コードの重複なし）"""
     lines = description.splitlines()
     found = {}
     for idx, line in enumerate(lines):
         cands = []
         if has_keyword(line):
             cands += CODE_AFTER.findall(line) + CODE_QUOTED.findall(line)
-        # クーポン行の隣に「コード単体の行」があるパターン(例: ALL OUTクーポン↵SAIYAMAN5)
+        # クーポン行の隣に「コード単体の行」があるパターン（例: ALL OUTクーポン↵SAIYAMAN5）
         m = STANDALONE.match(line)
         if m:
             prev_kw = idx > 0 and has_keyword(lines[idx - 1])
@@ -151,7 +152,7 @@ HTML_HEAD = """<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>クーポンコード一覧(プロテイン・サプリ系)</title>
+<title>クーポンコード一覧（プロテイン・サプリ系）</title>
 <style>
   body { font-family: -apple-system, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
          background:#f5f6f8; color:#1a1a1a; margin:0; padding:24px; }
@@ -172,12 +173,13 @@ HTML_HEAD = """<!DOCTYPE html>
           padding:4px 12px; font-size:13px; cursor:pointer; }
   .copy:active { background:#eef2f6; }
   .count { color:#666; font-size:13px; }
-  .link { color:#2563eb; font-size:13px; text-decoration:none; margin-left:auto; }
+  .links { margin-left:auto; display:flex; gap:14px; }
+  .link { color:#2563eb; font-size:13px; text-decoration:none; }
 </style>
 </head>
 <body>
 <div class="wrap">
-<h1>クーポンコード一覧(プロテイン・サプリ系)</h1>
+<h1>クーポンコード一覧（プロテイン・サプリ系）</h1>
 """
 
 HTML_TAIL = """</div>
@@ -195,7 +197,7 @@ function copyCode(btn, code) {
 
 
 def build_html(all_results, updated_at):
-    parts = [HTML_HEAD, f'<div class="updated">最終更新: {updated_at}(毎朝6時に自動更新)</div>']
+    parts = [HTML_HEAD, f'<div class="updated">最終更新: {updated_at}（毎朝6時に自動更新）</div>']
     for title, codes in all_results:
         if not codes:
             continue
@@ -206,13 +208,18 @@ def build_html(all_results, updated_at):
                 brand_tag = f'<span class="brand">{html.escape(brand)}</span>'
             else:
                 brand_tag = '<span class="brand unknown">ブランド確認中</span>'
+            buy_url = BRANDS.get(brand, {}).get("url", "") if brand else ""
+            links = ""
+            if buy_url:
+                links += f'<a class="link" href="{html.escape(buy_url)}" target="_blank" rel="noopener">公式サイトで使う</a>'
+            links += f'<a class="link" href="{html.escape(url)}" target="_blank" rel="noopener">動画例</a>'
             parts.append(
                 f'<div class="code-row">'
                 f'{brand_tag}'
                 f'<span class="code">{esc_code}</span>'
                 f'<button class="copy" onclick="copyCode(this, \'{esc_code}\')">コピー</button>'
                 f'<span class="count">{count}本の動画で言及</span>'
-                f'<a class="link" href="{html.escape(url)}" target="_blank">動画例</a>'
+                f'<span class="links">{links}</span>'
                 f'</div>'
             )
         parts.append('</section>')
@@ -242,7 +249,7 @@ def main():
     page = build_html(all_results, updated_at)
     with open("index.html", "w", encoding="utf-8") as f:
         f.write(page)
-    print(f"index.html を生成しました({len(all_results)}チャンネル)")
+    print(f"index.html を生成しました（{len(all_results)}チャンネル）")
 
 
 if __name__ == "__main__":
