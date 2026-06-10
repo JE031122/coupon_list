@@ -4,18 +4,35 @@ import requests
 import html
 from datetime import datetime, timezone, timedelta
 
-# ===== 設定：チャンネルはここで管理します =====
+# ===== 設定:チャンネルはここで管理します =====
 CHANNELS = [
-    "@YAMASAWA",
-    "@KanekinFitness",
-    "@SAIYAMAN-OverWork",
+    "@ここに1つ目のハンドル",
+    "@ここに2つ目のハンドル",
+    "@ここに3つ目のハンドル",
 ]
 MAX_VIDEOS = 15
 # ==========================================
 
-# キーはコードに書かず、Secret（環境変数）から読み込みます
-API_KEY = os.environ.get("YOUTUBE_API_KEY")
+# ===== ブランド辞書:新しいブランドはここに足します =====
+# 形式: "表示名": [概要欄に出てきそうな表記のリスト]
+BRANDS = {
+    "マイプロテイン":     ["マイプロテイン", "myprotein"],
+    "VALX":              ["valx", "バルクス"],
+    "REYS":              ["reys", "レイズ"],
+    "FIXIT":             ["fixit"],
+    "LYFT":              ["lyft", "リフト"],
+    "エクスプロージョン":  ["エクスプロージョン", "x-plosion", "explosion"],
+    "ビーレジェンド":      ["ビーレジェンド", "be legend", "belegend"],
+    "グロング":           ["グロング", "grong"],
+    "ザバス":             ["ザバス", "savas"],
+    "DNS":               ["dns"],
+    "ハレオ":             ["ハレオ", "haleo"],
+    "マッスルデリ":        ["マッスルデリ", "muscle deli"],
+    "ナチュラカン":        ["naturecan", "ナチュラカン"],
+}
+# ====================================================
 
+API_KEY = os.environ.get("YOUTUBE_API_KEY")
 BASE = "https://www.googleapis.com/youtube/v3"
 KEYWORDS = ["クーポン", "コード", "割引", "紹介", "オフ", "OFF", "code", "%off", "限定"]
 
@@ -37,14 +54,39 @@ def get_json(endpoint, params):
     return data
 
 
+def brands_in_text(text):
+    text = text.lower()
+    return [b for b, keys in BRANDS.items() if any(k.lower() in text for k in keys)]
+
+
+def find_brand(lines, idx, window=2):
+    """コードが見つかった行の前後からブランドを推定する(2段構え)"""
+    start, end = max(0, idx - window), min(len(lines), idx + window + 1)
+    near = brands_in_text(" ".join(lines[start:end]))
+    if near:
+        return near[0]
+    whole = brands_in_text(" ".join(lines))
+    if len(whole) == 1:
+        return whole[0]
+    return None
+
+
 def codes_in_description(description):
-    found = []
-    for line in description.splitlines():
-        if any(kw.lower() in line.lower() for kw in KEYWORDS):
-            codes = CODE_AFTER.findall(line) + CODE_QUOTED.findall(line)
-            found += [c for c in codes
-                      if c.lower() not in IGNORE and re.search(r"[A-Za-z]", c)]
-    return list(dict.fromkeys(found))
+    """概要欄から (コード, ブランド) のリストを返す(コードの重複なし)"""
+    lines = description.splitlines()
+    found = {}
+    for idx, line in enumerate(lines):
+        if not any(kw.lower() in line.lower() for kw in KEYWORDS):
+            continue
+        codes = CODE_AFTER.findall(line) + CODE_QUOTED.findall(line)
+        codes = [c for c in codes
+                 if c.lower() not in IGNORE and re.search(r"[A-Za-z]", c)]
+        for c in codes:
+            if c not in found:
+                found[c] = find_brand(lines, idx)
+            elif found[c] is None:
+                found[c] = find_brand(lines, idx)
+    return list(found.items())
 
 
 def get_channel_codes(handle):
@@ -70,11 +112,15 @@ def get_channel_codes(handle):
 
     summary = {}
     for v in vids.get("items", []):
-        for code in codes_in_description(v["snippet"]["description"]):
-            summary.setdefault(code, []).append(f"https://www.youtube.com/watch?v={v['id']}")
+        for code, brand in codes_in_description(v["snippet"]["description"]):
+            entry = summary.setdefault(code, {"brand": None, "urls": []})
+            entry["urls"].append(f"https://www.youtube.com/watch?v={v['id']}")
+            if entry["brand"] is None and brand:
+                entry["brand"] = brand
 
-    codes = [(code, len(urls), urls[0]) for code, urls in summary.items()]
-    codes.sort(key=lambda x: x[1], reverse=True)
+    codes = [(code, e["brand"], len(e["urls"]), e["urls"][0])
+             for code, e in summary.items()]
+    codes.sort(key=lambda x: x[2], reverse=True)
     return title, codes
 
 
@@ -83,7 +129,7 @@ HTML_HEAD = """<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>クーポンコード一覧（プロテイン・サプリ系）</title>
+<title>クーポンコード一覧(プロテイン・サプリ系)</title>
 <style>
   body { font-family: -apple-system, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
          background:#f5f6f8; color:#1a1a1a; margin:0; padding:24px; }
@@ -93,34 +139,56 @@ HTML_HEAD = """<!DOCTYPE html>
   .channel { background:#fff; border-radius:12px; padding:16px 20px;
              margin-bottom:16px; box-shadow:0 1px 3px rgba(0,0,0,0.06); }
   .channel h2 { font-size:16px; margin:0 0 8px; }
-  .code-row { display:flex; align-items:center; gap:12px; padding:10px 0;
+  .code-row { display:flex; align-items:center; gap:10px; padding:12px 0;
               border-top:1px solid #eee; flex-wrap:wrap; }
+  .brand { background:#e8f0fe; color:#1a56db; font-size:12px; font-weight:600;
+           padding:3px 10px; border-radius:999px; white-space:nowrap; }
+  .brand.unknown { background:#f0f0f0; color:#888; }
   .code { font-weight:700; font-size:18px; letter-spacing:0.5px;
           background:#fff3cd; padding:3px 12px; border-radius:6px; }
+  .copy { border:1px solid #d0d5dd; background:#fff; border-radius:6px;
+          padding:4px 12px; font-size:13px; cursor:pointer; }
+  .copy:active { background:#eef2f6; }
   .count { color:#666; font-size:13px; }
   .link { color:#2563eb; font-size:13px; text-decoration:none; margin-left:auto; }
 </style>
 </head>
 <body>
 <div class="wrap">
-<h1>クーポンコード一覧（プロテイン・サプリ系）</h1>
+<h1>クーポンコード一覧(プロテイン・サプリ系)</h1>
 """
 
 HTML_TAIL = """</div>
+<script>
+function copyCode(btn, code) {
+  navigator.clipboard.writeText(code).then(function () {
+    var old = btn.textContent;
+    btn.textContent = "コピーしました!";
+    setTimeout(function () { btn.textContent = old; }, 1500);
+  });
+}
+</script>
 </body>
 </html>"""
 
 
 def build_html(all_results, updated_at):
-    parts = [HTML_HEAD, f'<div class="updated">最終更新: {updated_at}</div>']
+    parts = [HTML_HEAD, f'<div class="updated">最終更新: {updated_at}(毎朝6時に自動更新)</div>']
     for title, codes in all_results:
         if not codes:
             continue
         parts.append(f'<section class="channel"><h2>{html.escape(title)}</h2>')
-        for code, count, url in codes:
+        for code, brand, count, url in codes:
+            esc_code = html.escape(code)
+            if brand:
+                brand_tag = f'<span class="brand">{html.escape(brand)}</span>'
+            else:
+                brand_tag = '<span class="brand unknown">ブランド確認中</span>'
             parts.append(
                 f'<div class="code-row">'
-                f'<span class="code">{html.escape(code)}</span>'
+                f'{brand_tag}'
+                f'<span class="code">{esc_code}</span>'
+                f'<button class="copy" onclick="copyCode(this, \'{esc_code}\')">コピー</button>'
                 f'<span class="count">{count}本の動画で言及</span>'
                 f'<a class="link" href="{html.escape(url)}" target="_blank">動画例</a>'
                 f'</div>'
@@ -152,7 +220,7 @@ def main():
     page = build_html(all_results, updated_at)
     with open("index.html", "w", encoding="utf-8") as f:
         f.write(page)
-    print(f"index.html を生成しました（{len(all_results)}チャンネル）")
+    print(f"index.html を生成しました({len(all_results)}チャンネル)")
 
 
 if __name__ == "__main__":
