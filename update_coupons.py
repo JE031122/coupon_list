@@ -44,6 +44,7 @@ BRANDS = {
     "ペコダックチキン":    {"keys": ["ペコダックチキン"], "url": "https://pekodak.com/"},
     "Over Work":         {"keys": ["over work", "overwork", "オーバーワーク"], "url": "https://overwork.official.ec/"},
     "SUPLINX":           {"keys": ["SUPLINX", "サプリンクス"], "url": "https://www.suplinx.com/shop/"},
+    "キョクヨー":           {"keys": ["キョクヨー", "キョクヨーのさば"], "url": "https://store.kyokuyo.co.jp/collections/naasuke"},
 }
 # ====================================================
 
