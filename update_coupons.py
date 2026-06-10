@@ -28,12 +28,12 @@ BRANDS = {
     "DNS":               {"keys": ["dns"], "url": "https://shop.dnszone.jp/shop/default.aspx"},
     "ハレオ":             {"keys": ["ハレオ", "haleo"], "url": "https://haleo.jp/"},
     "マッスルデリ":        {"keys": ["マッスルデリ", "muscle deli"], "url": "https://muscledeli.jp/"},
-    "ネイチャーカン":        {"keys": ["naturecan", "ネイチャーカン"], "url": "https://www.naturecan.jp/"},
+    "ネイチャーカン":      {"keys": ["naturecan", "ネイチャーカン"], "url": "https://www.naturecan.jp/"},
     "バイタス":           {"keys": ["バイタス", "vitas"], "url": "https://vitas.fitness/"},
     "ALL OUT":           {"keys": ["all out", "allout", "オールアウト"], "url": "https://allout-official.com/"},
     "ペコダックチキン":    {"keys": ["ペコダックチキン"], "url": "https://pekodak.com/"},
     "Over Work":         {"keys": ["over work", "overwork", "オーバーワーク"], "url": "https://overwork.official.ec/"},
-    "SUPLINX":    {"keys": ["SUPLINX", "サプリンクス"], "url": "https://www.suplinx.com/shop/"},
+    "SUPLINX":           {"keys": ["SUPLINX", "サプリンクス"], "url": "https://www.suplinx.com/shop/"},
 }
 # ====================================================
 
@@ -92,9 +92,10 @@ def valid_code(token, line):
 
 
 def codes_in_description(description):
-    """概要欄から (コード, ブランド) のリストを返す（コードの重複なし）"""
+    """概要欄から (コード, ブランド) の組み合わせのリストを返す。
+    同じコードが複数ブランドで使われている場合は、それぞれ別の1件として返す。"""
     lines = description.splitlines()
-    found = {}
+    found = {}  # キー: (コード, ブランド)。挿入順を保つためdictを使う
     for idx, line in enumerate(lines):
         cands = []
         if has_keyword(line):
@@ -107,9 +108,11 @@ def codes_in_description(description):
             if prev_kw or next_kw:
                 cands.append(m.group(1))
         for c in cands:
-            if valid_code(c, line) and (c not in found or found[c] is None):
-                found[c] = find_brand(lines, idx)
-    return list(found.items())
+            if valid_code(c, line):
+                found[(c, find_brand(lines, idx))] = True
+    # 同じコードにブランド判明済みの組があるなら、ブランド不明(None)の組は除外
+    has_brand = {c for c, b in found if b}
+    return [(c, b) for c, b in found if b or c not in has_brand]
 
 
 def get_channel_codes(handle):
@@ -133,16 +136,18 @@ def get_channel_codes(handle):
     if vids is None:
         return None
 
+    # (コード, ブランド) の組み合わせごとに動画URLを集計する
     summary = {}
     for v in vids.get("items", []):
         for code, brand in codes_in_description(v["snippet"]["description"]):
-            entry = summary.setdefault(code, {"brand": None, "urls": []})
-            entry["urls"].append(f"https://www.youtube.com/watch?v={v['id']}")
-            if entry["brand"] is None and brand:
-                entry["brand"] = brand
+            key = (code, brand)
+            summary.setdefault(key, []).append(f"https://www.youtube.com/watch?v={v['id']}")
 
-    codes = [(code, e["brand"], len(e["urls"]), e["urls"][0])
-             for code, e in summary.items()]
+    # チャンネル全体でも、ブランド判明済みのコードのブランド不明行は除外
+    has_brand = {code for (code, brand) in summary if brand}
+    codes = [(code, brand, len(urls), urls[0])
+             for (code, brand), urls in summary.items()
+             if brand or code not in has_brand]
     codes.sort(key=lambda x: x[2], reverse=True)
     return title, codes
 
