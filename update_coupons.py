@@ -6,8 +6,8 @@ from datetime import datetime, timezone, timedelta
 
 # ===== 設定:チャンネルはここで管理します =====
 CHANNELS = [
-    "@YAMASAWA",
     "@KanekinFitness",
+    "@YAMASAWA",
     "@SAIYAMAN-OverWork",
 ]
 MAX_VIDEOS = 15
@@ -29,7 +29,11 @@ BRANDS = {
     "ハレオ":             ["ハレオ", "haleo"],
     "マッスルデリ":        ["マッスルデリ", "muscle deli"],
     "ナチュラカン":        ["naturecan", "ナチュラカン"],
-    "SUPLINX": 　　　　　　["SUPLINX", "サプリンクス"],
+    "バイタス":           ["バイタス", "vitas"],
+    "ALL OUT":           ["all out", "allout", "オールアウト"],
+    "ペコダックチキン":    ["ペコダックチキン"],
+    "Over Work":         ["over work", "overwork", "オーバーワーク"],
+    "ハルクファクター":    ["ハルクファクター", "hulkfactor"],
 }
 # ====================================================
 
@@ -43,6 +47,7 @@ CODE_AFTER = re.compile(
     re.IGNORECASE,
 )
 CODE_QUOTED = re.compile(r"[「『\"']([A-Za-z0-9][A-Za-z0-9_\-]{1,19})[」』\"']")
+STANDALONE = re.compile(r"^\s*([A-Za-z][A-Za-z0-9_\-]{2,19})\s*$")
 IGNORE = {"https", "http", "www", "youtube", "com", "amazon"}
 
 
@@ -72,20 +77,36 @@ def find_brand(lines, idx, window=2):
     return None
 
 
+def has_keyword(line):
+    return any(kw.lower() in line.lower() for kw in KEYWORDS)
+
+
+def valid_code(token, line):
+    """コードとして妥当か。数字だけのコードは『コード』という単語が同じ行にある場合のみ許可"""
+    if token.lower() in IGNORE:
+        return False
+    if re.search(r"[A-Za-z]", token):
+        return True
+    return ("コード" in line or "code" in line.lower()) and 3 <= len(token) <= 12
+
+
 def codes_in_description(description):
     """概要欄から (コード, ブランド) のリストを返す(コードの重複なし)"""
     lines = description.splitlines()
     found = {}
     for idx, line in enumerate(lines):
-        if not any(kw.lower() in line.lower() for kw in KEYWORDS):
-            continue
-        codes = CODE_AFTER.findall(line) + CODE_QUOTED.findall(line)
-        codes = [c for c in codes
-                 if c.lower() not in IGNORE and re.search(r"[A-Za-z]", c)]
-        for c in codes:
-            if c not in found:
-                found[c] = find_brand(lines, idx)
-            elif found[c] is None:
+        cands = []
+        if has_keyword(line):
+            cands += CODE_AFTER.findall(line) + CODE_QUOTED.findall(line)
+        # クーポン行の隣に「コード単体の行」があるパターン(例: ALL OUTクーポン↵SAIYAMAN5)
+        m = STANDALONE.match(line)
+        if m:
+            prev_kw = idx > 0 and has_keyword(lines[idx - 1])
+            next_kw = idx + 1 < len(lines) and has_keyword(lines[idx + 1])
+            if prev_kw or next_kw:
+                cands.append(m.group(1))
+        for c in cands:
+            if valid_code(c, line) and (c not in found or found[c] is None):
                 found[c] = find_brand(lines, idx)
     return list(found.items())
 
