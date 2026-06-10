@@ -9,6 +9,16 @@ CHANNELS = [
     "@YAMASAWA",
     "@KanekinFitness",
     "@SAIYAMAN-OverWork",
+    "@yoshinori-yamamoto",
+    "@protein1214",
+    "@naasuke",
+    "@METVLO",
+    "@MarinaTakewaki/videos",
+    "@edward_kato",
+    "@yokokawa_naotaka",
+    "@JOUEZATO",
+    "@junpeitaguchi",
+    "@ryoterashima",
 ]
 MAX_VIDEOS = 15
 # ==========================================
