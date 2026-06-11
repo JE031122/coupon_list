@@ -3,6 +3,7 @@ import re
 import requests
 import html
 from datetime import datetime, timezone, timedelta
+from urllib.parse import unquote
 
 # ===== 設定：チャンネルはここで管理します =====
 CHANNELS = [
@@ -81,7 +82,7 @@ CODE_AFTER = re.compile(
     r"[「『\"']?([A-Za-z0-9][A-Za-z0-9_\-]{1,19})",
     re.IGNORECASE,
 )
-CODE_QUOTED = re.compile(r"[「『\"']([A-Za-z0-9][A-Za-z0-9_\-]{1,19})[」』\"']")
+CODE_QUOTED = re.compile(r"[「『【\"']([A-Za-z0-9][A-Za-z0-9_\-]{1,19})[」』】\"']")
 CODE_COUPON = re.compile(
     r"(?:クーポン|coupon)\s*(?:は|が|:|：|>|＞|】|」|』|\])?\s*"
     r"[「『\"']?([A-Za-z0-9][A-Za-z0-9_\-]{1,19})",
@@ -156,8 +157,7 @@ def find_brand(lines, idx, window=2):
                 hits = brands_in_text(lines[i])
                 if hits:
                     return hits[0]
-    whole = brands_in_text(" ".join(lines))
-    return whole[0] if len(whole) == 1 else None
+    return None
 
 
 def find_dest_url(lines, idx):
@@ -352,13 +352,21 @@ def main():
         if result is not None:
             all_results.append(result)
 
-    # 集まった購入先URLの短縮リンクを展開する（同じURLは1回だけアクセス）
+    # 短縮リンクを展開し、展開後のURL（商品名を含む）からブランド不明分を補完する
     resolved_results = []
+    refined = 0
     for title, codes in all_results:
-        new_codes = [(code, brand, count, vurl, resolve_url(dest))
-                     for code, brand, count, vurl, dest in codes]
+        new_codes = []
+        for code, brand, count, vurl, dest in codes:
+            final_dest = resolve_url(dest)
+            if brand is None and final_dest:
+                hits = brands_in_text(unquote(final_dest))
+                if hits:
+                    brand = hits[0]
+                    refined += 1
+            new_codes.append((code, brand, count, vurl, final_dest))
         resolved_results.append((title, new_codes))
-    print(f"購入先URLの展開: {len(RESOLVE_CACHE)}件を処理")
+    print(f"購入先URLの展開: {len(RESOLVE_CACHE)}件 / URLからのブランド補完: {refined}件")
 
     jst = timezone(timedelta(hours=9))
     updated_at = datetime.now(jst).strftime("%Y-%m-%d %H:%M")
