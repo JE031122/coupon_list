@@ -35,7 +35,7 @@ CHANNELS = [
     "@noga",
     "@bazooka_okada",
 ]
-MAX_VIDEOS = 20
+MAX_VIDEOS = 10
 # ==========================================
 
 # ===== ブランド辞書：新しいブランドはここに足します =====
@@ -65,6 +65,10 @@ BRANDS = {
     }
 # ====================================================
 
+# ブランド名・表記ゆれそのものはコードとして扱わない（誤検出防止）
+BRAND_WORDS = ({b.lower() for b in BRANDS}
+               | {k.lower() for info in BRANDS.values() for k in info["keys"]})
+
 API_KEY = os.environ.get("YOUTUBE_API_KEY")
 BASE = "https://www.googleapis.com/youtube/v3"
 KEYWORDS = ["クーポン", "コード", "割引", "紹介", "オフ", "OFF", "code", "%off", "限定"]
@@ -84,6 +88,11 @@ STANDALONE = re.compile(r"^\s*([A-Za-z][A-Za-z0-9_\-]{2,19})\s*$")
 IGNORE = {"https", "http", "www", "youtube", "com", "amazon",
           "code", "coupon", "off", "get", "sale"}
 
+# 概要欄からURLを拾うパターンと、購入先として採用しないドメイン（SNS等）
+URL_PATTERN = re.compile(r"https?://[^\s)）（(」』「『>＞、。！？\"']+")
+SKIP_URL_DOMAINS = ("youtube.com", "youtu.be", "instagram.com",
+                    "twitter.com", "x.com", "tiktok.com", "lin.ee", "line.me")
+
 
 def get_json(endpoint, params):
     params["key"] = API_KEY
@@ -94,6 +103,27 @@ def get_json(endpoint, params):
     return data
 
 
+# 短縮リンク（amzn.to / bit.ly 等）を展開するための仕組み。
+# 同じURLは1回だけアクセスするようキャッシュする。失敗したら元のURLをそのまま使う。
+RESOLVE_CACHE = {}
+
+def resolve_url(url):
+    if not url:
+        return ""
+    if url in RESOLVE_CACHE:
+        return RESOLVE_CACHE[url]
+    final = url
+    try:
+        res = requests.get(url, allow_redirects=True, timeout=8, stream=True,
+                           headers={"User-Agent": "Mozilla/5.0"})
+        final = res.url
+        res.close()
+    except requests.RequestException:
+        pass
+    RESOLVE_CACHE[url] = final
+    return final
+
+
 def brands_in_text(text):
     text = text.lower()
     return [b for b, info in BRANDS.items()
@@ -101,15 +131,31 @@ def brands_in_text(text):
 
 
 def find_brand(lines, idx, window=2):
-    """コードが見つかった行の前後からブランドを推定する（2段構え）"""
-    start, end = max(0, idx - window), min(len(lines), idx + window + 1)
-    near = brands_in_text(" ".join(lines[start:end]))
-    if near:
-        return near[0]
+    """コード行から距離の近い順にブランドを探す（同じ行→1行→2行）。
+    窓内に無ければ、概要欄全体でブランドが1つだけのときに採用する。"""
+    for dist in range(window + 1):
+        targets = [idx] if dist == 0 else [idx - dist, idx + dist]
+        for i in targets:
+            if 0 <= i < len(lines):
+                hits = brands_in_text(lines[i])
+                if hits:
+                    return hits[0]
     whole = brands_in_text(" ".join(lines))
-    if len(whole) == 1:
-        return whole[0]
-    return None
+    return whole[0] if len(whole) == 1 else None
+
+
+def find_dest_url(lines, idx):
+    """コード行の近くから購入先URLを探す（同じ行→1行上→1行下→2行上→2行下の順）。
+    SNS等のリンクは購入先とみなさずスキップする。"""
+    order = [idx, idx - 1, idx + 1, idx - 2, idx + 2]
+    for i in order:
+        if 0 <= i < len(lines):
+            m = URL_PATTERN.search(lines[i])
+            if m:
+                url = m.group(0).rstrip(".,")
+                if not any(s in url for s in SKIP_URL_DOMAINS):
+                    return url
+    return ""
 
 
 def has_keyword(line):
@@ -117,8 +163,11 @@ def has_keyword(line):
 
 
 def valid_code(token, line):
-    """コードとして妥当か。数字だけのコードは『コード』という単語が同じ行にある場合のみ許可"""
+    """コードとして妥当か。ブランド名そのものは除外。
+    数字だけのコードは『コード』という単語が同じ行にある場合のみ許可"""
     if token.lower() in IGNORE:
+        return False
+    if token.lower() in BRAND_WORDS:
         return False
     if re.search(r"[A-Za-z]", token):
         return True
@@ -126,10 +175,10 @@ def valid_code(token, line):
 
 
 def codes_in_description(description):
-    """概要欄から (コード, ブランド) の組み合わせのリストを返す。
+    """概要欄から (コード, ブランド, 購入先URL) のリストを返す。
     同じコードが複数ブランドで使われている場合は、それぞれ別の1件として返す。"""
     lines = description.splitlines()
-    found = {}  # キー: (コード, ブランド)。挿入順を保つためdictを使う
+    found = {}  # キー: (コード, ブランド) -> 購入先URL
     for idx, line in enumerate(lines):
         cands = []
         if has_keyword(line):
@@ -143,10 +192,12 @@ def codes_in_description(description):
                 cands.append(m.group(1))
         for c in cands:
             if valid_code(c, line):
-                found[(c, find_brand(lines, idx))] = True
+                key = (c, find_brand(lines, idx))
+                if key not in found or not found[key]:
+                    found[key] = find_dest_url(lines, idx)
     # 同じコードにブランド判明済みの組があるなら、ブランド不明(None)の組は除外
-    has_brand = {c for c, b in found if b}
-    return [(c, b) for c, b in found if b or c not in has_brand]
+    has_brand = {c for (c, b) in found if b}
+    return [(c, b, d) for (c, b), d in found.items() if b or c not in has_brand]
 
 
 def get_channel_codes(handle):
@@ -170,17 +221,20 @@ def get_channel_codes(handle):
     if vids is None:
         return None
 
-    # (コード, ブランド) の組み合わせごとに動画URLを集計する
+    # (コード, ブランド) の組み合わせごとに、動画URLと購入先URLを集計する
     summary = {}
     for v in vids.get("items", []):
-        for code, brand in codes_in_description(v["snippet"]["description"]):
+        for code, brand, dest in codes_in_description(v["snippet"]["description"]):
             key = (code, brand)
-            summary.setdefault(key, []).append(f"https://www.youtube.com/watch?v={v['id']}")
+            entry = summary.setdefault(key, {"urls": [], "dest": ""})
+            entry["urls"].append(f"https://www.youtube.com/watch?v={v['id']}")
+            if not entry["dest"] and dest:
+                entry["dest"] = dest
 
     # チャンネル全体でも、ブランド判明済みのコードのブランド不明行は除外
     has_brand = {code for (code, brand) in summary if brand}
-    codes = [(code, brand, len(urls), urls[0])
-             for (code, brand), urls in summary.items()
+    codes = [(code, brand, len(e["urls"]), e["urls"][0], e["dest"])
+             for (code, brand), e in summary.items()
              if brand or code not in has_brand]
     codes.sort(key=lambda x: x[2], reverse=True)
     return title, codes
@@ -241,16 +295,19 @@ def build_html(all_results, updated_at):
         if not codes:
             continue
         parts.append(f'<section class="channel"><h2>{html.escape(title)}</h2>')
-        for code, brand, count, url in codes:
+        for code, brand, count, url, dest in codes:
             esc_code = html.escape(code)
             if brand:
                 brand_tag = f'<span class="brand">{html.escape(brand)}</span>'
             else:
                 brand_tag = '<span class="brand unknown">ブランド確認中</span>'
-            buy_url = BRANDS.get(brand, {}).get("url", "") if brand else ""
             links = ""
-            if buy_url:
-                links += f'<a class="link" href="{html.escape(buy_url)}" target="_blank" rel="noopener">公式サイトで使う</a>'
+            if dest:
+                links += f'<a class="link" href="{html.escape(dest)}" target="_blank" rel="noopener">購入ページ</a>'
+            else:
+                buy_url = BRANDS.get(brand, {}).get("url", "") if brand else ""
+                if buy_url:
+                    links += f'<a class="link" href="{html.escape(buy_url)}" target="_blank" rel="noopener">公式サイトで使う</a>'
             links += f'<a class="link" href="{html.escape(url)}" target="_blank" rel="noopener">動画例</a>'
             parts.append(
                 f'<div class="code-row">'
@@ -282,13 +339,21 @@ def main():
         if result is not None:
             all_results.append(result)
 
+    # 集まった購入先URLの短縮リンクを展開する（同じURLは1回だけアクセス）
+    resolved_results = []
+    for title, codes in all_results:
+        new_codes = [(code, brand, count, vurl, resolve_url(dest))
+                     for code, brand, count, vurl, dest in codes]
+        resolved_results.append((title, new_codes))
+    print(f"購入先URLの展開: {len(RESOLVE_CACHE)}件を処理")
+
     jst = timezone(timedelta(hours=9))
     updated_at = datetime.now(jst).strftime("%Y-%m-%d %H:%M")
 
-    page = build_html(all_results, updated_at)
+    page = build_html(resolved_results, updated_at)
     with open("index.html", "w", encoding="utf-8") as f:
         f.write(page)
-    print(f"index.html を生成しました（{len(all_results)}チャンネル）")
+    print(f"index.html を生成しました（{len(resolved_results)}チャンネル）")
 
 
 if __name__ == "__main__":
