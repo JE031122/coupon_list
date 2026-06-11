@@ -63,6 +63,7 @@ BRANDS = {
     "AMBiQUE":    {"keys": ["AMBiQUE", "アンビーク"], "url": "https://www.alo-organic.com/shop/product_categories/ambique"},
     "DELIPICKS":    {"keys": ["DELIPICKS", "デリピックス"], "url": "https://sb.deli-picks.com/ab/Creator_ad24"},
     "男DAYS":    {"keys": ["男DAYS", "ダンディーズ"], "url": "https://dan-days.jp/shop"},
+    "ハルクファクター":    {"keys": ["ハルクファクター", "ダンディーズ"], "url": "https://hulx-factor.jp/"},
     }
 # ====================================================
 
