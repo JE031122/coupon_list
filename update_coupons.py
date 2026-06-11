@@ -303,8 +303,9 @@ def build_html(all_results, updated_at):
             else:
                 brand_tag = '<span class="brand unknown">ブランド確認中</span>'
             links = ""
-            if dest:
-                links += f'<a class="link" href="{html.escape(dest)}" target="_blank" rel="noopener">購入ページに移動する</a>'
+            buy = dest or (BRANDS.get(brand, {}).get("url", "") if brand else "")
+            if buy:
+                links += f'<a class="link" href="{html.escape(buy)}" target="_blank" rel="noopener">購入ページに移動する</a>'
             links += f'<a class="link" href="{html.escape(url)}" target="_blank" rel="noopener">動画先</a>'
             parts.append(
                 f'<div class="code-row">'
