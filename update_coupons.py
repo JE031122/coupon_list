@@ -60,7 +60,8 @@ BRANDS = {
     "Over Work":         {"keys": ["over work", "overwork", "オーバーワーク"], "url": "https://overwork.official.ec/"},
     "SUPLINX":           {"keys": ["SUPLINX", "サプリンクス"], "url": "https://www.suplinx.com/shop/"},
     "キョクヨー":           {"keys": ["キョクヨー", "キョクヨーのさば"], "url": "https://store.kyokuyo.co.jp/collections/naasuke"},
-}
+    "AMBiQUE":    {"keys": ["AMBiQUE", "アンビーク"], "url": "https://www.alo-organic.com/shop/product_categories/ambique?p=solia_top_amb"},
+    }
 # ====================================================
 
 API_KEY = os.environ.get("YOUTUBE_API_KEY")
