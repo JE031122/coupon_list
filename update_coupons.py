@@ -63,7 +63,8 @@ BRANDS = {
     "AMBiQUE":    {"keys": ["AMBiQUE", "アンビーク"], "url": "https://www.alo-organic.com/shop/product_categories/ambique"},
     "DELIPICKS":    {"keys": ["DELIPICKS", "デリピックス"], "url": "https://sb.deli-picks.com/ab/Creator_ad24"},
     "男DAYS":    {"keys": ["男DAYS", "ダンディーズ"], "url": "https://dan-days.jp/shop"},
-    "ハルクファクター":    {"keys": ["ハルクファクター", "ダンディーズ"], "url": "https://hulx-factor.jp/"},
+    "ハルクファクター":    {"keys": ["ハルクファクター", "hulx-factor", "hulkfactor"], "url": "https://hulx-factor.jp/"},
+    "FITPEAK":    {"keys": ["fitpeak"], "url": "https://fitpeak.co/"},
     }
 # ====================================================
 
@@ -76,13 +77,13 @@ BASE = "https://www.googleapis.com/youtube/v3"
 KEYWORDS = ["クーポン", "コード", "割引", "紹介", "オフ", "OFF", "code", "%off", "限定"]
 
 CODE_AFTER = re.compile(
-    r"(?:クーポン|割引|紹介)?\s*(?:コード|code)\s*(?:は|が|で|:|：|>|＞)?\s*"
+    r"(?:クーポン|割引|紹介)?\s*(?:コード|code)\s*(?:は|が|で|:|：|>|＞|】|」|』|\])?\s*"
     r"[「『\"']?([A-Za-z0-9][A-Za-z0-9_\-]{1,19})",
     re.IGNORECASE,
 )
 CODE_QUOTED = re.compile(r"[「『\"']([A-Za-z0-9][A-Za-z0-9_\-]{1,19})[」』\"']")
 CODE_COUPON = re.compile(
-    r"(?:クーポン|coupon)\s*(?:は|が|:|：|>|＞)?\s*"
+    r"(?:クーポン|coupon)\s*(?:は|が|:|：|>|＞|】|」|』|\])?\s*"
     r"[「『\"']?([A-Za-z0-9][A-Za-z0-9_\-]{1,19})",
     re.IGNORECASE,
 )
@@ -133,12 +134,25 @@ def brands_in_text(text):
 
 
 def find_brand(lines, idx, window=2):
-    """コード行から距離の近い順にブランドを探す（同じ行→1行→2行）。
-    窓内に無ければ、概要欄全体でブランドが1つだけのときに採用する。"""
+    """①前後2行を近い順 → ②同じ段落（空行区切り）内を近い順 → ③概要欄全体で1つだけなら採用"""
     for dist in range(window + 1):
         targets = [idx] if dist == 0 else [idx - dist, idx + dist]
         for i in targets:
             if 0 <= i < len(lines):
+                hits = brands_in_text(lines[i])
+                if hits:
+                    return hits[0]
+    # 段落の範囲（上下の空行まで）を求めて、その中を近い順に探す
+    top = idx
+    while top > 0 and lines[top - 1].strip():
+        top -= 1
+    bottom = idx
+    while bottom + 1 < len(lines) and lines[bottom + 1].strip():
+        bottom += 1
+    max_dist = max(idx - top, bottom - idx)
+    for dist in range(window + 1, max_dist + 1):
+        for i in (idx - dist, idx + dist):
+            if top <= i <= bottom:
                 hits = brands_in_text(lines[i])
                 if hits:
                     return hits[0]
