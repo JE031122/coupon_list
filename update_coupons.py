@@ -41,7 +41,7 @@ MAX_VIDEOS = 10
 # ===== ブランド辞書：新しいブランドはここに足します =====
 # 形式: "表示名": {"keys": [表記ゆれ], "url": "購入先URL（空欄""ならリンク非表示）"}
 BRANDS = {
-    "マイプロテイン":     {"keys": ["マイプロテイン", "myprotein"], "url": "https://www.myprotein.jp/"},
+    "マイプロテイン":     {"keys": ["マイプロテイン", "マイプロ", "myprotein"], "url": "https://www.myprotein.jp/"},
     "VALX":              {"keys": ["valx", "バルクス"], "url": "https://valx.jp/"},
     "REYS":              {"keys": ["reys", "レイズ"], "url": ""},
     "FIXIT":             {"keys": ["fixit"], "url": "https://store.fix-it.jp/"},
