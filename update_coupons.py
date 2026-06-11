@@ -13,7 +13,7 @@ CHANNELS = [
     "@protein1214",
     "@naasuke",
     "@METVLO",
-    "@MarinaTakewaki/videos",
+    "@MarinaTakewaki",
     "@edward_kato",
     "@yokokawa_naotaka",
     "@JOUEZATO",
