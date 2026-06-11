@@ -19,8 +19,23 @@ CHANNELS = [
     "@JOUEZATO",
     "@junpeitaguchi",
     "@ryoterashima",
+    "@themuscletv29",
+    "@mametama",
+    "@takutofitness",
+    "@musclearuaru",
+    "@vmmtkk",
+    "@d-sun",
+    "@jintomo",
+    "@ShoImakoga",
+    "@hagaseven",
+    "@shintaro0105",
+    "@musclegrille",
+    "@jessesfitvlog",
+    "@Hacogym_channel",
+    "@noga",
+    "@bazooka_okada",
 ]
-MAX_VIDEOS = 15
+MAX_VIDEOS = 20
 # ==========================================
 
 # ===== ブランド辞書：新しいブランドはここに足します =====
