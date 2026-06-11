@@ -2,7 +2,7 @@ name: update-coupon-list
 
 on:
   schedule:
-    - cron: "0 21 * * *"   # 毎日 21:00 UTC = 日本時間 朝6:00
+    - cron: "17 21 * * *"   # 毎日 21:17 UTC = 日本時間 朝6:17
   workflow_dispatch:        # 手動実行ボタンも使えるようにする
 
 permissions:
