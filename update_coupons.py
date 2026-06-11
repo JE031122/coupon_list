@@ -35,6 +35,7 @@ CHANNELS = [
     "@Hacogym_channel",
     "@noga",
     "@bazooka_okada",
+    "@samgetitright"
 ]
 MAX_VIDEOS = 10
 # ==========================================
@@ -66,6 +67,7 @@ BRANDS = {
     "男DAYS":    {"keys": ["男DAYS", "ダンディーズ"], "url": "https://dan-days.jp/shop"},
     "ハルクファクター":    {"keys": ["ハルクファクター", "hulx-factor", "hulkfactor"], "url": "https://hulx-factor.jp/"},
     "FITPEAK":    {"keys": ["fitpeak"], "url": "https://fitpeak.co/"},
+    "iHerb":    {"keys": ["iHerb", "アイハーブ"], "url": "https://jp.iherb.com/"},
     }
 # ====================================================
 
