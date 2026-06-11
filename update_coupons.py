@@ -58,8 +58,14 @@ CODE_AFTER = re.compile(
     re.IGNORECASE,
 )
 CODE_QUOTED = re.compile(r"[「『\"']([A-Za-z0-9][A-Za-z0-9_\-]{1,19})[」』\"']")
+CODE_COUPON = re.compile(
+    r"(?:クーポン|coupon)\s*(?:は|が|:|：|>|＞)?\s*"
+    r"[「『\"']?([A-Za-z0-9][A-Za-z0-9_\-]{1,19})",
+    re.IGNORECASE,
+)
 STANDALONE = re.compile(r"^\s*([A-Za-z][A-Za-z0-9_\-]{2,19})\s*$")
-IGNORE = {"https", "http", "www", "youtube", "com", "amazon"}
+IGNORE = {"https", "http", "www", "youtube", "com", "amazon",
+          "code", "coupon", "off", "get", "sale"}
 
 
 def get_json(endpoint, params):
@@ -110,7 +116,7 @@ def codes_in_description(description):
     for idx, line in enumerate(lines):
         cands = []
         if has_keyword(line):
-            cands += CODE_AFTER.findall(line) + CODE_QUOTED.findall(line)
+            cands += CODE_AFTER.findall(line) + CODE_QUOTED.findall(line) + CODE_COUPON.findall(line)
         # クーポン行の隣に「コード単体の行」があるパターン（例: ALL OUTクーポン↵SAIYAMAN5）
         m = STANDALONE.match(line)
         if m:
