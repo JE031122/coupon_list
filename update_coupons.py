@@ -43,7 +43,7 @@ MAX_VIDEOS = 10
 BRANDS = {
     "マイプロテイン":     {"keys": ["マイプロテイン", "マイプロ", "myprotein"], "url": "https://www.myprotein.jp/"},
     "VALX":              {"keys": ["valx", "バルクス"], "url": "https://valx.jp/"},
-    "REYS":              {"keys": ["reys", "レイズ"], "url": ""},
+    "REYS":              {"keys": ["reys", "レイズ"], "url": "https://reizupurotein.com/"},
     "FIXIT":             {"keys": ["fixit"], "url": "https://store.fix-it.jp/"},
     "LYFT":              {"keys": ["lyft", "リフト"], "url": "https://lyft-fit.com/"},
     "エクスプロージョン":  {"keys": ["エクスプロージョン", "x-plosion", "explosion"], "url": "https://store.x-plosion.jp/"},
@@ -59,9 +59,10 @@ BRANDS = {
     "ペコダックチキン":    {"keys": ["ペコダックチキン"], "url": "https://pekodak.com/"},
     "Over Work":         {"keys": ["over work", "overwork", "オーバーワーク"], "url": "https://overwork.official.ec/"},
     "SUPLINX":           {"keys": ["SUPLINX", "サプリンクス"], "url": "https://www.suplinx.com/shop/"},
-    "キョクヨー":           {"keys": ["キョクヨー", "キョクヨーのさば"], "url": "https://store.kyokuyo.co.jp/collections/naasuke"},
-    "AMBiQUE":    {"keys": ["AMBiQUE", "アンビーク"], "url": "https://www.alo-organic.com/shop/product_categories/ambique?p=solia_top_amb"},
+    "キョクヨー":           {"keys": ["キョクヨー", "キョクヨーのさば"], "url": "https://store.kyokuyo.co.jp/"},
+    "AMBiQUE":    {"keys": ["AMBiQUE", "アンビーク"], "url": "https://www.alo-organic.com/shop/product_categories/ambique"},
     "DELIPICKS":    {"keys": ["DELIPICKS", "デリピックス"], "url": "https://sb.deli-picks.com/ab/Creator_ad24"},
+    "男DAYS":    {"keys": ["男DAYS", "ダンディーズ"], "url": "https://dan-days.jp/shop"},
     }
 # ====================================================
 
