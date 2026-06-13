@@ -35,8 +35,9 @@ CHANNELS = [
     "@Hacogym_channel",
     "@noga",
     "@bazooka_okada",
-    "@samgetitright"
+    "@samgetitright",
 ]
+# 長尺・ショートそれぞれの最新何本を調べるか（合計で最大この2倍を確認）
 MAX_VIDEOS = 10
 # ==========================================
 
@@ -58,23 +59,21 @@ BRANDS = {
     "ネイチャーカン":      {"keys": ["naturecan", "ネイチャーカン"], "url": "https://www.naturecan.jp/"},
     "バイタス":           {"keys": ["バイタス", "vitas"], "url": "https://vitas.fitness/"},
     "ALL OUT":           {"keys": ["all out", "allout", "オールアウト"], "url": "https://allout-official.com/"},
-    "ペコダックチキン":    {"keys": ["ペコダックチキン", "PEKODAK"], "url": "https://pekodak.com/"},
+    "ペコダックチキン":    {"keys": ["ペコダックチキン", "pekodak"], "url": "https://pekodak.com/"},
     "Over Work":         {"keys": ["over work", "overwork", "オーバーワーク"], "url": "https://overwork.official.ec/"},
     "SUPLINX":           {"keys": ["SUPLINX", "サプリンクス"], "url": "https://www.suplinx.com/shop/"},
     "キョクヨー":           {"keys": ["キョクヨー", "キョクヨーのさば"], "url": "https://store.kyokuyo.co.jp/"},
-    "AMBiQUE":    {"keys": ["AMBiQUE", "アンビーク"], "url": "https://www.alo-organic.com/shop/product_categories/ambique"},
-    "DELIPICKS":    {"keys": ["DELIPICKS", "デリピックス"], "url": "https://sb.deli-picks.com/ab/Creator_ad24"},
-    "男DAYS":    {"keys": ["男DAYS", "ダンディーズ"], "url": "https://dan-days.jp/shop"},
+    "AMBiQUE":           {"keys": ["AMBiQUE", "アンビーク"], "url": "https://www.alo-organic.com/shop/product_categories/ambique"},
+    "DELIPICKS":         {"keys": ["DELIPICKS", "デリピックス"], "url": "https://sb.deli-picks.com/ab/Creator_ad24"},
+    "男DAYS":            {"keys": ["男DAYS", "ダンディーズ"], "url": "https://dan-days.jp/shop"},
     "ハルクファクター":    {"keys": ["ハルクファクター", "hulx-factor", "hulkfactor"], "url": "https://hulx-factor.jp/"},
-    "FITPEAK":    {"keys": ["fitpeak"], "url": "https://fitpeak.co/"},
-    "iHerb":    {"keys": ["iHerb", "アイハーブ"], "url": "https://jp.iherb.com/"},
-    "SAIJIRUSHI":    {"keys": ["SAIJIRUSHI", "サイジルシ"], "url": "https://saijirushi.co.jp/"},
-    "マクロファクター ":    {"keys": ["macrofactor", "マクロファクター"], "url": "https://macrofactor.com/jp/"},
-    "MBC POWER":    {"keys": ["MBCパワー", "mbcパワー", "MBC POWER", "mbc power"], "url": "https://www.mbcpower.jp/"},
-    "Vanquish Fitness":    {"keys": ["Vanquish Fitness", "ヴァンキッシュフィットネス", "バンキッシュフィットネス"], "url": "https://www.vqfit.com/"},
-    "FITPEAK":    {"keys": ["fitpeak"], "url": "https://fitpeak.co/"},
-    "FITPEAK":    {"keys": ["fitpeak"], "url": "https://fitpeak.co/"},
-    }
+    "FITPEAK":           {"keys": ["fitpeak"], "url": "https://fitpeak.co/"},
+    "iHerb":             {"keys": ["iherb", "アイハーブ"], "url": "https://jp.iherb.com/"},
+    "SAIJIRUSHI":        {"keys": ["saijirushi", "サイジルシ"], "url": "https://saijirushi.co.jp/"},
+    "マクロファクター":    {"keys": ["macrofactor", "マクロファクター"], "url": "https://macrofactor.com/jp/"},
+    "MBC POWER":         {"keys": ["MBCパワー", "mbcパワー", "MBC POWER", "mbc power"], "url": "https://www.mbcpower.jp/"},
+    "Vanquish Fitness":  {"keys": ["Vanquish Fitness", "ヴァンキッシュフィットネス", "バンキッシュフィットネス"], "url": "https://www.vqfit.com/"},
+}
 # ====================================================
 
 # ブランド名・表記ゆれそのものはコードとして扱わない（誤検出防止）
@@ -106,11 +105,12 @@ SKIP_URL_DOMAINS = ("youtube.com", "youtu.be", "instagram.com",
                     "twitter.com", "x.com", "tiktok.com", "lin.ee", "line.me")
 
 
-def get_json(endpoint, params):
+def get_json(endpoint, params, quiet=False):
     params["key"] = API_KEY
     data = requests.get(f"{BASE}/{endpoint}", params=params).json()
     if "error" in data:
-        print("APIエラー:", data["error"].get("message", data))
+        if not quiet:
+            print("APIエラー:", data["error"].get("message", data))
         return None
     return data
 
@@ -143,7 +143,8 @@ def brands_in_text(text):
 
 
 def find_brand(lines, idx, window=2):
-    """①前後2行を近い順 → ②同じ段落（空行区切り）内を近い順 → ③概要欄全体で1つだけなら採用"""
+    """①前後2行を近い順 → ②同じ段落（空行区切り）内を近い順。
+    どちらでも見つからなければ None（誤判定を避けるため全体推定はしない）。"""
     for dist in range(window + 1):
         targets = [idx] if dist == 0 else [idx - dist, idx + dist]
         for i in targets:
@@ -233,11 +234,26 @@ def get_channel_codes(handle):
     uploads = info["contentDetails"]["relatedPlaylists"]["uploads"]
     title = info["snippet"]["title"]
 
-    pl = get_json("playlistItems",
-                  {"part": "contentDetails", "playlistId": uploads, "maxResults": MAX_VIDEOS})
-    if pl is None:
-        return None
-    ids = [i["contentDetails"]["videoId"] for i in pl.get("items", [])]
+    # 長尺（UULF）とショート（UUSH）から各MAX_VIDEOS本ずつ取得する
+    ids = []
+    if uploads.startswith("UU"):
+        for prefix in ("UULF", "UUSH"):
+            pid = prefix + uploads[2:]
+            sub = get_json("playlistItems",
+                           {"part": "contentDetails", "playlistId": pid,
+                            "maxResults": MAX_VIDEOS}, quiet=True)
+            if sub:
+                ids += [i["contentDetails"]["videoId"] for i in sub.get("items", [])]
+    # UULF/UUSHが使えない特殊なチャンネルは、従来の全アップロード一覧に戻る
+    if not ids:
+        pl = get_json("playlistItems",
+                      {"part": "contentDetails", "playlistId": uploads,
+                       "maxResults": MAX_VIDEOS})
+        if pl is None:
+            return None
+        ids = [i["contentDetails"]["videoId"] for i in pl.get("items", [])]
+    # 重複を排除（順序は維持）
+    ids = list(dict.fromkeys(ids))
     if not ids:
         return title, []
 
