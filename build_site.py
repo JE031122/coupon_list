@@ -1,8 +1,8 @@
 import json
 import html
 
-# data.json を読んで index.html を生成するスクリプト。
-# 見た目はこれまで（チャンネル別表示）と完全に同じ。
+# data.json を読んで index.html を生成する。
+# 「チャンネル別」と「ブランド別」をタブで切り替えられる（切り替えはブラウザ内のJSで実行）。
 
 HTML_HEAD = """<!DOCTYPE html>
 <html lang="ja">
@@ -15,15 +15,21 @@ HTML_HEAD = """<!DOCTYPE html>
          background:#f5f6f8; color:#1a1a1a; margin:0; padding:24px; }
   .wrap { max-width:720px; margin:0 auto; }
   h1 { font-size:22px; margin:0 0 4px; }
-  .updated { color:#888; font-size:13px; margin-bottom:24px; }
-  .channel { background:#fff; border-radius:12px; padding:16px 20px;
-             margin-bottom:16px; box-shadow:0 1px 3px rgba(0,0,0,0.06); }
-  .channel h2 { font-size:16px; margin:0 0 8px; }
+  .updated { color:#888; font-size:13px; margin-bottom:16px; }
+  .tabs { display:flex; gap:8px; margin-bottom:20px; }
+  .tab { border:1px solid #d0d5dd; background:#fff; color:#444; border-radius:999px;
+         padding:7px 18px; font-size:14px; font-weight:600; cursor:pointer; }
+  .tab.active { background:#1a56db; color:#fff; border-color:#1a56db; }
+  .group { background:#fff; border-radius:12px; padding:16px 20px;
+           margin-bottom:16px; box-shadow:0 1px 3px rgba(0,0,0,0.06); }
+  .group h2 { font-size:16px; margin:0 0 8px; }
   .code-row { display:flex; align-items:center; gap:10px; padding:12px 0;
               border-top:1px solid #eee; flex-wrap:wrap; }
-  .brand { background:#e8f0fe; color:#1a56db; font-size:12px; font-weight:600;
-           padding:3px 10px; border-radius:999px; white-space:nowrap; }
-  .brand.unknown { background:#f0f0f0; color:#888; }
+  .badge { font-size:12px; font-weight:600; padding:3px 10px; border-radius:999px;
+           white-space:nowrap; }
+  .badge.brand { background:#e8f0fe; color:#1a56db; }
+  .badge.unknown { background:#f0f0f0; color:#888; }
+  .badge.channel { background:#eef7ee; color:#2f7d32; }
   .code { font-weight:700; font-size:18px; letter-spacing:0.5px;
           background:#fff3cd; padding:3px 12px; border-radius:6px; }
   .copy { border:1px solid #d0d5dd; background:#fff; border-radius:6px;
@@ -32,6 +38,7 @@ HTML_HEAD = """<!DOCTYPE html>
   .count { color:#666; font-size:13px; }
   .links { margin-left:auto; display:flex; gap:14px; }
   .link { color:#2563eb; font-size:13px; text-decoration:none; }
+  .hidden { display:none; }
 </style>
 </head>
 <body>
@@ -48,42 +55,94 @@ function copyCode(btn, code) {
     setTimeout(function () { btn.textContent = old; }, 1500);
   });
 }
+function showView(name) {
+  document.getElementById('view-channel').classList.toggle('hidden', name !== 'channel');
+  document.getElementById('view-brand').classList.toggle('hidden', name !== 'brand');
+  document.getElementById('tab-channel').classList.toggle('active', name === 'channel');
+  document.getElementById('tab-brand').classList.toggle('active', name === 'brand');
+}
 </script>
 </body>
 </html>"""
 
 
-def build_html(data):
+def render_code_row(c, badge_html, brand_urls):
+    """1コード分の行。badge_html は左端に出すバッジ（ブランド名 or チャンネル名）。"""
+    esc_code = html.escape(c["code"])
+    buy = c.get("dest") or (brand_urls.get(c["brand"], "") if c["brand"] else "")
+    links = ""
+    if buy:
+        links += f'<a class="link" href="{html.escape(buy)}" target="_blank" rel="noopener">購入ページに移動する</a>'
+    links += f'<a class="link" href="{html.escape(c["video_url"])}" target="_blank" rel="noopener">動画先</a>'
+    return (
+        f'<div class="code-row">'
+        f'{badge_html}'
+        f'<span class="code">{esc_code}</span>'
+        f'<button class="copy" onclick="copyCode(this, \'{esc_code}\')">コピー</button>'
+        f'<span class="links">{links}</span>'
+        f'</div>'
+    )
+
+
+def brand_badge(brand):
+    if brand:
+        return f'<span class="badge brand">{html.escape(brand)}</span>'
+    return '<span class="badge unknown">ブランド確認中</span>'
+
+
+def build_channel_view(data):
+    """チャンネル別（従来どおり）。左バッジ＝ブランド名。"""
     brand_urls = data.get("brand_urls", {})
-    parts = [HTML_HEAD,
-             f'<div class="updated">最終更新: {data["updated_at"]}（毎朝6時に自動更新）</div>']
+    parts = ['<div id="view-channel">']
     for ch in data["channels"]:
-        codes = ch["codes"]
-        if not codes:
+        if not ch["codes"]:
             continue
-        parts.append(f'<section class="channel"><h2>{html.escape(ch["channel"])}</h2>')
-        for c in codes:
-            code, brand = c["code"], c["brand"]
-            esc_code = html.escape(code)
-            if brand:
-                brand_tag = f'<span class="brand">{html.escape(brand)}</span>'
-            else:
-                brand_tag = '<span class="brand unknown">ブランド確認中</span>'
-            links = ""
-            buy = c.get("dest") or (brand_urls.get(brand, "") if brand else "")
-            if buy:
-                links += f'<a class="link" href="{html.escape(buy)}" target="_blank" rel="noopener">購入ページに移動する</a>'
-            links += f'<a class="link" href="{html.escape(c["video_url"])}" target="_blank" rel="noopener">動画先</a>'
-            parts.append(
-                f'<div class="code-row">'
-                f'{brand_tag}'
-                f'<span class="code">{esc_code}</span>'
-                f'<button class="copy" onclick="copyCode(this, \'{esc_code}\')">コピー</button>'
-                f'<span class="count">{c["count"]}本の動画で言及</span>'
-                f'<span class="links">{links}</span>'
-                f'</div>'
-            )
+        parts.append(f'<section class="group"><h2>{html.escape(ch["channel"])}</h2>')
+        for c in ch["codes"]:
+            parts.append(render_code_row(c, brand_badge(c["brand"]), brand_urls))
         parts.append('</section>')
+    parts.append('</div>')
+    return "".join(parts)
+
+
+def build_brand_view(data):
+    """ブランド別。チャンネル横断で集約し、投稿日の新しい順。左バッジ＝チャンネル名。"""
+    brand_urls = data.get("brand_urls", {})
+    brands = {}
+    for ch in data["channels"]:
+        for c in ch["codes"]:
+            label = c["brand"] if c["brand"] else "ブランド確認中"
+            row = dict(c)
+            row["from_channel"] = ch["channel"]
+            brands.setdefault(label, []).append(row)
+    for label in brands:
+        brands[label].sort(key=lambda r: (r.get("latest_date", ""), r["count"]), reverse=True)
+    ordered = sorted(brands.items(),
+                     key=lambda kv: max((r.get("latest_date", "") for r in kv[1]), default=""),
+                     reverse=True)
+
+    parts = ['<div id="view-brand" class="hidden">']
+    for label, rows in ordered:
+        parts.append(f'<section class="group"><h2>{html.escape(label)}</h2>')
+        for r in rows:
+            badge = f'<span class="badge channel">{html.escape(r["from_channel"])}</span>'
+            parts.append(render_code_row(r, badge, brand_urls))
+        parts.append('</section>')
+    parts.append('</div>')
+    return "".join(parts)
+
+
+def build_html(data):
+    parts = [HTML_HEAD]
+    parts.append(f'<div class="updated">最終更新: {data["updated_at"]}（毎朝6時に自動更新）</div>')
+    parts.append(
+        '<div class="tabs">'
+        '<button id="tab-channel" class="tab active" onclick="showView(\'channel\')">チャンネル別</button>'
+        '<button id="tab-brand" class="tab" onclick="showView(\'brand\')">ブランド別</button>'
+        '</div>'
+    )
+    parts.append(build_channel_view(data))
+    parts.append(build_brand_view(data))
     parts.append(HTML_TAIL)
     return "".join(parts)
 
