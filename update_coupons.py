@@ -71,6 +71,9 @@ BRANDS = {
     "SAIJIRUSHI":    {"keys": ["SAIJIRUSHI", "サイジルシ"], "url": "https://saijirushi.co.jp/"},
     "マクロファクター ":    {"keys": ["macrofactor", "マクロファクター"], "url": "https://macrofactor.com/jp/"},
     "MBC POWER":    {"keys": ["MBCパワー", "mbcパワー", "MBC POWER", "mbc power"], "url": "https://www.mbcpower.jp/"},
+    "Vanquish Fitness":    {"keys": ["Vanquish Fitness", "ヴァンキッシュフィットネス", "バンキッシュフィットネス"], "url": "https://www.vqfit.com/"},
+    "FITPEAK":    {"keys": ["fitpeak"], "url": "https://fitpeak.co/"},
+    "FITPEAK":    {"keys": ["fitpeak"], "url": "https://fitpeak.co/"},
     }
 # ====================================================
 
