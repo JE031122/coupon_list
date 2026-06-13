@@ -1,7 +1,7 @@
 import os
 import re
+import json
 import requests
-import html
 from datetime import datetime, timezone, timedelta
 from urllib.parse import unquote
 
@@ -99,7 +99,6 @@ STANDALONE = re.compile(r"^\s*([A-Za-z][A-Za-z0-9_\-]{2,19})\s*$")
 IGNORE = {"https", "http", "www", "youtube", "com", "amazon",
           "code", "coupon", "off", "get", "sale"}
 
-# 概要欄からURLを拾うパターンと、購入先として採用しないドメイン（SNS等）
 URL_PATTERN = re.compile(r"https?://[^\s)）（(」』「『>＞、。！？\"']+")
 SKIP_URL_DOMAINS = ("youtube.com", "youtu.be", "instagram.com",
                     "twitter.com", "x.com", "tiktok.com", "lin.ee", "line.me")
@@ -115,8 +114,6 @@ def get_json(endpoint, params, quiet=False):
     return data
 
 
-# 短縮リンク（amzn.to / bit.ly 等）を展開するための仕組み。
-# 同じURLは1回だけアクセスするようキャッシュする。失敗したら元のURLをそのまま使う。
 RESOLVE_CACHE = {}
 
 def resolve_url(url):
@@ -136,6 +133,17 @@ def resolve_url(url):
     return final
 
 
+def to_date(published_at):
+    """ISO8601(例: 2026-06-10T09:00:00Z) を日本時間の YYYY-MM-DD に変換"""
+    if not published_at:
+        return ""
+    try:
+        dt = datetime.fromisoformat(published_at.replace("Z", "+00:00"))
+        return dt.astimezone(timezone(timedelta(hours=9))).strftime("%Y-%m-%d")
+    except ValueError:
+        return ""
+
+
 def brands_in_text(text):
     text = text.lower()
     return [b for b, info in BRANDS.items()
@@ -143,8 +151,7 @@ def brands_in_text(text):
 
 
 def find_brand(lines, idx, window=2):
-    """①前後2行を近い順 → ②同じ段落（空行区切り）内を近い順。
-    どちらでも見つからなければ None（誤判定を避けるため全体推定はしない）。"""
+    """①前後2行を近い順 → ②同じ段落（空行区切り）内を近い順。見つからなければ None。"""
     for dist in range(window + 1):
         targets = [idx] if dist == 0 else [idx - dist, idx + dist]
         for i in targets:
@@ -152,7 +159,6 @@ def find_brand(lines, idx, window=2):
                 hits = brands_in_text(lines[i])
                 if hits:
                     return hits[0]
-    # 段落の範囲（上下の空行まで）を求めて、その中を近い順に探す
     top = idx
     while top > 0 and lines[top - 1].strip():
         top -= 1
@@ -170,8 +176,7 @@ def find_brand(lines, idx, window=2):
 
 
 def find_dest_url(lines, idx):
-    """コード行の近くから購入先URLを探す（同じ行→1行上→1行下→2行上→2行下の順）。
-    SNS等のリンクは購入先とみなさずスキップする。"""
+    """コード行の近くから購入先URLを探す（同じ行→1行上→1行下→2行上→2行下の順）。"""
     order = [idx, idx - 1, idx + 1, idx - 2, idx + 2]
     for i in order:
         if 0 <= i < len(lines):
@@ -188,8 +193,6 @@ def has_keyword(line):
 
 
 def valid_code(token, line):
-    """コードとして妥当か。ブランド名そのものは除外。
-    数字だけのコードは『コード』という単語が同じ行にある場合のみ許可"""
     if token.lower() in IGNORE:
         return False
     if token.lower() in BRAND_WORDS:
@@ -200,15 +203,13 @@ def valid_code(token, line):
 
 
 def codes_in_description(description):
-    """概要欄から (コード, ブランド, 購入先URL) のリストを返す。
-    同じコードが複数ブランドで使われている場合は、それぞれ別の1件として返す。"""
+    """概要欄から (コード, ブランド, 購入先URL) のリストを返す。"""
     lines = description.splitlines()
-    found = {}  # キー: (コード, ブランド) -> 購入先URL
+    found = {}
     for idx, line in enumerate(lines):
         cands = []
         if has_keyword(line):
             cands += CODE_AFTER.findall(line) + CODE_QUOTED.findall(line) + CODE_COUPON.findall(line)
-        # クーポン行の隣に「コード単体の行」があるパターン（例: ALL OUTクーポン↵SAIYAMAN5）
         m = STANDALONE.match(line)
         if m:
             prev_kw = idx > 0 and has_keyword(lines[idx - 1])
@@ -220,12 +221,12 @@ def codes_in_description(description):
                 key = (c, find_brand(lines, idx))
                 if key not in found or not found[key]:
                     found[key] = find_dest_url(lines, idx)
-    # 同じコードにブランド判明済みの組があるなら、ブランド不明(None)の組は除外
     has_brand = {c for (c, b) in found if b}
     return [(c, b, d) for (c, b), d in found.items() if b or c not in has_brand]
 
 
-def get_channel_codes(handle):
+def get_channel_data(handle):
+    """1チャンネル分のデータを辞書で返す。失敗時は None。"""
     ch = get_json("channels", {"part": "contentDetails,snippet", "forHandle": handle})
     if ch is None or not ch.get("items"):
         print(f"  ! チャンネルが見つかりませんでした: {handle}")
@@ -234,7 +235,6 @@ def get_channel_codes(handle):
     uploads = info["contentDetails"]["relatedPlaylists"]["uploads"]
     title = info["snippet"]["title"]
 
-    # 長尺（UULF）とショート（UUSH）から各MAX_VIDEOS本ずつ取得する
     ids = []
     if uploads.startswith("UU"):
         for prefix in ("UULF", "UUSH"):
@@ -244,7 +244,6 @@ def get_channel_codes(handle):
                             "maxResults": MAX_VIDEOS}, quiet=True)
             if sub:
                 ids += [i["contentDetails"]["videoId"] for i in sub.get("items", [])]
-    # UULF/UUSHが使えない特殊なチャンネルは、従来の全アップロード一覧に戻る
     if not ids:
         pl = get_json("playlistItems",
                       {"part": "contentDetails", "playlistId": uploads,
@@ -252,112 +251,43 @@ def get_channel_codes(handle):
         if pl is None:
             return None
         ids = [i["contentDetails"]["videoId"] for i in pl.get("items", [])]
-    # 重複を排除（順序は維持）
     ids = list(dict.fromkeys(ids))
     if not ids:
-        return title, []
+        return {"channel": title, "subscribers": None, "codes": []}
 
     vids = get_json("videos", {"part": "snippet", "id": ",".join(ids)})
     if vids is None:
         return None
 
-    # (コード, ブランド) の組み合わせごとに、動画URLと購入先URLを集計する
+    # (コード, ブランド) ごとに、動画URL・購入先・投稿日を集計
     summary = {}
     for v in vids.get("items", []):
+        vid = v["id"]
+        date = to_date(v["snippet"].get("publishedAt", ""))
         for code, brand, dest in codes_in_description(v["snippet"]["description"]):
             key = (code, brand)
-            entry = summary.setdefault(key, {"urls": [], "dest": ""})
-            entry["urls"].append(f"https://www.youtube.com/watch?v={v['id']}")
+            entry = summary.setdefault(key, {"urls": [], "dest": "", "date": ""})
+            entry["urls"].append(f"https://www.youtube.com/watch?v={vid}")
             if not entry["dest"] and dest:
                 entry["dest"] = dest
+            if date > entry["date"]:        # 一番新しい投稿日を採用
+                entry["date"] = date
 
-    # チャンネル全体でも、ブランド判明済みのコードのブランド不明行は除外
     has_brand = {code for (code, brand) in summary if brand}
-    codes = [(code, brand, len(e["urls"]), e["urls"][0], e["dest"])
-             for (code, brand), e in summary.items()
-             if brand or code not in has_brand]
-    codes.sort(key=lambda x: x[2], reverse=True)
-    return title, codes
-
-
-HTML_HEAD = """<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>クーポンコード一覧（プロテイン・サプリ系）</title>
-<style>
-  body { font-family: -apple-system, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
-         background:#f5f6f8; color:#1a1a1a; margin:0; padding:24px; }
-  .wrap { max-width:720px; margin:0 auto; }
-  h1 { font-size:22px; margin:0 0 4px; }
-  .updated { color:#888; font-size:13px; margin-bottom:24px; }
-  .channel { background:#fff; border-radius:12px; padding:16px 20px;
-             margin-bottom:16px; box-shadow:0 1px 3px rgba(0,0,0,0.06); }
-  .channel h2 { font-size:16px; margin:0 0 8px; }
-  .code-row { display:flex; align-items:center; gap:10px; padding:12px 0;
-              border-top:1px solid #eee; flex-wrap:wrap; }
-  .brand { background:#e8f0fe; color:#1a56db; font-size:12px; font-weight:600;
-           padding:3px 10px; border-radius:999px; white-space:nowrap; }
-  .brand.unknown { background:#f0f0f0; color:#888; }
-  .code { font-weight:700; font-size:18px; letter-spacing:0.5px;
-          background:#fff3cd; padding:3px 12px; border-radius:6px; }
-  .copy { border:1px solid #d0d5dd; background:#fff; border-radius:6px;
-          padding:4px 12px; font-size:13px; cursor:pointer; }
-  .copy:active { background:#eef2f6; }
-  .count { color:#666; font-size:13px; }
-  .links { margin-left:auto; display:flex; gap:14px; }
-  .link { color:#2563eb; font-size:13px; text-decoration:none; }
-</style>
-</head>
-<body>
-<div class="wrap">
-<h1>クーポンコード一覧（プロテイン・サプリ系）</h1>
-"""
-
-HTML_TAIL = """</div>
-<script>
-function copyCode(btn, code) {
-  navigator.clipboard.writeText(code).then(function () {
-    var old = btn.textContent;
-    btn.textContent = "コピーしました!";
-    setTimeout(function () { btn.textContent = old; }, 1500);
-  });
-}
-</script>
-</body>
-</html>"""
-
-
-def build_html(all_results, updated_at):
-    parts = [HTML_HEAD, f'<div class="updated">最終更新: {updated_at}（毎朝6時に自動更新）</div>']
-    for title, codes in all_results:
-        if not codes:
+    codes = []
+    for (code, brand), e in summary.items():
+        if not (brand or code not in has_brand):
             continue
-        parts.append(f'<section class="channel"><h2>{html.escape(title)}</h2>')
-        for code, brand, count, url, dest in codes:
-            esc_code = html.escape(code)
-            if brand:
-                brand_tag = f'<span class="brand">{html.escape(brand)}</span>'
-            else:
-                brand_tag = '<span class="brand unknown">ブランド確認中</span>'
-            links = ""
-            buy = dest or (BRANDS.get(brand, {}).get("url", "") if brand else "")
-            if buy:
-                links += f'<a class="link" href="{html.escape(buy)}" target="_blank" rel="noopener">購入ページに移動する</a>'
-            links += f'<a class="link" href="{html.escape(url)}" target="_blank" rel="noopener">動画先</a>'
-            parts.append(
-                f'<div class="code-row">'
-                f'{brand_tag}'
-                f'<span class="code">{esc_code}</span>'
-                f'<button class="copy" onclick="copyCode(this, \'{esc_code}\')">コピー</button>'
-                f'<span class="count">{count}本の動画で言及</span>'
-                f'<span class="links">{links}</span>'
-                f'</div>'
-            )
-        parts.append('</section>')
-    parts.append(HTML_TAIL)
-    return "".join(parts)
+        codes.append({
+            "code": code,
+            "brand": brand,
+            "count": len(e["urls"]),
+            "video_url": e["urls"][0],
+            "dest": e["dest"],
+            "latest_date": e["date"],
+        })
+    codes.sort(key=lambda c: c["count"], reverse=True)
+    return {"channel": title, "subscribers": None, "codes": codes}
 
 
 def main():
@@ -370,35 +300,35 @@ def main():
         print("CHANNELS にチャンネルのハンドルを入れてください。")
         raise SystemExit(1)
 
-    all_results = []
+    channels_data = []
     for handle in targets:
-        result = get_channel_codes(handle)
+        result = get_channel_data(handle)
         if result is not None:
-            all_results.append(result)
+            channels_data.append(result)
 
-    # 短縮リンクを展開し、展開後のURL（商品名を含む）からブランド不明分を補完する
-    resolved_results = []
+    # 購入先URLの短縮リンクを展開し、URLからブランド不明分を補完
     refined = 0
-    for title, codes in all_results:
-        new_codes = []
-        for code, brand, count, vurl, dest in codes:
-            final_dest = resolve_url(dest)
-            if brand is None and final_dest:
-                hits = brands_in_text(unquote(final_dest))
+    for ch in channels_data:
+        for c in ch["codes"]:
+            c["dest"] = resolve_url(c["dest"])
+            if c["brand"] is None and c["dest"]:
+                hits = brands_in_text(unquote(c["dest"]))
                 if hits:
-                    brand = hits[0]
+                    c["brand"] = hits[0]
                     refined += 1
-            new_codes.append((code, brand, count, vurl, final_dest))
-        resolved_results.append((title, new_codes))
     print(f"購入先URLの展開: {len(RESOLVE_CACHE)}件 / URLからのブランド補完: {refined}件")
 
     jst = timezone(timedelta(hours=9))
-    updated_at = datetime.now(jst).strftime("%Y-%m-%d %H:%M")
+    data = {
+        "updated_at": datetime.now(jst).strftime("%Y-%m-%d %H:%M"),
+        "brand_urls": {b: info["url"] for b, info in BRANDS.items()},
+        "channels": channels_data,
+    }
+    with open("data.json", "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
 
-    page = build_html(resolved_results, updated_at)
-    with open("index.html", "w", encoding="utf-8") as f:
-        f.write(page)
-    print(f"index.html を生成しました（{len(resolved_results)}チャンネル）")
+    total = sum(len(c["codes"]) for c in channels_data)
+    print(f"data.json を生成しました（{len(channels_data)}チャンネル / 合計{total}コード）")
 
 
 if __name__ == "__main__":
