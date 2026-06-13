@@ -58,7 +58,7 @@ BRANDS = {
     "ネイチャーカン":      {"keys": ["naturecan", "ネイチャーカン"], "url": "https://www.naturecan.jp/"},
     "バイタス":           {"keys": ["バイタス", "vitas"], "url": "https://vitas.fitness/"},
     "ALL OUT":           {"keys": ["all out", "allout", "オールアウト"], "url": "https://allout-official.com/"},
-    "ペコダックチキン":    {"keys": ["ペコダックチキン"], "url": "https://pekodak.com/"},
+    "ペコダックチキン":    {"keys": ["ペコダックチキン", "PEKODAK"], "url": "https://pekodak.com/"},
     "Over Work":         {"keys": ["over work", "overwork", "オーバーワーク"], "url": "https://overwork.official.ec/"},
     "SUPLINX":           {"keys": ["SUPLINX", "サプリンクス"], "url": "https://www.suplinx.com/shop/"},
     "キョクヨー":           {"keys": ["キョクヨー", "キョクヨーのさば"], "url": "https://store.kyokuyo.co.jp/"},
@@ -68,6 +68,9 @@ BRANDS = {
     "ハルクファクター":    {"keys": ["ハルクファクター", "hulx-factor", "hulkfactor"], "url": "https://hulx-factor.jp/"},
     "FITPEAK":    {"keys": ["fitpeak"], "url": "https://fitpeak.co/"},
     "iHerb":    {"keys": ["iHerb", "アイハーブ"], "url": "https://jp.iherb.com/"},
+    "SAIJIRUSHI":    {"keys": ["SAIJIRUSHI", "サイジルシ"], "url": "https://saijirushi.co.jp/"},
+    "マクロファクター ":    {"keys": ["macrofactor", "マクロファクター"], "url": "https://macrofactor.com/jp/"},
+    "MBC POWER":    {"keys": ["MBCパワー", "mbcパワー", "MBC POWER", "mbc power"], "url": "https://www.mbcpower.jp/"},
     }
 # ====================================================
 
