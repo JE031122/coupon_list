@@ -2,7 +2,7 @@ import json
 import html
 
 # data.json を読んで index.html を生成する。
-# 「チャンネル別」と「ブランド別」をタブで切り替えられる（切り替えはブラウザ内のJSで実行）。
+# 「チャンネル別 / ブランド別」タブ切り替え＋検索ボックス（どちらもブラウザ内のJSで動く）。
 
 HTML_HEAD = """<!DOCTYPE html>
 <html lang="ja">
@@ -16,6 +16,9 @@ HTML_HEAD = """<!DOCTYPE html>
   .wrap { max-width:720px; margin:0 auto; }
   h1 { font-size:22px; margin:0 0 4px; }
   .updated { color:#888; font-size:13px; margin-bottom:16px; }
+  .search { width:100%; box-sizing:border-box; padding:11px 14px; font-size:15px;
+            border:1px solid #d0d5dd; border-radius:10px; margin-bottom:14px; }
+  .search:focus { outline:none; border-color:#1a56db; }
   .tabs { display:flex; gap:8px; margin-bottom:20px; }
   .tab { border:1px solid #d0d5dd; background:#fff; color:#444; border-radius:999px;
          padding:7px 18px; font-size:14px; font-weight:600; cursor:pointer; }
@@ -35,10 +38,10 @@ HTML_HEAD = """<!DOCTYPE html>
   .copy { border:1px solid #d0d5dd; background:#fff; border-radius:6px;
           padding:4px 12px; font-size:13px; cursor:pointer; }
   .copy:active { background:#eef2f6; }
-  .count { color:#666; font-size:13px; }
   .links { margin-left:auto; display:flex; gap:14px; }
   .link { color:#2563eb; font-size:13px; text-decoration:none; }
   .hidden { display:none; }
+  .noresult { color:#888; font-size:14px; padding:8px 2px; }
 </style>
 </head>
 <body>
@@ -60,22 +63,49 @@ function showView(name) {
   document.getElementById('view-brand').classList.toggle('hidden', name !== 'brand');
   document.getElementById('tab-channel').classList.toggle('active', name === 'channel');
   document.getElementById('tab-brand').classList.toggle('active', name === 'brand');
+  applySearch();
+}
+function applySearch() {
+  var q = document.getElementById('search').value.toLowerCase().trim();
+  var terms = q ? q.split(/\\s+/) : [];
+  var view = document.querySelector('#view-channel:not(.hidden), #view-brand:not(.hidden)');
+  if (!view) return;
+  var anyVisible = false;
+  view.querySelectorAll('.group').forEach(function (group) {
+    var groupVisible = false;
+    group.querySelectorAll('.code-row').forEach(function (row) {
+      var hay = row.getAttribute('data-search') || '';
+      var match = terms.every(function (t) { return hay.indexOf(t) !== -1; });
+      row.classList.toggle('hidden', !match);
+      if (match) groupVisible = true;
+    });
+    group.classList.toggle('hidden', !groupVisible);
+    if (groupVisible) anyVisible = true;
+  });
+  var nr = view.querySelector('.noresult');
+  if (nr) nr.classList.toggle('hidden', anyVisible);
 }
 </script>
 </body>
 </html>"""
 
 
-def render_code_row(c, badge_html, brand_urls):
-    """1コード分の行。badge_html は左端に出すバッジ（ブランド名 or チャンネル名）。"""
+def search_attr(code, brand, channel):
+    """行に埋め込む検索対象（コード・ブランド・チャンネルを小文字で連結）"""
+    text = " ".join(x for x in [code, brand, channel] if x).lower()
+    return html.escape(text, quote=True)
+
+
+def render_code_row(c, badge_html, brand_urls, channel_name):
     esc_code = html.escape(c["code"])
     buy = c.get("dest") or (brand_urls.get(c["brand"], "") if c["brand"] else "")
     links = ""
     if buy:
         links += f'<a class="link" href="{html.escape(buy)}" target="_blank" rel="noopener">購入ページに移動する</a>'
     links += f'<a class="link" href="{html.escape(c["video_url"])}" target="_blank" rel="noopener">動画先</a>'
+    hay = search_attr(c["code"], c["brand"], channel_name)
     return (
-        f'<div class="code-row">'
+        f'<div class="code-row" data-search="{hay}">'
         f'{badge_html}'
         f'<span class="code">{esc_code}</span>'
         f'<button class="copy" onclick="copyCode(this, \'{esc_code}\')">コピー</button>'
@@ -91,7 +121,7 @@ def brand_badge(brand):
 
 
 def build_channel_view(data):
-    """チャンネル別（従来どおり）。左バッジ＝ブランド名。"""
+    """チャンネル別。左バッジ＝ブランド名。検索対象にはチャンネル名も含める。"""
     brand_urls = data.get("brand_urls", {})
     parts = ['<div id="view-channel">']
     for ch in data["channels"]:
@@ -99,14 +129,15 @@ def build_channel_view(data):
             continue
         parts.append(f'<section class="group"><h2>{html.escape(ch["channel"])}</h2>')
         for c in ch["codes"]:
-            parts.append(render_code_row(c, brand_badge(c["brand"]), brand_urls))
+            parts.append(render_code_row(c, brand_badge(c["brand"]), brand_urls, ch["channel"]))
         parts.append('</section>')
+    parts.append('<div class="noresult hidden">該当するクーポンが見つかりませんでした。</div>')
     parts.append('</div>')
     return "".join(parts)
 
 
 def build_brand_view(data):
-    """ブランド別。チャンネル横断で集約し、投稿日の新しい順。左バッジ＝チャンネル名。"""
+    """ブランド別。チャンネル横断で集約し投稿日の新しい順。左バッジ＝チャンネル名。"""
     brand_urls = data.get("brand_urls", {})
     brands = {}
     for ch in data["channels"]:
@@ -126,8 +157,9 @@ def build_brand_view(data):
         parts.append(f'<section class="group"><h2>{html.escape(label)}</h2>')
         for r in rows:
             badge = f'<span class="badge channel">{html.escape(r["from_channel"])}</span>'
-            parts.append(render_code_row(r, badge, brand_urls))
+            parts.append(render_code_row(r, badge, brand_urls, r["from_channel"]))
         parts.append('</section>')
+    parts.append('<div class="noresult hidden">該当するクーポンが見つかりませんでした。</div>')
     parts.append('</div>')
     return "".join(parts)
 
@@ -135,6 +167,11 @@ def build_brand_view(data):
 def build_html(data):
     parts = [HTML_HEAD]
     parts.append(f'<div class="updated">最終更新: {data["updated_at"]}（毎朝6時に自動更新）</div>')
+    parts.append(
+        '<input id="search" class="search" type="search" '
+        'placeholder="コード・ブランド・YouTuber名で検索" '
+        'oninput="applySearch()">'
+    )
     parts.append(
         '<div class="tabs">'
         '<button id="tab-channel" class="tab active" onclick="showView(\'channel\')">チャンネル別</button>'
