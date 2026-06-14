@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-14 14:05",
+  "updated_at": "2026-06-14 14:38",
   "brand_urls": {
     "マイプロテイン": "https://www.myprotein.jp/",
     "VALX": "https://valx.jp/",
@@ -216,7 +216,7 @@
           "brand": "マイプロテイン",
           "count": 13,
           "video_url": "https://www.youtube.com/watch?v=QrpNl4yeDh8",
-          "dest": "https://www.myprotein.jp?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781413495_367ee8d58582ea33a922d39b084deaa4",
+          "dest": "https://www.myprotein.jp?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781415480_cae39af97351ec74e4cfab5875bde555",
           "latest_date": "2026-06-13"
         },
         {
@@ -248,7 +248,7 @@
           "brand": "マイプロテイン",
           "count": 19,
           "video_url": "https://www.youtube.com/watch?v=q5ol5-EXFu4",
-          "dest": "https://www.myprotein.jp/p/sports-nutrition/myprotein-clear-whey-protein-white-soda-alt/16329626/?affil=thgppc&thg_ppc_campaign=12269835970&gclid=Cj0KCQjwgr_NBhDFARIsAHiUWr7sZzVIdUoIwrcGFLcAQuZuUTmfyZd1PIJ-iDfXTWdsygGbheVHqDYaAjjqEALw_wcB&affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781413497_ecb5fd7893f939595ae59be38f72c411",
+          "dest": "https://www.myprotein.jp/p/sports-nutrition/myprotein-clear-whey-protein-white-soda-alt/16329626/?affil=thgppc&thg_ppc_campaign=12269835970&gclid=Cj0KCQjwgr_NBhDFARIsAHiUWr7sZzVIdUoIwrcGFLcAQuZuUTmfyZd1PIJ-iDfXTWdsygGbheVHqDYaAjjqEALw_wcB&affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781415481_3278c459dc42a0efae04ba67dc8c5817",
           "latest_date": "2026-06-13"
         },
         {
@@ -383,10 +383,10 @@
       "codes": [
         {
           "code": "DSUN",
-          "brand": null,
+          "brand": "DELIPICKS",
           "count": 1,
           "video_url": "https://www.youtube.com/watch?v=GrKsONMHUKQ",
-          "dest": "https://sb.deli-picks.com/ab/Creator_ad24?utm_source=vtuber&utm_medium=nahato&utm_campaign=youtube&fpc=10287.308.365.3ec00628a369e96f.1812949507000",
+          "dest": "https://sb.deli-picks.com/ab/Creator_ad24?utm_source=vtuber&utm_medium=nahato&utm_campaign=youtube&fpc=10287.308.365.24e0422605443eaD.1812951492000",
           "latest_date": "2026-03-17"
         }
       ]
@@ -460,7 +460,7 @@
           "brand": "マイプロテイン",
           "count": 20,
           "video_url": "https://www.youtube.com/watch?v=SPtQuC0PvTs",
-          "dest": "https://www.myprotein.jp/?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781413516_6cf367ce62cdc2584fc72495fe09bbb7",
+          "dest": "https://www.myprotein.jp/?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781415499_77f21f73d16eed5a3ee346946b059c6d",
           "latest_date": "2026-06-14"
         }
       ]
