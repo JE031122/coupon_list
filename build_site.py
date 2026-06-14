@@ -2,7 +2,8 @@ import json
 import html
 
 # data.json を読んで index.html を生成する。
-# タブ（チャンネル別/ブランド別）＋検索（候補表示・ひらがなカタカナ吸収つき）。すべてJSで動く。
+# タブ（チャンネル別/ブランド別）＋検索（候補表示・ひらがなカタカナ吸収）。
+# 検索対象と候補は「今のタブ」に合わせる：チャンネル別=チャンネル名、ブランド別=ブランド名（コードは常に対象）。
 
 HTML_HEAD = """<!DOCTYPE html>
 <html lang="ja">
@@ -158,20 +159,20 @@ def kana_norm(s):
     return "".join(out).lower()
 
 
-def search_attr(code, brand, channel):
-    """行に埋め込む検索対象。ひらがなカタカナを吸収した正規化済みテキスト。"""
-    text = " ".join(x for x in [code, brand, channel] if x)
+def search_attr(code, name):
+    """行に埋め込む検索対象。コードと、そのタブで使う名前（チャンネル名 or ブランド名）。"""
+    text = " ".join(x for x in [code, name] if x)
     return html.escape(kana_norm(text), quote=True)
 
 
-def render_code_row(c, badge_html, brand_urls, channel_name):
+def render_code_row(c, badge_html, brand_urls, search_name):
     esc_code = html.escape(c["code"])
     buy = c.get("dest") or (brand_urls.get(c["brand"], "") if c["brand"] else "")
     links = ""
     if buy:
         links += f'<a class="link" href="{html.escape(buy)}" target="_blank" rel="noopener">購入ページに移動する</a>'
     links += f'<a class="link" href="{html.escape(c["video_url"])}" target="_blank" rel="noopener">動画先</a>'
-    hay = search_attr(c["code"], c["brand"], channel_name)
+    hay = search_attr(c["code"], search_name)
     return (
         f'<div class="code-row" data-search="{hay}">'
         f'{badge_html}'
@@ -189,6 +190,7 @@ def brand_badge(brand):
 
 
 def build_channel_view(data):
+    """チャンネル別。左バッジ＝ブランド名。検索対象＝コード＋チャンネル名。"""
     brand_urls = data.get("brand_urls", {})
     parts = ['<div id="view-channel">']
     for ch in data["channels"]:
@@ -204,6 +206,7 @@ def build_channel_view(data):
 
 
 def build_brand_view(data):
+    """ブランド別。左バッジ＝チャンネル名。検索対象＝コード＋ブランド名。投稿日の新しい順。"""
     brand_urls = data.get("brand_urls", {})
     brands = {}
     for ch in data["channels"]:
@@ -223,7 +226,7 @@ def build_brand_view(data):
         parts.append(f'<section class="group"><h2>{html.escape(label)}</h2>')
         for r in rows:
             badge = f'<span class="badge channel">{html.escape(r["from_channel"])}</span>'
-            parts.append(render_code_row(r, badge, brand_urls, r["from_channel"]))
+            parts.append(render_code_row(r, badge, brand_urls, label))
         parts.append('</section>')
     parts.append('<div class="noresult hidden">該当するクーポンが見つかりませんでした。</div>')
     parts.append('</div>')
@@ -231,16 +234,16 @@ def build_brand_view(data):
 
 
 def collect_suggest_lists(data):
-    """候補に出す語（ブランド名・チャンネル名）。コードは候補に出さない。"""
-    channels = [ch["channel"] for ch in data["channels"] if ch["codes"]]
+    """候補に出す語。チャンネル別タブ＝チャンネル名のみ、ブランド別タブ＝ブランド名のみ。
+    コードは候補に出さない（打って探すものではないため）。"""
+    channels = list(dict.fromkeys(ch["channel"] for ch in data["channels"] if ch["codes"]))
     brands = []
     for ch in data["channels"]:
         for c in ch["codes"]:
             b = c["brand"] if c["brand"] else "ブランド確認中"
             if b not in brands:
                 brands.append(b)
-    both = list(dict.fromkeys(brands + channels))
-    return both, both
+    return channels, brands
 
 
 def build_html(data):
