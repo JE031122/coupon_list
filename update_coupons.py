@@ -153,23 +153,16 @@ def brands_in_text(text):
 
 
 def find_brand(lines, idx, window=2):
-    """①前後2行を近い順 → ②同じ段落（空行区切り）内を近い順。見つからなければ None。"""
-    for dist in range(window + 1):
-        targets = [idx] if dist == 0 else [idx - dist, idx + dist]
-        for i in targets:
-            if 0 <= i < len(lines):
-                hits = brands_in_text(lines[i])
-                if hits:
-                    return hits[0]
+    """コードと同じ段落（空行で区切られたブロック）の内側を、近い順に探す。
+    空行を越えて隣の段落のブランド名を拾わない（誤判定防止）。見つからなければ None。"""
     top = idx
     while top > 0 and lines[top - 1].strip():
         top -= 1
     bottom = idx
     while bottom + 1 < len(lines) and lines[bottom + 1].strip():
         bottom += 1
-    max_dist = max(idx - top, bottom - idx)
-    for dist in range(window + 1, max_dist + 1):
-        for i in (idx - dist, idx + dist):
+    for dist in range(max(idx - top, bottom - idx) + 1):
+        for i in ([idx] if dist == 0 else [idx - dist, idx + dist]):
             if top <= i <= bottom:
                 hits = brands_in_text(lines[i])
                 if hits:
@@ -178,38 +171,29 @@ def find_brand(lines, idx, window=2):
 
 
 def find_dest_url(lines, idx, window=2):
-    """コード行の近くから購入先URLを探す。
-    ①前後2行を近い順 → ②同じ段落（空行区切り）内を近い順。SNS等はスキップ。"""
-    def usable(line):
-        m = URL_PATTERN.search(line)
-        if m:
-            url = m.group(0).rstrip(".,")
-            if not any(s in url for s in SKIP_URL_DOMAINS):
-                return url
-        return None
-    # ①前後window行を近い順
-    for dist in range(window + 1):
-        targets = [idx] if dist == 0 else [idx - dist, idx + dist]
-        for i in targets:
-            if 0 <= i < len(lines):
-                u = usable(lines[i])
-                if u:
-                    return u
-    # ②同じ段落（上下の空行まで）の中を近い順に
+    """コードと同じ段落（空行で区切られたブロック）の内側から購入先URLを近い順に探す。
+    空行を越えて隣の段落のURLを拾わない（無関係なリンクの誤採用を防止）。SNS等はスキップ。"""
     top = idx
     while top > 0 and lines[top - 1].strip():
         top -= 1
     bottom = idx
     while bottom + 1 < len(lines) and lines[bottom + 1].strip():
         bottom += 1
-    for dist in range(window + 1, max(idx - top, bottom - idx) + 1):
-        for i in (idx - dist, idx + dist):
-            if top <= i <= bottom:
-                u = usable(lines[i])
-                if u:
-                    return u
+    def usable(i):
+        if not (top <= i <= bottom):
+            return None
+        m = URL_PATTERN.search(lines[i])
+        if m:
+            url = m.group(0).rstrip(".,")
+            if not any(s in url for s in SKIP_URL_DOMAINS):
+                return url
+        return None
+    for dist in range(max(idx - top, bottom - idx) + 1):
+        for i in ([idx] if dist == 0 else [idx - dist, idx + dist]):
+            u = usable(i)
+            if u:
+                return u
     return ""
-
 
 def has_keyword(line):
     return any(kw.lower() in line.lower() for kw in KEYWORDS)
