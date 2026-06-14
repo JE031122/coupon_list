@@ -3,7 +3,7 @@ import html
 
 # data.json を読んで index.html を生成する。
 # タブ（チャンネル別/ブランド別）＋検索（候補表示・ひらがなカタカナ吸収）。
-# 検索対象と候補は「今のタブ」に合わせる：チャンネル別=チャンネル名、ブランド別=ブランド名（コードは常に対象）。
+# ブランド別では、ブランドの表記ゆれ（keys。カナ読み含む）も検索・候補の対象にする。
 
 HTML_HEAD = """<!DOCTYPE html>
 <html lang="ja">
@@ -57,6 +57,7 @@ HTML_HEAD = """<!DOCTYPE html>
 
 HTML_TAIL = """</div>
 <script>
+// 候補は [表示ラベル, マッチ用テキスト] のペア。マッチ用にカナ読み等を含める。
 var SUGGEST = { channel: __SUGGEST_CHANNEL__, brand: __SUGGEST_BRAND__ };
 
 function copyCode(btn, code) {
@@ -102,21 +103,21 @@ function renderSuggest(query) {
   var view = currentView();
   var key = (view && view.id === 'view-brand') ? 'brand' : 'channel';
   var terms = q.split(/\\s+/);
-  var hits = SUGGEST[key].filter(function (c) {
-    var cn = kanaNorm(c);
+  var hits = SUGGEST[key].filter(function (item) {
+    var cn = kanaNorm(item[1]);
     return terms.every(function (t) { return cn.indexOf(t) !== -1; });
   });
   hits.sort(function (a, b) {
-    var an = kanaNorm(a), bn = kanaNorm(b);
+    var an = kanaNorm(a[1]), bn = kanaNorm(b[1]);
     var as = an.indexOf(terms[0]) === 0 ? 0 : 1;
     var bs = bn.indexOf(terms[0]) === 0 ? 0 : 1;
     if (as !== bs) return as - bs;
-    return a.length - b.length;
+    return a[0].length - b[0].length;
   });
-  hits.slice(0, 6).forEach(function (word) {
+  hits.slice(0, 6).forEach(function (item) {
     var btn = document.createElement('button');
-    btn.textContent = word;
-    btn.onclick = function () { pickSuggest(word); };
+    btn.textContent = item[0];
+    btn.onclick = function () { pickSuggest(item[0]); };
     box.appendChild(btn);
   });
 }
@@ -159,20 +160,23 @@ def kana_norm(s):
     return "".join(out).lower()
 
 
-def search_attr(code, name):
-    """行に埋め込む検索対象。コードと、そのタブで使う名前（チャンネル名 or ブランド名）。"""
-    text = " ".join(x for x in [code, name] if x)
+def search_attr(code, name, extra_terms=None):
+    """行に埋め込む検索対象。コード＋名前（チャンネル名orブランド名）＋追加語（ブランドの表記ゆれ）。"""
+    parts = [code, name]
+    if extra_terms:
+        parts.extend(extra_terms)
+    text = " ".join(x for x in parts if x)
     return html.escape(kana_norm(text), quote=True)
 
 
-def render_code_row(c, badge_html, brand_urls, search_name):
+def render_code_row(c, badge_html, brand_urls, search_name, extra_terms=None):
     esc_code = html.escape(c["code"])
     buy = c.get("dest") or (brand_urls.get(c["brand"], "") if c["brand"] else "")
     links = ""
     if buy:
         links += f'<a class="link" href="{html.escape(buy)}" target="_blank" rel="noopener">購入ページに移動する</a>'
     links += f'<a class="link" href="{html.escape(c["video_url"])}" target="_blank" rel="noopener">動画先</a>'
-    hay = search_attr(c["code"], search_name)
+    hay = search_attr(c["code"], search_name, extra_terms)
     return (
         f'<div class="code-row" data-search="{hay}">'
         f'{badge_html}'
@@ -206,8 +210,9 @@ def build_channel_view(data):
 
 
 def build_brand_view(data):
-    """ブランド別。左バッジ＝チャンネル名。検索対象＝コード＋ブランド名。投稿日の新しい順。"""
+    """ブランド別。左バッジ＝チャンネル名。検索対象＝コード＋ブランド名＋表記ゆれ。投稿日の新しい順。"""
     brand_urls = data.get("brand_urls", {})
+    brand_keys = data.get("brand_keys", {})
     brands = {}
     for ch in data["channels"]:
         for c in ch["codes"]:
@@ -224,9 +229,10 @@ def build_brand_view(data):
     parts = ['<div id="view-brand" class="hidden">']
     for label, rows in ordered:
         parts.append(f'<section class="group"><h2>{html.escape(label)}</h2>')
+        extra = brand_keys.get(label, [])
         for r in rows:
             badge = f'<span class="badge channel">{html.escape(r["from_channel"])}</span>'
-            parts.append(render_code_row(r, badge, brand_urls, label))
+            parts.append(render_code_row(r, badge, brand_urls, label, extra))
         parts.append('</section>')
     parts.append('<div class="noresult hidden">該当するクーポンが見つかりませんでした。</div>')
     parts.append('</div>')
@@ -234,8 +240,10 @@ def build_brand_view(data):
 
 
 def collect_suggest_lists(data):
-    """候補に出す語。チャンネル別タブ＝チャンネル名のみ、ブランド別タブ＝ブランド名のみ。
+    """候補に出す語。チャンネル別タブ＝チャンネル名、ブランド別タブ＝ブランド表示名。
+    各候補は [表示ラベル, マッチ用テキスト]。ブランドはマッチ用に表記ゆれ（カナ読み等）を含める。
     コードは候補に出さない（打って探すものではないため）。"""
+    brand_keys = data.get("brand_keys", {})
     channels = list(dict.fromkeys(ch["channel"] for ch in data["channels"] if ch["codes"]))
     brands = []
     for ch in data["channels"]:
@@ -243,7 +251,9 @@ def collect_suggest_lists(data):
             b = c["brand"] if c["brand"] else "ブランド確認中"
             if b not in brands:
                 brands.append(b)
-    return channels, brands
+    channel_items = [[name, name] for name in channels]
+    brand_items = [[b, " ".join([b] + brand_keys.get(b, []))] for b in brands]
+    return channel_items, brand_items
 
 
 def build_html(data):
