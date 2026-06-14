@@ -38,6 +38,8 @@ CHANNELS = [
 ]
 # 長尺・ショートそれぞれの最新何本を調べるか（合計で最大この2倍を確認）
 MAX_VIDEOS = 10
+# この日数以内に投稿された動画だけを対象にする（古いクーポンを除外して鮮度を保つ）
+RECENT_DAYS = 60
 # ==========================================
 
 # ===== ブランド辞書：新しいブランドはここに足します =====
@@ -146,6 +148,17 @@ def to_date(published_at):
         return ""
 
 
+def within_days(published_at, days=RECENT_DAYS):
+    """投稿日時(ISO8601 UTC)が今からdays日以内ならTrue。空・不正な値はFalse。"""
+    if not published_at:
+        return False
+    try:
+        dt = datetime.fromisoformat(published_at.replace("Z", "+00:00"))
+    except ValueError:
+        return False
+    return (datetime.now(timezone.utc) - dt) <= timedelta(days=days)
+
+
 def brands_in_text(text):
     text = text.lower()
     return [b for b, info in BRANDS.items()
@@ -194,6 +207,7 @@ def find_dest_url(lines, idx, window=2):
             if u:
                 return u
     return ""
+
 
 def has_keyword(line):
     return any(kw.lower() in line.lower() for kw in KEYWORDS)
@@ -269,8 +283,12 @@ def get_channel_data(handle):
     # (コード, ブランド) ごとに、動画URL・購入先・投稿日を集計
     summary = {}
     for v in vids.get("items", []):
+        published = v["snippet"].get("publishedAt", "")
+        # 投稿が古い動画はスキップ（直近RECENT_DAYS日以内のみ対象）
+        if not within_days(published):
+            continue
         vid = v["id"]
-        date = to_date(v["snippet"].get("publishedAt", ""))
+        date = to_date(published)
         for code, brand, dest in codes_in_description(v["snippet"]["description"]):
             key = (code, brand)
             entry = summary.setdefault(key, {"urls": [], "dest": "", "date": ""})
