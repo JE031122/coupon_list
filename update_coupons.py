@@ -174,16 +174,37 @@ def find_brand(lines, idx, window=2):
     return None
 
 
-def find_dest_url(lines, idx):
-    """コード行の近くから購入先URLを探す（同じ行→1行上→1行下→2行上→2行下の順）。"""
-    order = [idx, idx - 1, idx + 1, idx - 2, idx + 2]
-    for i in order:
-        if 0 <= i < len(lines):
-            m = URL_PATTERN.search(lines[i])
-            if m:
-                url = m.group(0).rstrip(".,")
-                if not any(s in url for s in SKIP_URL_DOMAINS):
-                    return url
+def find_dest_url(lines, idx, window=2):
+    """コード行の近くから購入先URLを探す。
+    ①前後2行を近い順 → ②同じ段落（空行区切り）内を近い順。SNS等はスキップ。"""
+    def usable(line):
+        m = URL_PATTERN.search(line)
+        if m:
+            url = m.group(0).rstrip(".,")
+            if not any(s in url for s in SKIP_URL_DOMAINS):
+                return url
+        return None
+    # ①前後window行を近い順
+    for dist in range(window + 1):
+        targets = [idx] if dist == 0 else [idx - dist, idx + dist]
+        for i in targets:
+            if 0 <= i < len(lines):
+                u = usable(lines[i])
+                if u:
+                    return u
+    # ②同じ段落（上下の空行まで）の中を近い順に
+    top = idx
+    while top > 0 and lines[top - 1].strip():
+        top -= 1
+    bottom = idx
+    while bottom + 1 < len(lines) and lines[bottom + 1].strip():
+        bottom += 1
+    for dist in range(window + 1, max(idx - top, bottom - idx) + 1):
+        for i in (idx - dist, idx + dist):
+            if top <= i <= bottom:
+                u = usable(lines[i])
+                if u:
+                    return u
     return ""
 
 
