@@ -63,7 +63,7 @@ BRANDS = {
     "SUPLINX":           {"keys": ["SUPLINX", "サプリンクス"], "url": "https://www.suplinx.com/shop/"},
     "キョクヨー":           {"keys": ["キョクヨー", "キョクヨーのさば"], "url": "https://store.kyokuyo.co.jp/"},
     "AMBiQUE":           {"keys": ["AMBiQUE", "アンビーク"], "url": "https://www.alo-organic.com/shop/product_categories/ambique"},
-    "DELIPICKS":         {"keys": ["DELIPICKS", "デリピックス"], "url": "https://sb.deli-picks.com/ab/Creator_ad24"},
+    "DELIPICKS":         {"keys": ["delipicks", "deli-picks", "デリピックス"], "url": "https://sb.deli-picks.com/ab/Creator_ad24"},
     "男DAYS":            {"keys": ["男DAYS", "ダンディーズ", "オトコデイズ"], "url": "https://dan-days.jp/shop"},
     "ハルクファクター":    {"keys": ["ハルクファクター", "hulx-factor", "hulkfactor"], "url": "https://hulx-factor.jp/"},
     "FITPEAK":           {"keys": ["fitpeak", "フィットピーク"], "url": "https://fitpeak.co/"},
@@ -73,7 +73,7 @@ BRANDS = {
     "MBC POWER":         {"keys": ["MBCパワー", "mbcパワー", "MBC POWER", "mbc power"], "url": "https://www.mbcpower.jp/"},
     "Vanquish Fitness":  {"keys": ["Vanquish Fitness", "ヴァンキッシュフィットネス", "バンキッシュフィットネス"], "url": "https://www.vqfit.com/"},
     "LEVANTE":           {"keys": ["levante", "レバンテ"], "url": "https://www.levante.co.jp/"},
-    "N1 Number One":     {"keys": ["n1 number one"], "url": "https://www.amazon.co.jp/stores/N1NumberOne/page/34DA394B-29B8-49FD-A08C-DBA726EA6FD1"},
+    "N1 Number One":     {"keys": ["creanin", "クレアニン", "n1number"], "url": "https://www.amazon.co.jp/stores/N1NumberOne/page/34DA394B-29B8-49FD-A08C-DBA726EA6FD1"},
 }
 # ====================================================
 
