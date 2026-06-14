@@ -72,6 +72,8 @@ BRANDS = {
     "マクロファクター":    {"keys": ["macrofactor", "マクロファクター"], "url": "https://macrofactor.com/jp/"},
     "MBC POWER":         {"keys": ["MBCパワー", "mbcパワー", "MBC POWER", "mbc power"], "url": "https://www.mbcpower.jp/"},
     "Vanquish Fitness":  {"keys": ["Vanquish Fitness", "ヴァンキッシュフィットネス", "バンキッシュフィットネス"], "url": "https://www.vqfit.com/"},
+    "LEVANTE":           {"keys": ["levante", "レバンテ"], "url": "https://www.levante.co.jp/"},
+    "N1 Number One":     {"keys": ["n1 number one"], "url": "https://www.amazon.co.jp/stores/N1NumberOne/page/34DA394B-29B8-49FD-A08C-DBA726EA6FD1"},
 }
 # ====================================================
 
