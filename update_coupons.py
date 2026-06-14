@@ -24,7 +24,6 @@ CHANNELS = [
     "@mametama",
     "@takutofitness",
     "@musclearuaru",
-    "@vmmtkk",
     "@d-sun",
     "@jintomo",
     "@ShoImakoga",
