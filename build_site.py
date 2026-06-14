@@ -2,7 +2,7 @@ import json
 import html
 
 # data.json を読んで index.html を生成する。
-# 「チャンネル別 / ブランド別」タブ切り替え＋検索ボックス（どちらもブラウザ内のJSで動く）。
+# タブ（チャンネル別/ブランド別）＋検索（候補表示・ひらがなカタカナ吸収つき）。すべてJSで動く。
 
 HTML_HEAD = """<!DOCTYPE html>
 <html lang="ja">
@@ -16,9 +16,14 @@ HTML_HEAD = """<!DOCTYPE html>
   .wrap { max-width:720px; margin:0 auto; }
   h1 { font-size:22px; margin:0 0 4px; }
   .updated { color:#888; font-size:13px; margin-bottom:16px; }
+  .searchbox { position:relative; margin-bottom:14px; }
   .search { width:100%; box-sizing:border-box; padding:11px 14px; font-size:15px;
-            border:1px solid #d0d5dd; border-radius:10px; margin-bottom:14px; }
+            border:1px solid #d0d5dd; border-radius:10px; }
   .search:focus { outline:none; border-color:#1a56db; }
+  .suggest { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+  .suggest button { border:1px solid #cfe0ff; background:#f3f8ff; color:#1a56db;
+                    border-radius:999px; padding:6px 14px; font-size:13px; cursor:pointer; }
+  .suggest button:active { background:#e3eeff; }
   .tabs { display:flex; gap:8px; margin-bottom:20px; }
   .tab { border:1px solid #d0d5dd; background:#fff; color:#444; border-radius:999px;
          padding:7px 18px; font-size:14px; font-weight:600; cursor:pointer; }
@@ -51,6 +56,8 @@ HTML_HEAD = """<!DOCTYPE html>
 
 HTML_TAIL = """</div>
 <script>
+var SUGGEST = { channel: __SUGGEST_CHANNEL__, brand: __SUGGEST_BRAND__ };
+
 function copyCode(btn, code) {
   navigator.clipboard.writeText(code).then(function () {
     var old = btn.textContent;
@@ -58,6 +65,21 @@ function copyCode(btn, code) {
     setTimeout(function () { btn.textContent = old; }, 1500);
   });
 }
+
+function kanaNorm(s) {
+  var out = "";
+  for (var i = 0; i < s.length; i++) {
+    var o = s.charCodeAt(i);
+    if (o >= 0x3041 && o <= 0x3096) out += String.fromCharCode(o + 0x60);
+    else out += s[i];
+  }
+  return out.toLowerCase();
+}
+
+function currentView() {
+  return document.querySelector('#view-channel:not(.hidden), #view-brand:not(.hidden)');
+}
+
 function showView(name) {
   document.getElementById('view-channel').classList.toggle('hidden', name !== 'channel');
   document.getElementById('view-brand').classList.toggle('hidden', name !== 'brand');
@@ -65,10 +87,45 @@ function showView(name) {
   document.getElementById('tab-brand').classList.toggle('active', name === 'brand');
   applySearch();
 }
+
+function pickSuggest(word) {
+  document.getElementById('search').value = word;
+  applySearch();
+}
+
+function renderSuggest(query) {
+  var box = document.getElementById('suggest');
+  box.innerHTML = "";
+  var q = kanaNorm(query.trim());
+  if (!q) return;
+  var view = currentView();
+  var key = (view && view.id === 'view-brand') ? 'brand' : 'channel';
+  var terms = q.split(/\\s+/);
+  var hits = SUGGEST[key].filter(function (c) {
+    var cn = kanaNorm(c);
+    return terms.every(function (t) { return cn.indexOf(t) !== -1; });
+  });
+  hits.sort(function (a, b) {
+    var an = kanaNorm(a), bn = kanaNorm(b);
+    var as = an.indexOf(terms[0]) === 0 ? 0 : 1;
+    var bs = bn.indexOf(terms[0]) === 0 ? 0 : 1;
+    if (as !== bs) return as - bs;
+    return a.length - b.length;
+  });
+  hits.slice(0, 6).forEach(function (word) {
+    var btn = document.createElement('button');
+    btn.textContent = word;
+    btn.onclick = function () { pickSuggest(word); };
+    box.appendChild(btn);
+  });
+}
+
 function applySearch() {
-  var q = document.getElementById('search').value.toLowerCase().trim();
+  var raw = document.getElementById('search').value;
+  renderSuggest(raw);
+  var q = kanaNorm(raw.trim());
   var terms = q ? q.split(/\\s+/) : [];
-  var view = document.querySelector('#view-channel:not(.hidden), #view-brand:not(.hidden)');
+  var view = currentView();
   if (!view) return;
   var anyVisible = false;
   view.querySelectorAll('.group').forEach(function (group) {
@@ -90,10 +147,21 @@ function applySearch() {
 </html>"""
 
 
+def kana_norm(s):
+    out = []
+    for ch in s:
+        o = ord(ch)
+        if 0x3041 <= o <= 0x3096:
+            out.append(chr(o + 0x60))
+        else:
+            out.append(ch)
+    return "".join(out).lower()
+
+
 def search_attr(code, brand, channel):
-    """行に埋め込む検索対象（コード・ブランド・チャンネルを小文字で連結）"""
-    text = " ".join(x for x in [code, brand, channel] if x).lower()
-    return html.escape(text, quote=True)
+    """行に埋め込む検索対象。ひらがなカタカナを吸収した正規化済みテキスト。"""
+    text = " ".join(x for x in [code, brand, channel] if x)
+    return html.escape(kana_norm(text), quote=True)
 
 
 def render_code_row(c, badge_html, brand_urls, channel_name):
@@ -121,7 +189,6 @@ def brand_badge(brand):
 
 
 def build_channel_view(data):
-    """チャンネル別。左バッジ＝ブランド名。検索対象にはチャンネル名も含める。"""
     brand_urls = data.get("brand_urls", {})
     parts = ['<div id="view-channel">']
     for ch in data["channels"]:
@@ -137,7 +204,6 @@ def build_channel_view(data):
 
 
 def build_brand_view(data):
-    """ブランド別。チャンネル横断で集約し投稿日の新しい順。左バッジ＝チャンネル名。"""
     brand_urls = data.get("brand_urls", {})
     brands = {}
     for ch in data["channels"]:
@@ -164,13 +230,28 @@ def build_brand_view(data):
     return "".join(parts)
 
 
+def collect_suggest_lists(data):
+    """候補に出す語（ブランド名・チャンネル名）。コードは候補に出さない。"""
+    channels = [ch["channel"] for ch in data["channels"] if ch["codes"]]
+    brands = []
+    for ch in data["channels"]:
+        for c in ch["codes"]:
+            b = c["brand"] if c["brand"] else "ブランド確認中"
+            if b not in brands:
+                brands.append(b)
+    both = list(dict.fromkeys(brands + channels))
+    return both, both
+
+
 def build_html(data):
     parts = [HTML_HEAD]
     parts.append(f'<div class="updated">最終更新: {data["updated_at"]}（毎朝6時に自動更新）</div>')
     parts.append(
+        '<div class="searchbox">'
         '<input id="search" class="search" type="search" '
-        'placeholder="コード・ブランド・YouTuber名で検索" '
-        'oninput="applySearch()">'
+        'placeholder="コード・ブランド・YouTuber名で検索" oninput="applySearch()">'
+        '<div id="suggest" class="suggest"></div>'
+        '</div>'
     )
     parts.append(
         '<div class="tabs">'
@@ -180,7 +261,11 @@ def build_html(data):
     )
     parts.append(build_channel_view(data))
     parts.append(build_brand_view(data))
-    parts.append(HTML_TAIL)
+
+    sug_channel, sug_brand = collect_suggest_lists(data)
+    tail = HTML_TAIL.replace("__SUGGEST_CHANNEL__", json.dumps(sug_channel, ensure_ascii=False))
+    tail = tail.replace("__SUGGEST_BRAND__", json.dumps(sug_brand, ensure_ascii=False))
+    parts.append(tail)
     return "".join(parts)
 
 
