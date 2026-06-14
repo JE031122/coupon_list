@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-14 14:38",
+  "updated_at": "2026-06-14 15:35",
   "brand_urls": {
     "マイプロテイン": "https://www.myprotein.jp/",
     "VALX": "https://valx.jp/",
@@ -31,7 +31,8 @@
     "MBC POWER": "https://www.mbcpower.jp/",
     "Vanquish Fitness": "https://www.vqfit.com/",
     "LEVANTE": "https://www.levante.co.jp/",
-    "N1 Number One": "https://www.amazon.co.jp/stores/N1NumberOne/page/34DA394B-29B8-49FD-A08C-DBA726EA6FD1"
+    "N1 Number One": "https://www.amazon.co.jp/stores/N1NumberOne/page/34DA394B-29B8-49FD-A08C-DBA726EA6FD1",
+    "ALPRON": "https://alpron.co.jp/"
   },
   "channels": [
     {
@@ -216,7 +217,7 @@
           "brand": "マイプロテイン",
           "count": 13,
           "video_url": "https://www.youtube.com/watch?v=QrpNl4yeDh8",
-          "dest": "https://www.myprotein.jp?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781415480_cae39af97351ec74e4cfab5875bde555",
+          "dest": "https://www.myprotein.jp?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781418914_b40d348a740144e97a7ead912891d103",
           "latest_date": "2026-06-13"
         },
         {
@@ -248,7 +249,7 @@
           "brand": "マイプロテイン",
           "count": 19,
           "video_url": "https://www.youtube.com/watch?v=q5ol5-EXFu4",
-          "dest": "https://www.myprotein.jp/p/sports-nutrition/myprotein-clear-whey-protein-white-soda-alt/16329626/?affil=thgppc&thg_ppc_campaign=12269835970&gclid=Cj0KCQjwgr_NBhDFARIsAHiUWr7sZzVIdUoIwrcGFLcAQuZuUTmfyZd1PIJ-iDfXTWdsygGbheVHqDYaAjjqEALw_wcB&affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781415481_3278c459dc42a0efae04ba67dc8c5817",
+          "dest": "https://www.myprotein.jp/p/sports-nutrition/myprotein-clear-whey-protein-white-soda-alt/16329626/?affil=thgppc&thg_ppc_campaign=12269835970&gclid=Cj0KCQjwgr_NBhDFARIsAHiUWr7sZzVIdUoIwrcGFLcAQuZuUTmfyZd1PIJ-iDfXTWdsygGbheVHqDYaAjjqEALw_wcB&affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781418915_7e33ffb4f9837f4c574fa45d4c263285",
           "latest_date": "2026-06-13"
         },
         {
@@ -386,7 +387,7 @@
           "brand": "DELIPICKS",
           "count": 1,
           "video_url": "https://www.youtube.com/watch?v=GrKsONMHUKQ",
-          "dest": "https://sb.deli-picks.com/ab/Creator_ad24?utm_source=vtuber&utm_medium=nahato&utm_campaign=youtube&fpc=10287.308.365.24e0422605443eaD.1812951492000",
+          "dest": "https://sb.deli-picks.com/ab/Creator_ad24?utm_source=vtuber&utm_medium=nahato&utm_campaign=youtube&fpc=10287.308.365.086a84dbcbad02eO.1812954925000",
           "latest_date": "2026-03-17"
         }
       ]
@@ -435,7 +436,7 @@
         },
         {
           "code": "IMAKOGA2511",
-          "brand": null,
+          "brand": "ALPRON",
           "count": 1,
           "video_url": "https://www.youtube.com/watch?v=YiEUcRfgTDo",
           "dest": "",
@@ -443,7 +444,7 @@
         },
         {
           "code": "IMAKOGA2510",
-          "brand": null,
+          "brand": "ALPRON",
           "count": 1,
           "video_url": "https://www.youtube.com/watch?v=O5pVr3vyJMw",
           "dest": "",
@@ -460,7 +461,7 @@
           "brand": "マイプロテイン",
           "count": 20,
           "video_url": "https://www.youtube.com/watch?v=SPtQuC0PvTs",
-          "dest": "https://www.myprotein.jp/?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781415499_77f21f73d16eed5a3ee346946b059c6d",
+          "dest": "https://www.myprotein.jp/?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781418932_7795e10e6fdae197433015e39933d04a",
           "latest_date": "2026-06-14"
         }
       ]
