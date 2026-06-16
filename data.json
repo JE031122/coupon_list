@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-16 01:30",
+  "updated_at": "2026-06-17 01:04",
   "brand_urls": {
     "マイプロテイン": "https://www.myprotein.jp/",
     "VALX": "https://valx.jp/",
@@ -224,17 +224,17 @@
           "code": "JUNPEI",
           "brand": "マイプロテイン",
           "count": 13,
-          "video_url": "https://www.youtube.com/watch?v=QrpNl4yeDh8",
-          "dest": "https://www.myprotein.jp?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781541037_a4b3ed4aab15e037634c397bfa4ed3a7",
-          "latest_date": "2026-06-13"
+          "video_url": "https://www.youtube.com/watch?v=aVtfJ-8y1g4",
+          "dest": "https://www.myprotein.jp?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781625854_b16e953e7c324d459be2ec1fa7fc02f6",
+          "latest_date": "2026-06-16"
         },
         {
           "code": "BGT6534",
           "brand": "iHerb",
           "count": 10,
-          "video_url": "https://www.youtube.com/watch?v=QrpNl4yeDh8",
+          "video_url": "https://www.youtube.com/watch?v=aVtfJ-8y1g4",
           "dest": "",
-          "latest_date": "2026-06-13"
+          "latest_date": "2026-06-16"
         }
       ]
     },
@@ -281,7 +281,7 @@
           "brand": "マイプロテイン",
           "count": 11,
           "video_url": "https://www.youtube.com/watch?v=q5ol5-EXFu4",
-          "dest": "https://www.myprotein.jp/p/sports-nutrition/myprotein-clear-whey-protein-white-soda-alt/16329626/?affil=thgppc&thg_ppc_campaign=12269835970&gclid=Cj0KCQjwgr_NBhDFARIsAHiUWr7sZzVIdUoIwrcGFLcAQuZuUTmfyZd1PIJ-iDfXTWdsygGbheVHqDYaAjjqEALw_wcB&affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781541040_06ba1903b5838d6d342e8479e42faa0b",
+          "dest": "https://www.myprotein.jp/p/sports-nutrition/myprotein-clear-whey-protein-white-soda-alt/16329626/?affil=thgppc&thg_ppc_campaign=12269835970&gclid=Cj0KCQjwgr_NBhDFARIsAHiUWr7sZzVIdUoIwrcGFLcAQuZuUTmfyZd1PIJ-iDfXTWdsygGbheVHqDYaAjjqEALw_wcB&affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781625856_ff61c156258996c7ee2872c2ab3aec60",
           "latest_date": "2026-06-13"
         },
         {
@@ -404,8 +404,8 @@
           "brand": "マイプロテイン",
           "count": 20,
           "video_url": "https://www.youtube.com/watch?v=SPtQuC0PvTs",
-          "dest": "https://www.myprotein.jp/?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781541048_1cabe10e36ae4d1e00a01431f8752fa1",
-          "latest_date": "2026-06-14"
+          "dest": "https://www.myprotein.jp/?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781625865_0de17254d0221d5853d3e99e427b6189",
+          "latest_date": "2026-06-16"
         }
       ]
     },
@@ -472,10 +472,10 @@
         {
           "code": "SGIR",
           "brand": "iHerb",
-          "count": 9,
-          "video_url": "https://www.youtube.com/watch?v=AhTJrpW_1E0",
+          "count": 10,
+          "video_url": "https://www.youtube.com/watch?v=ghP9IUq-BNM",
           "dest": "",
-          "latest_date": "2026-06-09"
+          "latest_date": "2026-06-16"
         }
       ]
     }
