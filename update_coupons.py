@@ -35,6 +35,11 @@ CHANNELS = [
     "@noga",
     "@bazooka_okada",
     "@samgetitright",
+    "@hayatoaizawa6966",
+    "@テストステロン扇谷開登",
+    "@bazooka_okada",
+    "@日本一の大胸筋ツカケン",
+    "@joefitto",
 ]
 # 長尺・ショートそれぞれの最新何本を調べるか（合計で最大この2倍を確認）
 MAX_VIDEOS = 10
