@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-17 01:04",
+  "updated_at": "2026-06-17 14:41",
   "brand_urls": {
     "マイプロテイン": "https://www.myprotein.jp/",
     "VALX": "https://valx.jp/",
@@ -32,7 +32,9 @@
     "Vanquish Fitness": "https://www.vqfit.com/",
     "LEVANTE": "https://www.levante.co.jp/",
     "N1 Number One": "https://www.amazon.co.jp/stores/N1NumberOne/page/34DA394B-29B8-49FD-A08C-DBA726EA6FD1",
-    "ALPRON": "https://alpron.co.jp/"
+    "ALPRON": "https://alpron.co.jp/",
+    "YAOKI": "https://shop.yaoki.co/",
+    "STEADY": "https://steadyjapan.com/"
   },
   "channels": [
     {
@@ -64,10 +66,10 @@
         {
           "code": "KANEKIN",
           "brand": "SUPLINX",
-          "count": 11,
+          "count": 13,
           "video_url": "https://www.youtube.com/watch?v=jNBa95vUc1o",
           "dest": "https://www.deltafitness.shop/",
-          "latest_date": "2026-06-11"
+          "latest_date": "2026-06-17"
         }
       ]
     },
@@ -149,7 +151,7 @@
         },
         {
           "code": "NAASUKE20",
-          "brand": null,
+          "brand": "STEADY",
           "count": 1,
           "video_url": "https://www.youtube.com/watch?v=qHel5HE1ruM",
           "dest": "https://steadyjapan.com/pages/sff?utm_source=youtube&utm_medium=naasuke&utm_campaign=media_event",
@@ -172,7 +174,7 @@
         {
           "code": "vitascoupon",
           "brand": "バイタス",
-          "count": 8,
+          "count": 7,
           "video_url": "https://www.youtube.com/watch?v=TQEpiW5Ks-o",
           "dest": "https://www.amazon.co.jp/VITAS-LIFEGUARD%EF%BC%88%E3%83%90%E3%82%A4%E3%82%BF%E3%82%B9%C3%97%E3%83%A9%E3%82%A4%E3%83%95%E3%82%AC%E3%83%BC%E3%83%89%EF%BC%89%E3%82%A2%E3%83%AB%E3%82%AE%E3%83%8B%E3%83%B3-%E3%83%A9%E3%82%A4%E3%83%95%E3%82%AC%E3%83%BC%E3%83%89%E9%A2%A8%E5%91%B3-L-%E3%82%A2%E3%83%AB%E3%82%AE%E3%83%8B%E3%83%B390000mg-L-%E3%82%B7%E3%83%88%E3%83%AB%E3%83%AA%E3%83%B324000mg/dp/B0FLD7S4LD?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1LEN76H7U0IQ3&dib=eyJ2IjoiMSJ9.FIKGavnDMi1YuDpHp4WMm7dss5oDn5ZbWTzesyRRdRTDDEl1gYyak1JfbLoRN4GtPzxeYxgVT602z-f3O9wzNpXvM9Po6bM-39jCxNFOswL7qDZ2lNFrKMuPQ5dBIBtQnzWKVEVaxa4qkFuiu7SjlZGAAqA_5IzVyYrm6uXrL_Hj3Qo8PIYpTs7RB3ZV2r5_MFgdSNyzmdUTGLZDER9vj8eHIMWdstkG_6szra0ID5lpTgylVYwLagJJXEYfnkJs3_Z7Xte5JeHSNQJ5Yqq9r2ljrYAntyumU2l_sDW85ck.g41-LHB7CT5eZwaYU44O8KXlRSytkSsV9vQnTfGs6r4&dib_tag=se&keywords=vitas&qid=1758962739&sprefix=vita,aps,178&sr=8-9&linkCode=ll1&tag=dean05-22&linkId=a9bb99b223200e96dd942082c669df59&language=ja_JP&ref_=as_li_ss_tl",
           "latest_date": "2026-05-31"
@@ -208,7 +210,7 @@
       "codes": [
         {
           "code": "JO",
-          "brand": null,
+          "brand": "YAOKI",
           "count": 7,
           "video_url": "https://www.youtube.com/watch?v=OqAJk7vXaGU",
           "dest": "https://shop.yaoki.co/",
@@ -225,7 +227,7 @@
           "brand": "マイプロテイン",
           "count": 13,
           "video_url": "https://www.youtube.com/watch?v=aVtfJ-8y1g4",
-          "dest": "https://www.myprotein.jp?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781625854_b16e953e7c324d459be2ec1fa7fc02f6",
+          "dest": "https://www.myprotein.jp?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781674860_de854248d28550c01af0aa0c696c03a8",
           "latest_date": "2026-06-16"
         },
         {
@@ -281,7 +283,7 @@
           "brand": "マイプロテイン",
           "count": 11,
           "video_url": "https://www.youtube.com/watch?v=q5ol5-EXFu4",
-          "dest": "https://www.myprotein.jp/p/sports-nutrition/myprotein-clear-whey-protein-white-soda-alt/16329626/?affil=thgppc&thg_ppc_campaign=12269835970&gclid=Cj0KCQjwgr_NBhDFARIsAHiUWr7sZzVIdUoIwrcGFLcAQuZuUTmfyZd1PIJ-iDfXTWdsygGbheVHqDYaAjjqEALw_wcB&affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781625856_ff61c156258996c7ee2872c2ab3aec60",
+          "dest": "https://www.myprotein.jp/p/sports-nutrition/myprotein-clear-whey-protein-white-soda-alt/16329626/?affil=thgppc&thg_ppc_campaign=12269835970&gclid=Cj0KCQjwgr_NBhDFARIsAHiUWr7sZzVIdUoIwrcGFLcAQuZuUTmfyZd1PIJ-iDfXTWdsygGbheVHqDYaAjjqEALw_wcB&affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781674863_a93d781750df31ff07c31ce33fb837e5",
           "latest_date": "2026-06-13"
         },
         {
@@ -404,7 +406,7 @@
           "brand": "マイプロテイン",
           "count": 20,
           "video_url": "https://www.youtube.com/watch?v=SPtQuC0PvTs",
-          "dest": "https://www.myprotein.jp/?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781625865_0de17254d0221d5853d3e99e427b6189",
+          "dest": "https://www.myprotein.jp/?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781674872_b6af139606ceeb335cabd05ba779dcc1",
           "latest_date": "2026-06-16"
         }
       ]
@@ -476,6 +478,82 @@
           "video_url": "https://www.youtube.com/watch?v=ghP9IUq-BNM",
           "dest": "",
           "latest_date": "2026-06-16"
+        }
+      ]
+    },
+    {
+      "channel": "相澤隼人 / Hayato Aizawa",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "テストステロン扇谷チャンネル",
+      "subscribers": null,
+      "codes": [
+        {
+          "code": "TESTOSTERONE",
+          "brand": "バイタス",
+          "count": 5,
+          "video_url": "https://www.youtube.com/watch?v=C70QoSuIk3c",
+          "dest": "https://vitas.fitness/shop?argument=iQeeSDWZ&dmai=YTOGITANI",
+          "latest_date": "2026-06-15"
+        },
+        {
+          "code": "kaito_o",
+          "brand": null,
+          "count": 2,
+          "video_url": "https://www.youtube.com/watch?v=98qfj-r26oI",
+          "dest": "https://jurassiccup.bitfan.id/events/19839https://jurassiccup.bitfan.id/events/19839",
+          "latest_date": "2026-05-14"
+        }
+      ]
+    },
+    {
+      "channel": "新・バズーカ岡田チャンネル【岡田隆】",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "ツカケン【日本一の大胸筋】",
+      "subscribers": null,
+      "codes": [
+        {
+          "code": "DAIKYOUKIN1",
+          "brand": "AMBiQUE",
+          "count": 10,
+          "video_url": "https://www.youtube.com/watch?v=vmRAITJfvDg",
+          "dest": "https://www.amazon.co.jp/dp/B0DBZJ93QN/ref=cm_sw_r_as_gl_api_gl_i_dl_HBT81086B3F7AGSPFACB?linkCode=ml1&tag=kenta111444-22",
+          "latest_date": "2026-06-13"
+        },
+        {
+          "code": "TSUKAKEN10",
+          "brand": "ALL OUT",
+          "count": 10,
+          "video_url": "https://www.youtube.com/watch?v=vmRAITJfvDg",
+          "dest": "https://www.amazon.co.jp/stores/page/D1742841-82DD-4FF1-BB5A-D6D66BD392BB?channel=tsukaken",
+          "latest_date": "2026-06-13"
+        },
+        {
+          "code": "PEKOKEN",
+          "brand": "ペコダックチキン",
+          "count": 10,
+          "video_url": "https://www.youtube.com/watch?v=vmRAITJfvDg",
+          "dest": "https://pekodak-japan.com/?utm_source=youtube&utm_medium=social&utm_campaign=gift-tsukaken",
+          "latest_date": "2026-06-13"
+        }
+      ]
+    },
+    {
+      "channel": "ジョーFit",
+      "subscribers": null,
+      "codes": [
+        {
+          "code": "AUT5292",
+          "brand": "iHerb",
+          "count": 3,
+          "video_url": "https://www.youtube.com/watch?v=NpksicN38uI",
+          "dest": "",
+          "latest_date": "2026-05-25"
         }
       ]
     }
