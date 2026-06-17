@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>管理ページ｜要対応クーポン</title>
+<style>
+  body { font-family: -apple-system, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+         background:#f5f6f8; color:#1a1a1a; margin:0; padding:24px; }
+  .wrap { max-width:820px; margin:0 auto; }
+  h1 { font-size:22px; margin:0 0 4px; }
+  .updated { color:#888; font-size:13px; margin-bottom:20px; }
+  .summary { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:24px; }
+  .card { background:#fff; border-radius:12px; padding:16px 20px; flex:1; min-width:160px;
+          box-shadow:0 1px 3px rgba(0,0,0,0.06); }
+  .card .num { font-size:30px; font-weight:700; }
+  .card .label { color:#666; font-size:13px; margin-top:4px; }
+  .card.warn .num { color:#c2410c; }
+  .card.info .num { color:#1a56db; }
+  .card.ok .num { color:#2f7d32; }
+  section { background:#fff; border-radius:12px; padding:16px 20px; margin-bottom:20px;
+            box-shadow:0 1px 3px rgba(0,0,0,0.06); }
+  section h2 { font-size:16px; margin:0 0 4px; }
+  section .hint { color:#888; font-size:13px; margin:0 0 12px; }
+  .row { display:flex; align-items:center; gap:10px; padding:11px 0;
+         border-top:1px solid #eee; flex-wrap:wrap; }
+  .code { font-weight:700; font-size:16px; background:#fff3cd; padding:3px 12px; border-radius:6px; }
+  .ch { color:#444; font-size:13px; }
+  .badge { font-size:12px; font-weight:600; padding:3px 10px; border-radius:999px; white-space:nowrap; }
+  .badge.brand { background:#e8f0fe; color:#1a56db; }
+  .badge.none { background:#f0f0f0; color:#888; }
+  .date { color:#999; font-size:12px; }
+  .right { margin-left:auto; display:flex; gap:14px; align-items:center; }
+  .link { color:#2563eb; font-size:13px; text-decoration:none; white-space:nowrap; }
+  .dest { color:#666; font-size:12px; max-width:280px; overflow:hidden; text-overflow:ellipsis;
+          white-space:nowrap; }
+  .empty { color:#2f7d32; font-size:14px; padding:8px 0; }
+  .loading { color:#888; padding:20px 0; }
+  .error { color:#c2410c; padding:20px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>管理ページ｜要対応クーポン</h1>
+<div class="updated" id="updated">読み込み中…</div>
+
+<div class="summary" id="summary"></div>
+
+<section id="sec-no-brand">
+  <h2>① ブランド確認中</h2>
+  <p class="hint">ブランドが自動判定できなかったコード。動画の概要欄を見てブランドを確認します。</p>
+  <div id="list-no-brand"><div class="loading">読み込み中…</div></div>
+</section>
+
+<section id="sec-no-link">
+  <h2>② 購入ページリンクが出ていない</h2>
+  <p class="hint">概要欄からURLが取れず、ブランド辞書のURLも無いコード。サイト上で購入先に飛べない状態です。</p>
+  <div id="list-no-link"><div class="loading">読み込み中…</div></div>
+</section>
+
+</div>
+
+<script>
+function esc(s) {
+  return String(s == null ? "" : s)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+}
+
+function rowHtml(r, kind) {
+  var badge = r.brand
+    ? '<span class="badge brand">' + esc(r.brand) + '</span>'
+    : '<span class="badge none">ブランド確認中</span>';
+  var destText = r.dest
+    ? '<span class="dest" title="' + esc(r.dest) + '">' + esc(r.dest) + '</span>'
+    : '';
+  return '<div class="row">'
+    + badge
+    + '<span class="code">' + esc(r.code) + '</span>'
+    + '<span class="ch">' + esc(r.channel) + '</span>'
+    + '<span class="date">' + esc(r.date) + '</span>'
+    + '<span class="right">'
+    + destText
+    + '<a class="link" href="' + esc(r.video_url) + '" target="_blank" rel="noopener">概要欄を見る</a>'
+    + '</span>'
+    + '</div>';
+}
+
+function analyze(data) {
+  var brandUrls = data.brand_urls || {};
+  var noBrand = [], noLink = [], total = 0;
+  (data.channels || []).forEach(function (ch) {
+    (ch.codes || []).forEach(function (c) {
+      total++;
+      var brand = c.brand;
+      var dest = c.dest || "";
+      var hasLink = !!dest || !!(brand && brandUrls[brand]);
+      var row = { code: c.code, brand: brand, channel: ch.channel,
+                  dest: dest, video_url: c.video_url, date: c.latest_date || "" };
+      if (brand == null) noBrand.push(row);
+      if (!hasLink) noLink.push(row);
+    });
+  });
+  var byDateDesc = function (a, b) { return (b.date || "").localeCompare(a.date || ""); };
+  noBrand.sort(byDateDesc);
+  noLink.sort(byDateDesc);
+  return { total: total, noBrand: noBrand, noLink: noLink };
+}
+
+function render(data) {
+  document.getElementById('updated').textContent =
+    'データ最終更新: ' + (data.updated_at || '不明');
+
+  var r = analyze(data);
+  var okCount = r.total - new Set(
+    r.noBrand.map(function (x) { return x.code + '@' + x.channel; })
+      .concat(r.noLink.map(function (x) { return x.code + '@' + x.channel; }))
+  ).size;
+
+  document.getElementById('summary').innerHTML =
+      '<div class="card info"><div class="num">' + r.total + '</div>'
+        + '<div class="label">総コード数</div></div>'
+    + '<div class="card warn"><div class="num">' + r.noBrand.length + '</div>'
+        + '<div class="label">ブランド確認中</div></div>'
+    + '<div class="card warn"><div class="num">' + r.noLink.length + '</div>'
+        + '<div class="label">リンクなし</div></div>'
+    + '<div class="card ok"><div class="num">' + okCount + '</div>'
+        + '<div class="label">対応不要（埋まっている）</div></div>';
+
+  var nb = document.getElementById('list-no-brand');
+  nb.innerHTML = r.noBrand.length
+    ? r.noBrand.map(function (x) { return rowHtml(x, 'brand'); }).join('')
+    : '<div class="empty">すべてのコードにブランドが付いています 🎉</div>';
+
+  var nl = document.getElementById('list-no-link');
+  nl.innerHTML = r.noLink.length
+    ? r.noLink.map(function (x) { return rowHtml(x, 'link'); }).join('')
+    : '<div class="empty">すべてのコードに購入ページリンクが付いています 🎉</div>';
+}
+
+fetch('data.json', { cache: 'no-store' })
+  .then(function (res) {
+    if (!res.ok) throw new Error('data.json が読み込めませんでした (' + res.status + ')');
+    return res.json();
+  })
+  .then(render)
+  .catch(function (err) {
+    document.getElementById('updated').textContent = '';
+    var msg = '<div class="error">読み込みエラー: ' + esc(err.message)
+            + '<br>このページは data.json と同じフォルダに置いてください。</div>';
+    document.getElementById('list-no-brand').innerHTML = msg;
+    document.getElementById('list-no-link').innerHTML = '';
+  });
+</script>
+</body>
+</html>
