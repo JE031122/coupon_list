@@ -1,9 +1,11 @@
 import json
 import html
+import os
 
 # data.json を読んで index.html を生成する。
 # タブ（チャンネル別/ブランド別）＋検索（候補表示・ひらがなカタカナ吸収）。
 # ブランド別では、ブランドの表記ゆれ（keys。カナ読み含む）も検索・候補の対象にする。
+# さらに overrides.json があれば、自動抽出結果に手動の補正を上書き適用する。
 
 HTML_HEAD = """<!DOCTYPE html>
 <html lang="ja">
@@ -160,6 +162,70 @@ def kana_norm(s):
     return "".join(out).lower()
 
 
+def apply_overrides(data, overrides):
+    """data.json の構造に overrides（手動補正）を適用する。
+    - 識別: code + channel（channelは前後空白を無視した完全一致）
+    - 同名コードが複数あるとき → ブランド確認中(null)を優先して上書き
+    - brand / url は指定された方だけ上書き（常にoverridesが勝つ）
+    - 上書きしたブランドのURLが brand_urls に無ければ登録（購入リンク表示のため）
+    戻り値: (適用件数, 未マッチのoverridesリスト)
+    """
+    brand_urls = data.setdefault("brand_urls", {})
+    applied = 0
+    unmatched = []
+
+    for ov in overrides:
+        code = (ov.get("code") or "").strip()
+        ch_name = (ov.get("channel") or "").strip()
+        ov_brand = ov.get("brand")
+        ov_url = ov.get("url")
+        if not code or not ch_name:
+            unmatched.append(ov)
+            continue
+
+        target_codes = []
+        for ch in data.get("channels", []):
+            if (ch.get("channel") or "").strip() == ch_name:
+                target_codes = ch.get("codes", [])
+                break
+
+        matches = [c for c in target_codes if c.get("code") == code]
+        if not matches:
+            unmatched.append(ov)
+            continue
+
+        null_matches = [c for c in matches if c.get("brand") is None]
+        targets = null_matches if null_matches else matches
+
+        for c in targets:
+            if ov_brand:
+                c["brand"] = ov_brand
+            if ov_url:
+                c["dest"] = ov_url
+            applied += 1
+
+        if ov_brand and ov_url and not brand_urls.get(ov_brand):
+            brand_urls[ov_brand] = ov_url
+
+    return applied, unmatched
+
+
+def load_overrides(path="overrides.json"):
+    """overrides.json を読む。無ければ空リスト。壊れていても落とさず空扱い。"""
+    if not os.path.exists(path):
+        return []
+    try:
+        with open(path, encoding="utf-8") as f:
+            data = json.load(f)
+        if isinstance(data, list):
+            return data
+        print(f"  ! overrides.json はリスト形式である必要があります。無視します。")
+        return []
+    except (json.JSONDecodeError, OSError) as e:
+        print(f"  ! overrides.json の読み込みに失敗（{e}）。無視して続行します。")
+        return []
+
+
 def search_attr(code, name, extra_terms=None):
     """行に埋め込む検索対象。コード＋名前（チャンネル名orブランド名）＋追加語（ブランドの表記ゆれ）。"""
     parts = [code, name]
@@ -285,6 +351,15 @@ def build_html(data):
 def main():
     with open("data.json", encoding="utf-8") as f:
         data = json.load(f)
+
+    # 手動補正（overrides.json）を適用：自動抽出の結果を上書き
+    overrides = load_overrides("overrides.json")
+    if overrides:
+        applied, unmatched = apply_overrides(data, overrides)
+        print(f"overrides を適用しました（{applied}件）")
+        for ov in unmatched:
+            print(f"  ! 未マッチのoverride: code={ov.get('code')} / channel={ov.get('channel')}")
+
     page = build_html(data)
     with open("index.html", "w", encoding="utf-8") as f:
         f.write(page)
