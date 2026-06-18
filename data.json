@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-18 20:58",
+  "updated_at": "2026-06-18 22:34",
   "brand_urls": {
     "マイプロテイン": "https://www.myprotein.jp/",
     "VALX": "https://valx.jp/",
@@ -224,10 +224,10 @@
       "codes": [
         {
           "code": "JUNPEI",
-          "brand": null,
+          "brand": "マイプロテイン",
           "count": 13,
           "video_url": "https://www.youtube.com/watch?v=aVtfJ-8y1g4",
-          "dest": "https://apps.creatoriq.com/ecommerce-live/link-management/handle?TrackingItemId=2237140&Version=1.0.0&Time=2026-05-28T10:52:16.722Z&Stage=live",
+          "dest": "https://www.myprotein.jp?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781789648_2d20e6d254d5b6a80d39c07191c5b3a6",
           "latest_date": "2026-06-16"
         },
         {
@@ -259,7 +259,7 @@
           "brand": "マクロファクター",
           "count": 11,
           "video_url": "https://www.youtube.com/watch?v=Zy1hIWQH98c",
-          "dest": "https://apps.apple.com/jp/app/%E7%AD%8B%E3%83%88%E3%83%AC%E5%90%91%E3%81%91%E3%81%AEpfc-%E3%82%AB%E3%83%AD%E3%83%AA%E3%83%BC%E8%A8%88%E7%AE%97-%E3%83%9E%E3%82%AF%E3%83%AD%E3%83%95%E3%82%A1%E3%82%AF%E3%82%BF%E3%83%BC/id1553503471",
+          "dest": "https://apps.apple.com/jp/app/%E3%83%9E%E3%82%AF%E3%83%AD%E3%83%95%E3%82%A1%E3%82%AF%E3%82%BF%E3%83%BCpfc-%E3%83%80%E3%82%A4%E3%82%A8%E3%83%83%E3%83%88-%E9%A3%9F%E4%BA%8B%E7%AE%A1%E7%90%86-%E3%82%AB%E3%83%AD%E3%83%AA%E3%83%BC%E8%A8%88%E7%AE%97/id1553503471",
           "latest_date": "2026-06-17"
         },
         {
@@ -283,7 +283,7 @@
           "brand": "マイプロテイン",
           "count": 11,
           "video_url": "https://www.youtube.com/watch?v=Zy1hIWQH98c",
-          "dest": "https://apps.creatoriq.com/ecommerce-live/link-management/handle?TrackingItemId=2062459&Version=1.0.0&Time=2026-03-11T03:51:35.855Z&Stage=live",
+          "dest": "https://www.myprotein.jp/p/sports-nutrition/myprotein-clear-whey-protein-white-soda-alt/16329626/?affil=thgppc&thg_ppc_campaign=12269835970&gclid=Cj0KCQjwgr_NBhDFARIsAHiUWr7sZzVIdUoIwrcGFLcAQuZuUTmfyZd1PIJ-iDfXTWdsygGbheVHqDYaAjjqEALw_wcB&affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781789651_3886eea09df745408c9ff98d9b9354ba",
           "latest_date": "2026-06-17"
         },
         {
@@ -406,7 +406,7 @@
           "brand": "マイプロテイン",
           "count": 20,
           "video_url": "https://www.youtube.com/watch?v=wXw_6UWS0r0",
-          "dest": "https://apps.creatoriq.com/ecommerce-live/link-management/handle?TrackingItemId=2001721&Version=1.0.0&Time=2026-02-12T08:19:49.014Z&Stage=live",
+          "dest": "https://www.myprotein.jp/?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781789659_ea371cc50ee38b244a193588b2b27ee4",
           "latest_date": "2026-06-18"
         }
       ]
