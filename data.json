@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-18 22:34",
+  "updated_at": "2026-06-19 21:35",
   "brand_urls": {
     "マイプロテイン": "https://www.myprotein.jp/",
     "VALX": "https://valx.jp/",
@@ -46,7 +46,7 @@
           "brand": "マイプロテイン",
           "count": 6,
           "video_url": "https://www.youtube.com/watch?v=hbHXU36A2-I",
-          "dest": "https://prf.hn/l/pReX9gv",
+          "dest": "https://www.myprotein.jp?affil=thg-society&pid=partnerize_int&utm_source=Pz-1101l250304&clickref=1110l45uJooe&c=partnerize&af_reengagement_window=7d&af_xp=custom&utm_medium=influencer&is_retargeting=true&clickid=1110l45uJooe&af_click_lookback=7d&af_dp=https%3A%2F%2Fwww.myprotein.jp%3Faffil%3Dthg-society%26utm_source%3DPz-1101l250304%26utm_medium%3Dinfluencer%26utm_campaign%3D1101l5498%26clickref%3D1110l45uJooe&utm_campaign=1101l5498",
           "latest_date": "2026-06-17"
         },
         {
@@ -227,7 +227,7 @@
           "brand": "マイプロテイン",
           "count": 13,
           "video_url": "https://www.youtube.com/watch?v=aVtfJ-8y1g4",
-          "dest": "https://www.myprotein.jp?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781789648_2d20e6d254d5b6a80d39c07191c5b3a6",
+          "dest": "https://www.myprotein.jp?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781872500_9aae5fa3fb5fbb60ee796a1c4cdf7611",
           "latest_date": "2026-06-16"
         },
         {
@@ -283,7 +283,7 @@
           "brand": "マイプロテイン",
           "count": 11,
           "video_url": "https://www.youtube.com/watch?v=Zy1hIWQH98c",
-          "dest": "https://www.myprotein.jp/p/sports-nutrition/myprotein-clear-whey-protein-white-soda-alt/16329626/?affil=thgppc&thg_ppc_campaign=12269835970&gclid=Cj0KCQjwgr_NBhDFARIsAHiUWr7sZzVIdUoIwrcGFLcAQuZuUTmfyZd1PIJ-iDfXTWdsygGbheVHqDYaAjjqEALw_wcB&affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781789651_3886eea09df745408c9ff98d9b9354ba",
+          "dest": "https://www.myprotein.jp/p/sports-nutrition/myprotein-clear-whey-protein-white-soda-alt/16329626/?affil=thgppc&thg_ppc_campaign=12269835970&gclid=Cj0KCQjwgr_NBhDFARIsAHiUWr7sZzVIdUoIwrcGFLcAQuZuUTmfyZd1PIJ-iDfXTWdsygGbheVHqDYaAjjqEALw_wcB&affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781872502_e76299581cef6d42f388d000fb73a3c6",
           "latest_date": "2026-06-17"
         },
         {
@@ -304,17 +304,17 @@
           "code": "FITPEAKTAKUTO",
           "brand": "FITPEAK",
           "count": 10,
-          "video_url": "https://www.youtube.com/watch?v=ZZmjmciKpbQ",
+          "video_url": "https://www.youtube.com/watch?v=OHoLVrTLsnY",
           "dest": "https://c.affitch.com/?ref=QEED7M9W3793",
-          "latest_date": "2026-06-17"
+          "latest_date": "2026-06-19"
         },
         {
           "code": "TAKU2604",
           "brand": "ハルクファクター",
           "count": 10,
-          "video_url": "https://www.youtube.com/watch?v=ZZmjmciKpbQ",
+          "video_url": "https://www.youtube.com/watch?v=OHoLVrTLsnY",
           "dest": "https://www.amazon.co.jp/stores/page/8F8A04B5-05D7-477C-84A1-19DBCFFC3A20?channel=takutofitness&linkCode=sl2&tag=takutofitness-22&linkId=e112c9e950662eb678579a757f3561ae&language=ja_JP&ref_=as_li_ss_tl",
-          "latest_date": "2026-06-17"
+          "latest_date": "2026-06-19"
         }
       ]
     },
@@ -353,6 +353,14 @@
           "video_url": "https://www.youtube.com/watch?v=lfi81PR8VXA",
           "dest": "",
           "latest_date": "2026-05-16"
+        },
+        {
+          "code": "2U4KMVRQ",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=4jZA6QsB8iE",
+          "dest": "https://ufit.co.jp/pages/a-low-frequency-therapy-device",
+          "latest_date": "2026-06-19"
         }
       ]
     },
@@ -369,9 +377,9 @@
           "code": "JIN10",
           "brand": null,
           "count": 10,
-          "video_url": "https://www.youtube.com/watch?v=4birUATk_6c",
+          "video_url": "https://www.youtube.com/watch?v=ewWxKfF_ums",
           "dest": "",
-          "latest_date": "2026-06-17"
+          "latest_date": "2026-06-19"
         },
         {
           "code": "PEKOJIN",
@@ -406,7 +414,7 @@
           "brand": "マイプロテイン",
           "count": 20,
           "video_url": "https://www.youtube.com/watch?v=wXw_6UWS0r0",
-          "dest": "https://www.myprotein.jp/?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781789659_ea371cc50ee38b244a193588b2b27ee4",
+          "dest": "https://www.myprotein.jp/?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781872511_79e4f096ee5f9a2f46d042304ef07bd9",
           "latest_date": "2026-06-18"
         }
       ]
@@ -449,6 +457,14 @@
           "video_url": "https://www.youtube.com/watch?v=hwcQHHLnbMo",
           "dest": "https://saijirushi.co.jp/",
           "latest_date": "2026-06-18"
+        },
+        {
+          "code": "SHIN0619",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=pMQNH1BWTY8",
+          "dest": "",
+          "latest_date": "2026-06-19"
         }
       ]
     },
@@ -493,10 +509,10 @@
         {
           "code": "TESTOSTERONE",
           "brand": "バイタス",
-          "count": 8,
+          "count": 9,
           "video_url": "https://www.youtube.com/watch?v=gskE2wiy28w",
           "dest": "https://vitas.fitness/shop?argument=iQeeSDWZ&dmai=YTOGITANI",
-          "latest_date": "2026-06-18"
+          "latest_date": "2026-06-19"
         },
         {
           "code": "kaito_o",
