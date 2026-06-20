@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-19 21:35",
+  "updated_at": "2026-06-20 17:35",
   "brand_urls": {
     "マイプロテイン": "https://www.myprotein.jp/",
     "VALX": "https://valx.jp/",
@@ -46,7 +46,7 @@
           "brand": "マイプロテイン",
           "count": 6,
           "video_url": "https://www.youtube.com/watch?v=hbHXU36A2-I",
-          "dest": "https://www.myprotein.jp?affil=thg-society&pid=partnerize_int&utm_source=Pz-1101l250304&clickref=1110l45uJooe&c=partnerize&af_reengagement_window=7d&af_xp=custom&utm_medium=influencer&is_retargeting=true&clickid=1110l45uJooe&af_click_lookback=7d&af_dp=https%3A%2F%2Fwww.myprotein.jp%3Faffil%3Dthg-society%26utm_source%3DPz-1101l250304%26utm_medium%3Dinfluencer%26utm_campaign%3D1101l5498%26clickref%3D1110l45uJooe&utm_campaign=1101l5498",
+          "dest": "https://www.myprotein.jp?affil=thg-society&is_retargeting=true&af_dp=https%3A%2F%2Fwww.myprotein.jp%3Faffil%3Dthg-society%26utm_source%3DPz-1101l250304%26utm_medium%3Dinfluencer%26utm_campaign%3D1101l5498%26clickref%3D1100lD9gIWPQ&utm_source=Pz-1101l250304&c=partnerize&utm_medium=influencer&clickid=1100lD9gIWPQ&clickref=1100lD9gIWPQ&af_click_lookback=7d&pid=partnerize_int&af_reengagement_window=7d&utm_campaign=1101l5498&af_xp=custom",
           "latest_date": "2026-06-17"
         },
         {
@@ -227,7 +227,7 @@
           "brand": "マイプロテイン",
           "count": 13,
           "video_url": "https://www.youtube.com/watch?v=aVtfJ-8y1g4",
-          "dest": "https://www.myprotein.jp?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781872500_9aae5fa3fb5fbb60ee796a1c4cdf7611",
+          "dest": "https://www.myprotein.jp?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781944508_c797310b5cd0a0df1c54d8cdd88dc07e",
           "latest_date": "2026-06-16"
         },
         {
@@ -283,7 +283,7 @@
           "brand": "マイプロテイン",
           "count": 11,
           "video_url": "https://www.youtube.com/watch?v=Zy1hIWQH98c",
-          "dest": "https://www.myprotein.jp/p/sports-nutrition/myprotein-clear-whey-protein-white-soda-alt/16329626/?affil=thgppc&thg_ppc_campaign=12269835970&gclid=Cj0KCQjwgr_NBhDFARIsAHiUWr7sZzVIdUoIwrcGFLcAQuZuUTmfyZd1PIJ-iDfXTWdsygGbheVHqDYaAjjqEALw_wcB&affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781872502_e76299581cef6d42f388d000fb73a3c6",
+          "dest": "https://www.myprotein.jp/p/sports-nutrition/myprotein-clear-whey-protein-white-soda-alt/16329626/?affil=thgppc&thg_ppc_campaign=12269835970&gclid=Cj0KCQjwgr_NBhDFARIsAHiUWr7sZzVIdUoIwrcGFLcAQuZuUTmfyZd1PIJ-iDfXTWdsygGbheVHqDYaAjjqEALw_wcB&affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781944510_3a574bbb02c97f5884ace0fcbc7e6b36",
           "latest_date": "2026-06-17"
         },
         {
@@ -414,8 +414,8 @@
           "brand": "マイプロテイン",
           "count": 20,
           "video_url": "https://www.youtube.com/watch?v=wXw_6UWS0r0",
-          "dest": "https://www.myprotein.jp/?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781872511_79e4f096ee5f9a2f46d042304ef07bd9",
-          "latest_date": "2026-06-18"
+          "dest": "https://www.myprotein.jp/?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1781944519_8b1171771c228f3fa651acffca66a4ab",
+          "latest_date": "2026-06-20"
         }
       ]
     },
