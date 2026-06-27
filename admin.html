@@ -4,153 +4,357 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>管理ページ｜要対応クーポン</title>
+<title>管理ページ｜クーポン補正</title>
 <style>
   body { font-family: -apple-system, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
          background:#f5f6f8; color:#1a1a1a; margin:0; padding:24px; }
-  .wrap { max-width:820px; margin:0 auto; }
+  .wrap { max-width:920px; margin:0 auto; }
   h1 { font-size:22px; margin:0 0 4px; }
   .updated { color:#888; font-size:13px; margin-bottom:20px; }
-  .summary { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:24px; }
-  .card { background:#fff; border-radius:12px; padding:16px 20px; flex:1; min-width:160px;
+  .summary { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:20px; }
+  .card { background:#fff; border-radius:12px; padding:14px 18px; flex:1; min-width:140px;
           box-shadow:0 1px 3px rgba(0,0,0,0.06); }
-  .card .num { font-size:30px; font-weight:700; }
-  .card .label { color:#666; font-size:13px; margin-top:4px; }
+  .card .num { font-size:26px; font-weight:700; }
+  .card .label { color:#666; font-size:12px; margin-top:4px; }
   .card.warn .num { color:#c2410c; }
   .card.info .num { color:#1a56db; }
   .card.ok .num { color:#2f7d32; }
-  section { background:#fff; border-radius:12px; padding:16px 20px; margin-bottom:20px;
+
+  .authbar { background:#fff; border-radius:12px; padding:14px 18px; margin-bottom:16px;
+             box-shadow:0 1px 3px rgba(0,0,0,0.06); display:flex; gap:12px; align-items:center;
+             flex-wrap:wrap; }
+  .authbar label { font-size:13px; color:#444; font-weight:600; }
+  .authbar input { flex:1; min-width:200px; padding:9px 12px; font-size:14px;
+                   border:1px solid #d0d5dd; border-radius:8px; }
+  .toolbar { display:flex; gap:10px; align-items:center; margin-bottom:16px; flex-wrap:wrap; }
+  .btn { border:none; border-radius:8px; padding:10px 20px; font-size:14px; font-weight:600;
+         cursor:pointer; }
+  .btn.primary { background:#1a56db; color:#fff; }
+  .btn.primary:disabled { background:#9db8ef; cursor:not-allowed; }
+  .btn.ghost { background:#fff; color:#1a56db; border:1px solid #cfe0ff; }
+  .filter { display:flex; gap:6px; }
+  .filter button { border:1px solid #d0d5dd; background:#fff; color:#444; border-radius:999px;
+                   padding:6px 14px; font-size:13px; cursor:pointer; }
+  .filter button.active { background:#1a56db; color:#fff; border-color:#1a56db; }
+  .msg { padding:10px 14px; border-radius:8px; font-size:14px; margin-bottom:16px; display:none; }
+  .msg.show { display:block; }
+  .msg.success { background:#e7f6ec; color:#1f7a37; }
+  .msg.error { background:#fdecec; color:#c2410c; }
+  .msg.info { background:#eef2fb; color:#1a56db; }
+
+  section { background:#fff; border-radius:12px; padding:8px 0; margin-bottom:20px;
             box-shadow:0 1px 3px rgba(0,0,0,0.06); }
-  section h2 { font-size:16px; margin:0 0 4px; }
-  section .hint { color:#888; font-size:13px; margin:0 0 12px; }
-  .row { display:flex; align-items:center; gap:10px; padding:11px 0;
-         border-top:1px solid #eee; flex-wrap:wrap; }
-  .code { font-weight:700; font-size:16px; background:#fff3cd; padding:3px 12px; border-radius:6px; }
-  .ch { color:#444; font-size:13px; }
-  .badge { font-size:12px; font-weight:600; padding:3px 10px; border-radius:999px; white-space:nowrap; }
-  .badge.brand { background:#e8f0fe; color:#1a56db; }
-  .badge.none { background:#f0f0f0; color:#888; }
-  .date { color:#999; font-size:12px; }
-  .right { margin-left:auto; display:flex; gap:14px; align-items:center; }
-  .link { color:#2563eb; font-size:13px; text-decoration:none; white-space:nowrap; }
-  .dest { color:#666; font-size:12px; max-width:280px; overflow:hidden; text-overflow:ellipsis;
-          white-space:nowrap; }
-  .empty { color:#2f7d32; font-size:14px; padding:8px 0; }
-  .loading { color:#888; padding:20px 0; }
-  .error { color:#c2410c; padding:20px 0; }
+  .grouphead { font-size:14px; font-weight:700; color:#333; padding:12px 20px 6px; }
+  .row { display:grid; grid-template-columns: 130px 1fr 1fr 90px; gap:12px; align-items:center;
+         padding:12px 20px; border-top:1px solid #eee; }
+  .row.head { font-size:12px; color:#888; font-weight:600; border-top:none; padding-bottom:4px; }
+  .code-cell { display:flex; flex-direction:column; gap:3px; }
+  .code { font-weight:700; font-size:15px; background:#fff3cd; padding:2px 8px; border-radius:5px;
+          align-self:flex-start; }
+  .meta { font-size:11px; color:#999; }
+  .status { font-size:11px; font-weight:600; padding:2px 8px; border-radius:999px; align-self:flex-start; }
+  .status.brand { background:#fde9d9; color:#c2410c; }
+  .status.link { background:#fde9d9; color:#c2410c; }
+  .status.ok { background:#e7f6ec; color:#2f7d32; }
+  .row input, .row select { width:100%; box-sizing:border-box; padding:8px 10px; font-size:13px;
+                            border:1px solid #d0d5dd; border-radius:7px; }
+  .row input:focus, .row select:focus { outline:none; border-color:#1a56db; }
+  .vlink { font-size:12px; color:#2563eb; text-decoration:none; white-space:nowrap; }
+  .loading, .error-box { padding:24px 20px; color:#888; }
+  .hidden { display:none; }
+  .dirty { color:#c2410c; font-size:13px; font-weight:600; }
 </style>
 </head>
 <body>
 <div class="wrap">
-<h1>管理ページ｜要対応クーポン</h1>
+<h1>管理ページ｜クーポン補正</h1>
 <div class="updated" id="updated">読み込み中…</div>
 
 <div class="summary" id="summary"></div>
 
-<section id="sec-no-brand">
-  <h2>① ブランド確認中</h2>
-  <p class="hint">ブランドが自動判定できなかったコード。動画の概要欄を見てブランドを確認します。</p>
-  <div id="list-no-brand"><div class="loading">読み込み中…</div></div>
-</section>
+<div class="authbar">
+  <label for="secret">合言葉</label>
+  <input id="secret" type="password" placeholder="保存に必要な合言葉を入力" autocomplete="off">
+  <span style="font-size:12px;color:#888;">※このページを開いている間だけ保持されます</span>
+</div>
 
-<section id="sec-no-link">
-  <h2>② 購入ページリンクが出ていない</h2>
-  <p class="hint">概要欄からURLが取れず、ブランド辞書のURLも無いコード。サイト上で購入先に飛べない状態です。</p>
-  <div id="list-no-link"><div class="loading">読み込み中…</div></div>
-</section>
+<div class="toolbar">
+  <div class="filter">
+    <button id="f-need" class="active" onclick="setFilter('need')">要対応のみ</button>
+    <button id="f-all" onclick="setFilter('all')">すべて表示</button>
+  </div>
+  <span id="dirty" class="dirty hidden">未保存の変更があります</span>
+  <button id="saveBtn" class="btn primary" style="margin-left:auto;" onclick="save()">変更を保存</button>
+</div>
+
+<div id="msg" class="msg"></div>
+
+<div id="content"><div class="loading">読み込み中…</div></div>
 
 </div>
 
 <script>
+// ===== 設定 =====
+var API_BASE = "https://coupon-overrides-api.jayendoh.workers.dev";
+
+// ===== 状態 =====
+var STATE = {
+  rows: [],
+  brandList: [],
+  overridesIdx: {},
+  inputs: {},
+  filter: "need",
+  dirty: false,
+};
+
 function esc(s) {
   return String(s == null ? "" : s)
-    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+    .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;").replace(/'/g,"&#39;");
 }
+function keyOf(code, channel) { return code + "\u0000" + channel; }
 
-function rowHtml(r, kind) {
-  var badge = r.brand
-    ? '<span class="badge brand">' + esc(r.brand) + '</span>'
-    : '<span class="badge none">ブランド確認中</span>';
-  var destText = r.dest
-    ? '<span class="dest" title="' + esc(r.dest) + '">' + esc(r.dest) + '</span>'
-    : '';
-  return '<div class="row">'
-    + badge
-    + '<span class="code">' + esc(r.code) + '</span>'
-    + '<span class="ch">' + esc(r.channel) + '</span>'
-    + '<span class="date">' + esc(r.date) + '</span>'
-    + '<span class="right">'
-    + destText
-    + '<a class="link" href="' + esc(r.video_url) + '" target="_blank" rel="noopener">概要欄を見る</a>'
-    + '</span>'
-    + '</div>';
+function showMsg(text, kind) {
+  var m = document.getElementById("msg");
+  m.textContent = text;
+  m.className = "msg show " + kind;
+}
+function clearMsg() { document.getElementById("msg").className = "msg"; }
+
+function setDirty(v) {
+  STATE.dirty = v;
+  document.getElementById("dirty").classList.toggle("hidden", !v);
 }
 
 function analyze(data) {
   var brandUrls = data.brand_urls || {};
-  var noBrand = [], noLink = [], total = 0;
+  var rows = [];
   (data.channels || []).forEach(function (ch) {
     (ch.codes || []).forEach(function (c) {
-      total++;
-      var brand = c.brand;
       var dest = c.dest || "";
-      var hasLink = !!dest || !!(brand && brandUrls[brand]);
-      var row = { code: c.code, brand: brand, channel: ch.channel,
-                  dest: dest, video_url: c.video_url, date: c.latest_date || "" };
-      if (brand == null) noBrand.push(row);
-      if (!hasLink) noLink.push(row);
+      var hasLink = !!dest || !!(c.brand && brandUrls[c.brand]);
+      rows.push({
+        code: c.code, channel: ch.channel, brand: c.brand,
+        dest: dest, video_url: c.video_url, date: c.latest_date || "",
+        needBrand: c.brand == null, needLink: !hasLink,
+      });
     });
   });
-  var byDateDesc = function (a, b) { return (b.date || "").localeCompare(a.date || ""); };
-  noBrand.sort(byDateDesc);
-  noLink.sort(byDateDesc);
-  return { total: total, noBrand: noBrand, noLink: noLink };
+  var byDate = function (a, b) { return (b.date||"").localeCompare(a.date||""); };
+  rows.sort(byDate);
+  STATE.rows = rows;
+  STATE.brandList = Object.keys(brandUrls).sort();
+  return rows;
 }
 
-function render(data) {
-  document.getElementById('updated').textContent =
-    'データ最終更新: ' + (data.updated_at || '不明');
-
-  var r = analyze(data);
-  var okCount = r.total - new Set(
-    r.noBrand.map(function (x) { return x.code + '@' + x.channel; })
-      .concat(r.noLink.map(function (x) { return x.code + '@' + x.channel; }))
-  ).size;
-
-  document.getElementById('summary').innerHTML =
-      '<div class="card info"><div class="num">' + r.total + '</div>'
-        + '<div class="label">総コード数</div></div>'
-    + '<div class="card warn"><div class="num">' + r.noBrand.length + '</div>'
-        + '<div class="label">ブランド確認中</div></div>'
-    + '<div class="card warn"><div class="num">' + r.noLink.length + '</div>'
-        + '<div class="label">リンクなし</div></div>'
-    + '<div class="card ok"><div class="num">' + okCount + '</div>'
-        + '<div class="label">対応不要（埋まっている）</div></div>';
-
-  var nb = document.getElementById('list-no-brand');
-  nb.innerHTML = r.noBrand.length
-    ? r.noBrand.map(function (x) { return rowHtml(x, 'brand'); }).join('')
-    : '<div class="empty">すべてのコードにブランドが付いています 🎉</div>';
-
-  var nl = document.getElementById('list-no-link');
-  nl.innerHTML = r.noLink.length
-    ? r.noLink.map(function (x) { return rowHtml(x, 'link'); }).join('')
-    : '<div class="empty">すべてのコードに購入ページリンクが付いています 🎉</div>';
+function renderSummary() {
+  var total = STATE.rows.length;
+  var nb = STATE.rows.filter(function (r) { return r.needBrand; }).length;
+  var nl = STATE.rows.filter(function (r) { return r.needLink; }).length;
+  var ok = STATE.rows.filter(function (r) { return !r.needBrand && !r.needLink; }).length;
+  document.getElementById("summary").innerHTML =
+      '<div class="card info"><div class="num">' + total + '</div><div class="label">総コード数</div></div>'
+    + '<div class="card warn"><div class="num">' + nb + '</div><div class="label">ブランド確認中</div></div>'
+    + '<div class="card warn"><div class="num">' + nl + '</div><div class="label">リンクなし</div></div>'
+    + '<div class="card ok"><div class="num">' + ok + '</div><div class="label">対応不要</div></div>';
 }
 
-fetch('data.json', { cache: 'no-store' })
-  .then(function (res) {
-    if (!res.ok) throw new Error('data.json が読み込めませんでした (' + res.status + ')');
-    return res.json();
+function brandSelect(rowKey, current) {
+  var opts = '<option value="">（ブランドを選択 / 未設定）</option>';
+  STATE.brandList.forEach(function (b) {
+    var sel = (b === current) ? ' selected' : '';
+    opts += '<option value="' + esc(b) + '"' + sel + '>' + esc(b) + '</option>';
+  });
+  if (current && STATE.brandList.indexOf(current) === -1) {
+    opts += '<option value="' + esc(current) + '" selected>' + esc(current) + '（新規）</option>';
+  }
+  opts += '<option value="__custom__">＋ 新しいブランド名を入力…</option>';
+  return '<select onchange="onBrandChange(\'' + esc(rowKey) + '\', this)">' + opts + '</select>';
+}
+
+function rowHtml(r) {
+  var k = keyOf(r.code, r.channel);
+  var inp = STATE.inputs[k] || {};
+  var curBrand = (inp.brand !== undefined) ? inp.brand : (STATE.overridesIdx[k] && STATE.overridesIdx[k].brand) || "";
+  var curUrl = (inp.url !== undefined) ? inp.url : (STATE.overridesIdx[k] && STATE.overridesIdx[k].url) || "";
+
+  var statuses = "";
+  if (r.needBrand) statuses += '<span class="status brand">ブランド確認中</span>';
+  if (r.needLink) statuses += '<span class="status link">リンクなし</span>';
+  if (!r.needBrand && !r.needLink) statuses += '<span class="status ok">対応不要</span>';
+
+  return '<div class="row" data-key="' + esc(k) + '">'
+    + '<div class="code-cell">'
+    +   '<span class="code">' + esc(r.code) + '</span>'
+    +   statuses
+    +   '<span class="meta">' + esc(r.channel) + ' / ' + esc(r.date) + '</span>'
+    + '</div>'
+    + '<div>' + brandSelect(k, curBrand)
+    +   '<input type="text" class="custom-brand hidden" placeholder="新しいブランド名"'
+    +     ' value="" oninput="onCustomBrand(\'' + esc(k) + '\', this)">'
+    + '</div>'
+    + '<div><input type="text" placeholder="購入ページURL（任意）" value="' + esc(curUrl) + '"'
+    +     ' oninput="onUrlChange(\'' + esc(k) + '\', this)"></div>'
+    + '<div><a class="vlink" href="' + esc(r.video_url) + '" target="_blank" rel="noopener">概要欄</a></div>'
+    + '</div>';
+}
+
+function render() {
+  renderSummary();
+  var rows = STATE.rows;
+  if (STATE.filter === "need") {
+    rows = rows.filter(function (r) { return r.needBrand || r.needLink; });
+  }
+  var html = '<section>';
+  html += '<div class="row head"><div>コード</div><div>ブランド</div><div>購入ページURL</div><div>確認</div></div>';
+  if (rows.length === 0) {
+    html += '<div class="loading">該当するコードはありません 🎉</div>';
+  } else {
+    rows.forEach(function (r) { html += rowHtml(r); });
+  }
+  html += '</section>';
+  document.getElementById("content").innerHTML = html;
+}
+
+function ensureInput(k) {
+  if (!STATE.inputs[k]) {
+    var ov = STATE.overridesIdx[k] || {};
+    STATE.inputs[k] = { brand: ov.brand || "", url: ov.url || "" };
+  }
+  return STATE.inputs[k];
+}
+function onBrandChange(k, sel) {
+  var customInput = sel.parentNode.querySelector(".custom-brand");
+  if (sel.value === "__custom__") {
+    customInput.classList.remove("hidden");
+    customInput.focus();
+    ensureInput(k).brand = customInput.value.trim();
+  } else {
+    customInput.classList.add("hidden");
+    ensureInput(k).brand = sel.value;
+  }
+  setDirty(true);
+}
+function onCustomBrand(k, inp) {
+  ensureInput(k).brand = inp.value.trim();
+  setDirty(true);
+}
+function onUrlChange(k, inp) {
+  ensureInput(k).url = inp.value.trim();
+  setDirty(true);
+}
+
+function setFilter(f) {
+  STATE.filter = f;
+  document.getElementById("f-need").classList.toggle("active", f === "need");
+  document.getElementById("f-all").classList.toggle("active", f === "all");
+  render();
+}
+
+function loadOverrides() {
+  return fetch(API_BASE + "/overrides", { cache: "no-store" })
+    .then(function (res) {
+      if (!res.ok) throw new Error("overrides の取得に失敗 (" + res.status + ")");
+      return res.json();
+    })
+    .then(function (data) {
+      var idx = {};
+      (data.overrides || []).forEach(function (ov) {
+        idx[keyOf(ov.code || "", ov.channel || "")] = ov;
+      });
+      STATE.overridesIdx = idx;
+    });
+}
+
+function buildPayload() {
+  var merged = {};
+  Object.keys(STATE.overridesIdx).forEach(function (k) {
+    var ov = STATE.overridesIdx[k];
+    merged[k] = { code: ov.code, channel: ov.channel, brand: ov.brand || "", url: ov.url || "" };
+  });
+  Object.keys(STATE.inputs).forEach(function (k) {
+    var parts = k.split("\u0000");
+    var inp = STATE.inputs[k];
+    if (!merged[k]) merged[k] = { code: parts[0], channel: parts[1], brand: "", url: "" };
+    if (inp.brand !== undefined) merged[k].brand = inp.brand;
+    if (inp.url !== undefined) merged[k].url = inp.url;
+  });
+  var list = [];
+  Object.keys(merged).forEach(function (k) {
+    var m = merged[k];
+    var b = (m.brand || "").trim();
+    var u = (m.url || "").trim();
+    if (!b && !u) return;
+    var ov = { code: m.code, channel: m.channel };
+    if (b) ov.brand = b;
+    if (u) ov.url = u;
+    list.push(ov);
+  });
+  return list;
+}
+
+function save() {
+  var secret = document.getElementById("secret").value;
+  if (!secret) {
+    showMsg("合言葉を入力してください。", "error");
+    return;
+  }
+  var payload = buildPayload();
+  var btn = document.getElementById("saveBtn");
+  btn.disabled = true;
+  showMsg("保存中…", "info");
+
+  fetch(API_BASE + "/overrides", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "X-Admin-Secret": secret },
+    body: JSON.stringify({ overrides: payload }),
   })
-  .then(render)
+    .then(function (res) {
+      return res.json().then(function (data) { return { status: res.status, data: data }; });
+    })
+    .then(function (r) {
+      if (r.status === 200 && r.data.ok) {
+        showMsg("保存しました（" + r.data.saved + "件）。サイトへの反映は次回の自動更新（毎朝）後です。", "success");
+        setDirty(false);
+        return loadOverrides().then(function () {
+          STATE.inputs = {};
+          render();
+        });
+      } else if (r.status === 401) {
+        showMsg("合言葉が違います。保存できませんでした。", "error");
+      } else {
+        showMsg("保存に失敗しました: " + (r.data.error || r.status), "error");
+      }
+    })
+    .catch(function (err) {
+      showMsg("通信エラー: " + err.message, "error");
+    })
+    .then(function () {
+      btn.disabled = false;
+    });
+}
+
+Promise.resolve()
+  .then(function () {
+    return fetch("data.json", { cache: "no-store" }).then(function (res) {
+      if (!res.ok) throw new Error("data.json が読み込めませんでした (" + res.status + ")");
+      return res.json();
+    });
+  })
+  .then(function (data) {
+    document.getElementById("updated").textContent = "データ最終更新: " + (data.updated_at || "不明");
+    analyze(data);
+    return loadOverrides().catch(function (e) {
+      showMsg("既存の補正データの読み込みに失敗しました（表示は可能）: " + e.message, "info");
+    });
+  })
+  .then(function () {
+    render();
+  })
   .catch(function (err) {
-    document.getElementById('updated').textContent = '';
-    var msg = '<div class="error">読み込みエラー: ' + esc(err.message)
-            + '<br>このページは data.json と同じフォルダに置いてください。</div>';
-    document.getElementById('list-no-brand').innerHTML = msg;
-    document.getElementById('list-no-link').innerHTML = '';
+    document.getElementById("updated").textContent = "";
+    document.getElementById("content").innerHTML =
+      '<div class="error-box">読み込みエラー: ' + esc(err.message) + '</div>';
   });
 </script>
 </body>
