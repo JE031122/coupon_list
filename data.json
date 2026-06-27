@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-26 17:41",
+  "updated_at": "2026-06-27 17:08",
   "brand_urls": {
     "マイプロテイン": "https://www.myprotein.jp/",
     "VALX": "https://valx.jp/",
@@ -46,7 +46,7 @@
           "brand": "マイプロテイン",
           "count": 5,
           "video_url": "https://www.youtube.com/watch?v=hbHXU36A2-I",
-          "dest": "https://www.myprotein.jp?affil=thg-society&af_reengagement_window=7d&clickid=1101lDvBcSgD&utm_campaign=1101l5498&af_xp=custom&pid=partnerize_int&utm_source=Pz-1101l250304&af_dp=https%3A%2F%2Fwww.myprotein.jp%3Faffil%3Dthg-society%26utm_source%3DPz-1101l250304%26utm_medium%3Dinfluencer%26utm_campaign%3D1101l5498%26clickref%3D1101lDvBcSgD&c=partnerize&utm_medium=influencer&is_retargeting=true&clickref=1101lDvBcSgD&af_click_lookback=7d",
+          "dest": "https://www.myprotein.jp?affil=thg-society&clickref=1100lDaaBfKp&c=partnerize&pid=partnerize_int&clickid=1100lDaaBfKp&af_xp=custom&utm_medium=influencer&is_retargeting=true&af_dp=https%3A%2F%2Fwww.myprotein.jp%3Faffil%3Dthg-society%26utm_source%3DPz-1101l250304%26utm_medium%3Dinfluencer%26utm_campaign%3D1101l5498%26clickref%3D1100lDaaBfKp&utm_campaign=1101l5498&af_click_lookback=7d&af_reengagement_window=7d&utm_source=Pz-1101l250304",
           "latest_date": "2026-06-17"
         },
         {
@@ -80,7 +80,7 @@
         {
           "code": "318",
           "brand": "マイプロテイン",
-          "count": 10,
+          "count": 9,
           "video_url": "https://www.youtube.com/watch?v=rR589tv_hqk",
           "dest": "https://www.myprotein.jp/c/influencer/saiyaman/",
           "latest_date": "2026-06-24"
@@ -88,7 +88,7 @@
         {
           "code": "PEKOSAIYA",
           "brand": "ペコダックチキン",
-          "count": 9,
+          "count": 8,
           "video_url": "https://www.youtube.com/watch?v=rR589tv_hqk",
           "dest": "https://pekodak-japan.com/?utm_source=youtube&utm_medium=social&utm_campaign=gift-saiyaman",
           "latest_date": "2026-06-24"
@@ -227,7 +227,7 @@
           "brand": "マイプロテイン",
           "count": 11,
           "video_url": "https://www.youtube.com/watch?v=I_6xvrwRezM",
-          "dest": "https://www.myprotein.jp?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1782463280_c93d351d9e57d9b524a6ca2ea8024462",
+          "dest": "https://www.myprotein.jp?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1782547663_a95a0a780663e32e2960b7f68473db61",
           "latest_date": "2026-06-25"
         },
         {
@@ -259,7 +259,7 @@
           "brand": "マイプロテイン",
           "count": 10,
           "video_url": "https://www.youtube.com/watch?v=0ZeslyKTiWM",
-          "dest": "https://www.myprotein.jp/p/sports-nutrition/myprotein-clear-whey-protein-white-soda-alt/16329626/?affil=thgppc&thg_ppc_campaign=12269835970&gclid=Cj0KCQjwgr_NBhDFARIsAHiUWr7sZzVIdUoIwrcGFLcAQuZuUTmfyZd1PIJ-iDfXTWdsygGbheVHqDYaAjjqEALw_wcB&affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1782463281_0050d90db9378291059f21e5d9a77cc5",
+          "dest": "https://www.myprotein.jp/p/sports-nutrition/myprotein-clear-whey-protein-white-soda-alt/16329626/?affil=thgppc&thg_ppc_campaign=12269835970&gclid=Cj0KCQjwgr_NBhDFARIsAHiUWr7sZzVIdUoIwrcGFLcAQuZuUTmfyZd1PIJ-iDfXTWdsygGbheVHqDYaAjjqEALw_wcB&affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1782547664_f8bd7096ed986abcd33aad1879e600b0",
           "latest_date": "2026-06-24"
         },
         {
@@ -377,9 +377,9 @@
           "code": "JIN10",
           "brand": null,
           "count": 10,
-          "video_url": "https://www.youtube.com/watch?v=Zj8Cu90K970",
+          "video_url": "https://www.youtube.com/watch?v=WOGsWlZcKo0",
           "dest": "",
-          "latest_date": "2026-06-25"
+          "latest_date": "2026-06-26"
         },
         {
           "code": "PEKOJIN",
@@ -414,7 +414,7 @@
           "brand": "マイプロテイン",
           "count": 20,
           "video_url": "https://www.youtube.com/watch?v=K8BwuNRveuc",
-          "dest": "https://www.myprotein.jp/?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1782463291_7149f8eaedab2990ffd76c248bfabd08",
+          "dest": "https://www.myprotein.jp/?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1782547673_795492fcfe17b9c2f1580981de8b4e73",
           "latest_date": "2026-06-25"
         }
       ]
@@ -491,9 +491,9 @@
           "code": "SGIR",
           "brand": "iHerb",
           "count": 10,
-          "video_url": "https://www.youtube.com/watch?v=2Vi63gnpP7o",
+          "video_url": "https://www.youtube.com/watch?v=UWxZp2GUAF0",
           "dest": "",
-          "latest_date": "2026-06-21"
+          "latest_date": "2026-06-26"
         }
       ]
     },
