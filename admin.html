@@ -63,6 +63,16 @@
   .loading, .error-box { padding:24px 20px; color:#888; }
   .hidden { display:none; }
   .dirty { color:#c2410c; font-size:13px; font-weight:600; }
+  .dictarea { background:#fff; border-radius:12px; padding:16px 18px; margin-bottom:20px;
+              box-shadow:0 1px 3px rgba(0,0,0,0.06); border:1px solid #ffe0b8; }
+  .dicthead { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+  .dicthead #dictCount { font-size:13px; color:#c2410c; font-weight:600; }
+  .dictbox { margin-top:12px; }
+  .dicthint { font-size:12px; color:#666; margin:0 0 8px; line-height:1.6; }
+  .dicthint code { background:#f0f0f0; padding:1px 5px; border-radius:4px; font-size:11px; }
+  .dictbox textarea { width:100%; box-sizing:border-box; font-family:monospace; font-size:12px;
+                      border:1px solid #d0d5dd; border-radius:8px; padding:10px; resize:vertical; }
+  .copied { color:#2f7d32; font-size:12px; margin-left:8px; }
 </style>
 </head>
 <body>
@@ -89,6 +99,19 @@
 
 <div id="msg" class="msg"></div>
 
+<div id="dictArea" class="dictarea hidden">
+  <div class="dicthead">
+    <span id="dictCount"></span>
+    <button class="btn ghost" onclick="genDict()">辞書用の下書きを生成</button>
+  </div>
+  <div id="dictBox" class="dictbox hidden">
+    <p class="dicthint">下の内容を <code>update_coupons.py</code> の BRANDS 辞書に貼り付けます。貼り付ける前に、各ブランドの <code>"keys"</code>（★の部分）を、概要欄での実際の表記ゆれに書き換えてください。</p>
+    <textarea id="dictText" readonly rows="6"></textarea>
+    <button class="btn primary" onclick="copyDict()">下書きをコピー</button>
+    <span id="dictCopied" class="copied hidden">コピーしました</span>
+  </div>
+</div>
+
 <div id="content"><div class="loading">読み込み中…</div></div>
 
 </div>
@@ -105,6 +128,7 @@ var STATE = {
   inputs: {},
   filter: "need",
   dirty: false,
+  brandSet: {},
 };
 
 function esc(s) {
@@ -144,6 +168,8 @@ function analyze(data) {
   rows.sort(byDate);
   STATE.rows = rows;
   STATE.brandList = Object.keys(brandUrls).sort();
+  STATE.brandSet = {};
+  STATE.brandList.forEach(function (b) { STATE.brandSet[b] = true; });
   return rows;
 }
 
@@ -214,6 +240,7 @@ function render() {
   }
   html += '</section>';
   document.getElementById("content").innerHTML = html;
+  updateDictArea();
 }
 
 function keyFromIndex(rowIndex) {
@@ -249,6 +276,58 @@ function onUrlChange(rowIndex, inp) {
   var k = keyFromIndex(rowIndex);
   ensureInput(k).url = inp.value.trim();
   setDirty(true);
+}
+
+// ===== 辞書下書き生成 =====
+function newBrands() {
+  var brandToUrl = {};
+  Object.keys(STATE.overridesIdx).forEach(function (k) {
+    var ov = STATE.overridesIdx[k];
+    if (!ov.brand) return;
+    if (STATE.brandSet[ov.brand]) return;
+    if (!(ov.brand in brandToUrl)) brandToUrl[ov.brand] = ov.url || "";
+    if (ov.url) brandToUrl[ov.brand] = ov.url;
+  });
+  return brandToUrl;
+}
+
+function updateDictArea() {
+  var nb = newBrands();
+  var names = Object.keys(nb);
+  var area = document.getElementById("dictArea");
+  if (names.length === 0) {
+    area.classList.add("hidden");
+    return;
+  }
+  area.classList.remove("hidden");
+  document.getElementById("dictCount").textContent =
+    "辞書に未登録のブランドが " + names.length + " 件あります（辞書に追加すると自動認識＆候補表示されます）";
+  document.getElementById("dictBox").classList.add("hidden");
+}
+
+function genDict() {
+  var nb = newBrands();
+  var names = Object.keys(nb);
+  if (names.length === 0) return;
+  var lines = names.map(function (name) {
+    var url = nb[name];
+    var quotedName = '"' + name + '":';
+    var padLen = Math.max(1, 22 - quotedName.length);
+    var pad = quotedName;
+    for (var i = 0; i < padLen; i++) pad += ' ';
+    return '    ' + pad + '{"keys": ["\u2605ここに表記ゆれを記入\u2605"], "url": "' + url + '"},';
+  });
+  document.getElementById("dictText").value = lines.join('\n');
+  document.getElementById("dictBox").classList.remove("hidden");
+  document.getElementById("dictCopied").classList.add("hidden");
+}
+
+function copyDict() {
+  var ta = document.getElementById("dictText");
+  ta.select();
+  navigator.clipboard.writeText(ta.value).then(function () {
+    document.getElementById("dictCopied").classList.remove("hidden");
+  });
 }
 
 function setFilter(f) {
