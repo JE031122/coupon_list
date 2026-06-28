@@ -159,7 +159,7 @@ function renderSummary() {
     + '<div class="card ok"><div class="num">' + ok + '</div><div class="label">対応不要</div></div>';
 }
 
-function brandSelect(rowKey, current) {
+function brandSelect(rowIndex, current) {
   var opts = '<option value="">（ブランドを選択 / 未設定）</option>';
   STATE.brandList.forEach(function (b) {
     var sel = (b === current) ? ' selected' : '';
@@ -169,10 +169,10 @@ function brandSelect(rowKey, current) {
     opts += '<option value="' + esc(current) + '" selected>' + esc(current) + '（新規）</option>';
   }
   opts += '<option value="__custom__">＋ 新しいブランド名を入力…</option>';
-  return '<select onchange="onBrandChange(\'' + esc(rowKey) + '\', this)">' + opts + '</select>';
+  return '<select onchange="onBrandChange(' + rowIndex + ', this)">' + opts + '</select>';
 }
 
-function rowHtml(r) {
+function rowHtml(r, rowIndex) {
   var k = keyOf(r.code, r.channel);
   var inp = STATE.inputs[k] || {};
   var curBrand = (inp.brand !== undefined) ? inp.brand : (STATE.overridesIdx[k] && STATE.overridesIdx[k].brand) || "";
@@ -183,18 +183,18 @@ function rowHtml(r) {
   if (r.needLink) statuses += '<span class="status link">リンクなし</span>';
   if (!r.needBrand && !r.needLink) statuses += '<span class="status ok">対応不要</span>';
 
-  return '<div class="row" data-key="' + esc(k) + '">'
+  return '<div class="row">'
     + '<div class="code-cell">'
     +   '<span class="code">' + esc(r.code) + '</span>'
     +   statuses
     +   '<span class="meta">' + esc(r.channel) + ' / ' + esc(r.date) + '</span>'
     + '</div>'
-    + '<div>' + brandSelect(k, curBrand)
+    + '<div>' + brandSelect(rowIndex, curBrand)
     +   '<input type="text" class="custom-brand hidden" placeholder="新しいブランド名"'
-    +     ' value="" oninput="onCustomBrand(\'' + esc(k) + '\', this)">'
+    +     ' value="" oninput="onCustomBrand(' + rowIndex + ', this)">'
     + '</div>'
     + '<div><input type="text" placeholder="購入ページURL（任意）" value="' + esc(curUrl) + '"'
-    +     ' oninput="onUrlChange(\'' + esc(k) + '\', this)"></div>'
+    +     ' oninput="onUrlChange(' + rowIndex + ', this)"></div>'
     + '<div><a class="vlink" href="' + esc(r.video_url) + '" target="_blank" rel="noopener">概要欄</a></div>'
     + '</div>';
 }
@@ -210,12 +210,16 @@ function render() {
   if (rows.length === 0) {
     html += '<div class="loading">該当するコードはありません 🎉</div>';
   } else {
-    rows.forEach(function (r) { html += rowHtml(r); });
+    rows.forEach(function (r) { html += rowHtml(r, STATE.rows.indexOf(r)); });
   }
   html += '</section>';
   document.getElementById("content").innerHTML = html;
 }
 
+function keyFromIndex(rowIndex) {
+  var r = STATE.rows[rowIndex];
+  return keyOf(r.code, r.channel);
+}
 function ensureInput(k) {
   if (!STATE.inputs[k]) {
     var ov = STATE.overridesIdx[k] || {};
@@ -223,7 +227,8 @@ function ensureInput(k) {
   }
   return STATE.inputs[k];
 }
-function onBrandChange(k, sel) {
+function onBrandChange(rowIndex, sel) {
+  var k = keyFromIndex(rowIndex);
   var customInput = sel.parentNode.querySelector(".custom-brand");
   if (sel.value === "__custom__") {
     customInput.classList.remove("hidden");
@@ -235,11 +240,13 @@ function onBrandChange(k, sel) {
   }
   setDirty(true);
 }
-function onCustomBrand(k, inp) {
+function onCustomBrand(rowIndex, inp) {
+  var k = keyFromIndex(rowIndex);
   ensureInput(k).brand = inp.value.trim();
   setDirty(true);
 }
-function onUrlChange(k, inp) {
+function onUrlChange(rowIndex, inp) {
+  var k = keyFromIndex(rowIndex);
   ensureInput(k).url = inp.value.trim();
   setDirty(true);
 }
