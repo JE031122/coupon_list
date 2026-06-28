@@ -354,6 +354,7 @@ def main():
     data = {
         "updated_at": datetime.now(jst).strftime("%Y-%m-%d %H:%M"),
         "brand_urls": {b: info["url"] for b, info in BRANDS.items()},
+        "brand_keys": {b: info["keys"] for b, info in BRANDS.items()},
         "channels": channels_data,
     }
     with open("data.json", "w", encoding="utf-8") as f:
