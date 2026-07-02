@@ -85,8 +85,8 @@ BRANDS = {
     "YAOKI":           {"keys": ["YAOKI", "ヤオキ"], "url": "https://shop.yaoki.co/"},
     "STEADY":           {"keys": ["STEADY", "steady"], "url": "https://steadyjapan.com/"},
     "JURASSIC CUP2026 静岡大会チケット": {"keys": ["JURASSIC CUP" "ジュラシックカップ"], "url": "https://jurassiccup.bitfan.id/events/19839"},
-    "LEVEL.FIT":          {"keys": ["レベルフィット"], "url": "https://www.levelfit.whrp.co.jp/"},
-    "uFIT":               {"keys": ["ユーフィット"], "url": "https://www.amazon.co.jp/s?k=%E4%BD%8E%E5%91%A8%E6%B3%A2%E6%B2%BB%E7%99%82%E5%99%A8&rh=p_78%3AB0FQ9HPS1M%2Cp_89%3AuFit&dc&__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A"},
+    "LEVEL.FIT":          {"keys": ["level.fit" "レベルフィット"], "url": "https://www.levelfit.whrp.co.jp/"},
+    "uFIT":               {"keys": ["ufit" "ユーフィット"], "url": "https://www.amazon.co.jp/s?k=%E4%BD%8E%E5%91%A8%E6%B3%A2%E6%B2%BB%E7%99%82%E5%99%A8&rh=p_78%3AB0FQ9HPS1M%2Cp_89%3AuFit&dc&__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A"},
 }
 # ====================================================
 
