@@ -96,7 +96,6 @@ CHANNELS = [
     "@aleluCH",
     "@uruhaichinose",
     "@takezo354",
-    "@gon_vl",
     "@tie_gian9196",
     "@shomaru7",
     "@YamatoNjp",
