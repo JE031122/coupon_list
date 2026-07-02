@@ -37,7 +37,6 @@ CHANNELS = [
     "@samgetitright",
     "@hayatoaizawa6966",
     "@テストステロン扇谷開登",
-    "@bazooka_okada",
     "@日本一の大胸筋ツカケン",
     "@joefitto",
     "@mionigg",
