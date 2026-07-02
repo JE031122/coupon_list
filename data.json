@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-02 17:31",
+  "updated_at": "2026-07-02 17:43",
   "brand_urls": {
     "マイプロテイン": "https://www.myprotein.jp/",
     "VALX": "https://valx.jp/",
@@ -208,7 +208,7 @@
           "brand": "マイプロテイン",
           "count": 5,
           "video_url": "https://www.youtube.com/watch?v=r_qBt4HYSwk",
-          "dest": "https://www.myprotein.jp?affil=thg-society&c=partnerize&clickid=1110l47CkUpt&is_retargeting=true&clickref=1110l47CkUpt&af_reengagement_window=7d&af_dp=https%3A%2F%2Fwww.myprotein.jp%3Faffil%3Dthg-society%26utm_source%3DPz-1101l250304%26utm_medium%3Dinfluencer%26utm_campaign%3D1101l5498%26clickref%3D1110l47CkUpt&utm_campaign=1101l5498&af_click_lookback=7d&utm_source=Pz-1101l250304&af_xp=custom&pid=partnerize_int&utm_medium=influencer",
+          "dest": "https://www.myprotein.jp?affil=thg-society&pid=partnerize_int&utm_source=Pz-1101l250304&utm_campaign=1101l5498&af_reengagement_window=7d&af_dp=https%3A%2F%2Fwww.myprotein.jp%3Faffil%3Dthg-society%26utm_source%3DPz-1101l250304%26utm_medium%3Dinfluencer%26utm_campaign%3D1101l5498%26clickref%3D1110l47CncdM&clickid=1110l47CncdM&utm_medium=influencer&is_retargeting=true&af_xp=custom&clickref=1110l47CncdM&c=partnerize&af_click_lookback=7d",
           "latest_date": "2026-06-29"
         },
         {
@@ -389,7 +389,7 @@
           "brand": "マイプロテイン",
           "count": 10,
           "video_url": "https://www.youtube.com/watch?v=O-IZ2Z3rhXA",
-          "dest": "https://www.myprotein.jp?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1782981082_a52e91ef8ad24f6b0b5bd2530741c8fa",
+          "dest": "https://www.myprotein.jp?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1782981788_26cee909a169011db74f675388c6efb7",
           "latest_date": "2026-06-29"
         },
         {
@@ -445,7 +445,7 @@
           "brand": "マイプロテイン",
           "count": 10,
           "video_url": "https://www.youtube.com/watch?v=aL59dLAEqm8",
-          "dest": "https://www.myprotein.jp/p/sports-nutrition/myprotein-clear-whey-protein-white-soda-alt/16329626/?affil=thgppc&thg_ppc_campaign=12269835970&gclid=Cj0KCQjwgr_NBhDFARIsAHiUWr7sZzVIdUoIwrcGFLcAQuZuUTmfyZd1PIJ-iDfXTWdsygGbheVHqDYaAjjqEALw_wcB&affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1782981085_a59dffc6be801d3b5a8c18d4daffeb9b",
+          "dest": "https://www.myprotein.jp/p/sports-nutrition/myprotein-clear-whey-protein-white-soda-alt/16329626/?affil=thgppc&thg_ppc_campaign=12269835970&gclid=Cj0KCQjwgr_NBhDFARIsAHiUWr7sZzVIdUoIwrcGFLcAQuZuUTmfyZd1PIJ-iDfXTWdsygGbheVHqDYaAjjqEALw_wcB&affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1782981790_d4413e3de850b7ab8178396f5ff058b6",
           "latest_date": "2026-07-01"
         },
         {
@@ -567,7 +567,7 @@
           "brand": "マイプロテイン",
           "count": 20,
           "video_url": "https://www.youtube.com/watch?v=ET8vZPQObVk",
-          "dest": "https://www.myprotein.jp/?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1782981093_49fdd5dfdbf077bda3b3da4508f37624",
+          "dest": "https://www.myprotein.jp/?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1782981798_afe2b2951b15be8d9c22f8858fd724a5",
           "latest_date": "2026-07-02"
         }
       ]
@@ -723,6 +723,174 @@
           "video_url": "https://www.youtube.com/watch?v=NpksicN38uI",
           "dest": "",
           "latest_date": "2026-05-25"
+        }
+      ]
+    },
+    {
+      "channel": "ミオニ",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "たこまる/TAKOMARU",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "理想ゲーミングCh【ゆゆゆん】",
+      "subscribers": null,
+      "codes": [
+        {
+          "code": "yuyuyun",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=YkxEYClVw6E",
+          "dest": "",
+          "latest_date": "2026-06-29"
+        }
+      ]
+    },
+    {
+      "channel": "JUNUJ【デバイス紹介】",
+      "subscribers": null,
+      "codes": [
+        {
+          "code": "JUNUJ",
+          "brand": null,
+          "count": 10,
+          "video_url": "https://www.youtube.com/watch?v=wDqc2alpm7w",
+          "dest": "https://fantechworld.com/?sca_ref=5631715.USYJiQdsjF",
+          "latest_date": "2026-06-29"
+        },
+        {
+          "code": "JuNuJ1010",
+          "brand": null,
+          "count": 10,
+          "video_url": "https://www.youtube.com/watch?v=wDqc2alpm7w",
+          "dest": "https://wallhack.com/?dt_id=1253790",
+          "latest_date": "2026-06-29"
+        }
+      ]
+    },
+    {
+      "channel": "Vunny Ch",
+      "subscribers": null,
+      "codes": [
+        {
+          "code": "VUNNYCH3",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=L7T-n6fN_gE",
+          "dest": "",
+          "latest_date": "2026-05-08"
+        }
+      ]
+    },
+    {
+      "channel": "YukaF",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "GON",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "Lazvell",
+      "subscribers": null,
+      "codes": [
+        {
+          "code": "ZETALAZ",
+          "brand": null,
+          "count": 20,
+          "video_url": "https://www.youtube.com/watch?v=8ltKpxHFNZw",
+          "dest": "https://zetadivision.com/news/2021/11/24/7060",
+          "latest_date": "2026-06-30"
+        }
+      ]
+    },
+    {
+      "channel": "NIRU",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "tttcheekyttt",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "4rufa",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "じーぷろ【APEX解説】",
+      "subscribers": null,
+      "codes": [
+        {
+          "code": "C623UOSE",
+          "brand": null,
+          "count": 20,
+          "video_url": "https://www.youtube.com/watch?v=gsDkJyccQOA",
+          "dest": "https://www.twitch.tv/gprodaisuki",
+          "latest_date": "2026-07-02"
+        }
+      ]
+    },
+    {
+      "channel": "TIE Ru",
+      "subscribers": null,
+      "codes": [
+        {
+          "code": "TIERuG78A",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=2pr6ewKsJO0",
+          "dest": "https://gamesir.com/products/gamesir-g7-pro-aimlabs-edition",
+          "latest_date": "2026-06-18"
+        },
+        {
+          "code": "8KAIMLABS",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=2pr6ewKsJO0",
+          "dest": "https://www.amazon.co.jp/dp/B0GWJHDCBQ",
+          "latest_date": "2026-06-18"
+        }
+      ]
+    },
+    {
+      "channel": "おやこどんのすけ 【APEX解説】",
+      "subscribers": null,
+      "codes": [
+        {
+          "code": "DONNOSUKE",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=x6d1BjBaa5M",
+          "dest": "https://www.amazon.co.jp/s?k=%E9%9B%BB%E5%AD%90%E3%82%BF%E3%83%90%E3%82%B3&rh=p_78:B0FWBZR2RJ,ssx:relevance&utm_source=oyakodonnosuke&utm_medium=social&utm_campaign=tarlessnext2_oyakodonnosuke_youtube",
+          "latest_date": "2026-05-13"
+        }
+      ]
+    },
+    {
+      "channel": "Masatoshiまさとし",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "あかめいん",
+      "subscribers": null,
+      "codes": [
+        {
+          "code": "POKE4QOO",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=yebaPszKAWc",
+          "dest": "",
+          "latest_date": "2026-05-28"
         }
       ]
     }
