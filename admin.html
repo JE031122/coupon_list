@@ -129,6 +129,7 @@ var STATE = {
   filter: "need",
   dirty: false,
   brandSet: {},
+  brandUrls: {},
 };
 
 function esc(s) {
@@ -160,13 +161,14 @@ function analyze(data) {
       rows.push({
         code: c.code, channel: ch.channel, brand: c.brand,
         dest: dest, video_url: c.video_url, date: c.latest_date || "",
-        needBrand: c.brand == null, needLink: !hasLink,
+        origBrandNull: (c.brand == null), origHasLink: hasLink,
       });
     });
   });
   var byDate = function (a, b) { return (b.date||"").localeCompare(a.date||""); };
   rows.sort(byDate);
   STATE.rows = rows;
+  STATE.brandUrls = brandUrls;
   STATE.brandList = Object.keys(brandUrls).sort();
   STATE.brandSet = {};
   STATE.brandList.forEach(function (b) { STATE.brandSet[b] = true; });
@@ -175,14 +177,15 @@ function analyze(data) {
 
 function renderSummary() {
   var total = STATE.rows.length;
-  var nb = STATE.rows.filter(function (r) { return r.needBrand; }).length;
-  var nl = STATE.rows.filter(function (r) { return r.needLink; }).length;
-  var ok = STATE.rows.filter(function (r) { return !r.needBrand && !r.needLink; }).length;
+  var st = STATE.rows.map(statusOf);
+  var nb = st.filter(function (s) { return s.needBrand; }).length;
+  var nl = st.filter(function (s) { return s.needLink; }).length;
+  var ok = st.filter(function (s) { return !s.needBrand && !s.needLink; }).length;
   document.getElementById("summary").innerHTML =
       '<div class="card info"><div class="num">' + total + '</div><div class="label">総コード数</div></div>'
     + '<div class="card warn"><div class="num">' + nb + '</div><div class="label">ブランド確認中</div></div>'
     + '<div class="card warn"><div class="num">' + nl + '</div><div class="label">リンクなし</div></div>'
-    + '<div class="card ok"><div class="num">' + ok + '</div><div class="label">対応不要</div></div>';
+    + '<div class="card ok"><div class="num">' + ok + '</div><div class="label">対応済み</div></div>';
 }
 
 function brandSelect(rowIndex, current) {
@@ -204,10 +207,11 @@ function rowHtml(r, rowIndex) {
   var curBrand = (inp.brand !== undefined) ? inp.brand : (STATE.overridesIdx[k] && STATE.overridesIdx[k].brand) || "";
   var curUrl = (inp.url !== undefined) ? inp.url : (STATE.overridesIdx[k] && STATE.overridesIdx[k].url) || "";
 
+  var st = statusOf(r);
   var statuses = "";
-  if (r.needBrand) statuses += '<span class="status brand">ブランド確認中</span>';
-  if (r.needLink) statuses += '<span class="status link">リンクなし</span>';
-  if (!r.needBrand && !r.needLink) statuses += '<span class="status ok">対応不要</span>';
+  if (st.needBrand) statuses += '<span class="status brand">ブランド確認中</span>';
+  if (st.needLink) statuses += '<span class="status link">リンクなし</span>';
+  if (!st.needBrand && !st.needLink) statuses += '<span class="status ok">対応済み</span>';
 
   return '<div class="row">'
     + '<div class="code-cell">'
@@ -229,10 +233,10 @@ function render() {
   renderSummary();
   var rows = STATE.rows;
   if (STATE.filter === "need") {
-    rows = rows.filter(function (r) { return r.needBrand || r.needLink; });
+    rows = rows.filter(function (r) { var s = statusOf(r); return s.needBrand || s.needLink; });
   }
   var html = '<section>';
-  html += '<div class="row head"><div>コード</div><div>ブランド</div><div>購入ページURL</div><div>確認</div></div>';
+  html += '<div class="row head"><div>コード</div><div>ブランド</div><div>購入ページURL</div><div>状態</div></div>';
   if (rows.length === 0) {
     html += '<div class="loading">該当するコードはありません 🎉</div>';
   } else {
@@ -241,6 +245,19 @@ function render() {
   html += '</section>';
   document.getElementById("content").innerHTML = html;
   updateDictArea();
+}
+
+// overrides を考慮した実効的な要対応状態を返す
+function statusOf(r) {
+  var k = keyOf(r.code, r.channel);
+  var ov = STATE.overridesIdx[k] || {};
+  var ovBrand = (ov.brand && ov.brand.trim()) ? ov.brand.trim() : "";
+  var ovUrl = (ov.url && ov.url.trim()) ? ov.url.trim() : "";
+  var brandUrls = STATE.brandUrls || {};
+  var needBrand = r.origBrandNull && !ovBrand;
+  var effBrand = ovBrand || r.brand;
+  var hasLink = r.origHasLink || !!ovUrl || !!(effBrand && brandUrls[effBrand]);
+  return { needBrand: needBrand, needLink: !hasLink };
 }
 
 function keyFromIndex(rowIndex) {
@@ -266,6 +283,7 @@ function onBrandChange(rowIndex, sel) {
     ensureInput(k).brand = sel.value;
   }
   setDirty(true);
+  render();
 }
 function onCustomBrand(rowIndex, inp) {
   var k = keyFromIndex(rowIndex);
