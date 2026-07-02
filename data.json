@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-02 17:43",
+  "updated_at": "2026-07-02 20:59",
   "brand_urls": {
     "マイプロテイン": "https://www.myprotein.jp/",
     "VALX": "https://valx.jp/",
@@ -208,7 +208,7 @@
           "brand": "マイプロテイン",
           "count": 5,
           "video_url": "https://www.youtube.com/watch?v=r_qBt4HYSwk",
-          "dest": "https://www.myprotein.jp?affil=thg-society&pid=partnerize_int&utm_source=Pz-1101l250304&utm_campaign=1101l5498&af_reengagement_window=7d&af_dp=https%3A%2F%2Fwww.myprotein.jp%3Faffil%3Dthg-society%26utm_source%3DPz-1101l250304%26utm_medium%3Dinfluencer%26utm_campaign%3D1101l5498%26clickref%3D1110l47CncdM&clickid=1110l47CncdM&utm_medium=influencer&is_retargeting=true&af_xp=custom&clickref=1110l47CncdM&c=partnerize&af_click_lookback=7d",
+          "dest": "https://www.myprotein.jp?affil=thg-society&c=partnerize&utm_medium=influencer&utm_campaign=1101l5498&pid=partnerize_int&is_retargeting=true&clickref=1101lDzdTAVX&af_reengagement_window=7d&af_dp=https%3A%2F%2Fwww.myprotein.jp%3Faffil%3Dthg-society%26utm_source%3DPz-1101l250304%26utm_medium%3Dinfluencer%26utm_campaign%3D1101l5498%26clickref%3D1101lDzdTAVX&af_click_lookback=7d&utm_source=Pz-1101l250304&clickid=1101lDzdTAVX&af_xp=custom",
           "latest_date": "2026-06-29"
         },
         {
@@ -289,7 +289,16 @@
     {
       "channel": "ぷろたん日記",
       "subscribers": null,
-      "codes": []
+      "codes": [
+        {
+          "code": "TikTok",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=8d4tKJs-cao",
+          "dest": "",
+          "latest_date": "2026-07-02"
+        }
+      ]
     },
     {
       "channel": "なーすけFitness",
@@ -389,7 +398,7 @@
           "brand": "マイプロテイン",
           "count": 10,
           "video_url": "https://www.youtube.com/watch?v=O-IZ2Z3rhXA",
-          "dest": "https://www.myprotein.jp?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1782981788_26cee909a169011db74f675388c6efb7",
+          "dest": "https://www.myprotein.jp?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1782993522_be3cdeabfb74130275a9e0a6dc76a843",
           "latest_date": "2026-06-29"
         },
         {
@@ -445,7 +454,7 @@
           "brand": "マイプロテイン",
           "count": 10,
           "video_url": "https://www.youtube.com/watch?v=aL59dLAEqm8",
-          "dest": "https://www.myprotein.jp/p/sports-nutrition/myprotein-clear-whey-protein-white-soda-alt/16329626/?affil=thgppc&thg_ppc_campaign=12269835970&gclid=Cj0KCQjwgr_NBhDFARIsAHiUWr7sZzVIdUoIwrcGFLcAQuZuUTmfyZd1PIJ-iDfXTWdsygGbheVHqDYaAjjqEALw_wcB&affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1782981790_d4413e3de850b7ab8178396f5ff058b6",
+          "dest": "https://www.myprotein.jp/p/sports-nutrition/myprotein-clear-whey-protein-white-soda-alt/16329626/?affil=thgppc&thg_ppc_campaign=12269835970&gclid=Cj0KCQjwgr_NBhDFARIsAHiUWr7sZzVIdUoIwrcGFLcAQuZuUTmfyZd1PIJ-iDfXTWdsygGbheVHqDYaAjjqEALw_wcB&affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1782993524_75471a75300d15b2a0b01b59042b558d",
           "latest_date": "2026-07-01"
         },
         {
@@ -567,7 +576,7 @@
           "brand": "マイプロテイン",
           "count": 20,
           "video_url": "https://www.youtube.com/watch?v=ET8vZPQObVk",
-          "dest": "https://www.myprotein.jp/?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1782981798_afe2b2951b15be8d9c22f8858fd724a5",
+          "dest": "https://www.myprotein.jp/?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1782993532_845cfe4f95fcba17cdb022b262fc7715",
           "latest_date": "2026-07-02"
         }
       ]
@@ -670,11 +679,6 @@
       ]
     },
     {
-      "channel": "新・バズーカ岡田チャンネル【岡田隆】",
-      "subscribers": null,
-      "codes": []
-    },
-    {
       "channel": "ツカケン【日本一の大胸筋】",
       "subscribers": null,
       "codes": [
@@ -758,17 +762,17 @@
           "code": "JUNUJ",
           "brand": null,
           "count": 10,
-          "video_url": "https://www.youtube.com/watch?v=wDqc2alpm7w",
+          "video_url": "https://www.youtube.com/watch?v=2CPaE15stuk",
           "dest": "https://fantechworld.com/?sca_ref=5631715.USYJiQdsjF",
-          "latest_date": "2026-06-29"
+          "latest_date": "2026-07-02"
         },
         {
           "code": "JuNuJ1010",
           "brand": null,
           "count": 10,
-          "video_url": "https://www.youtube.com/watch?v=wDqc2alpm7w",
+          "video_url": "https://www.youtube.com/watch?v=2CPaE15stuk",
           "dest": "https://wallhack.com/?dt_id=1253790",
-          "latest_date": "2026-06-29"
+          "latest_date": "2026-07-02"
         }
       ]
     },
@@ -785,11 +789,6 @@
           "latest_date": "2026-05-08"
         }
       ]
-    },
-    {
-      "channel": "YukaF",
-      "subscribers": null,
-      "codes": []
     },
     {
       "channel": "GON",
@@ -809,21 +808,6 @@
           "latest_date": "2026-06-30"
         }
       ]
-    },
-    {
-      "channel": "NIRU",
-      "subscribers": null,
-      "codes": []
-    },
-    {
-      "channel": "tttcheekyttt",
-      "subscribers": null,
-      "codes": []
-    },
-    {
-      "channel": "4rufa",
-      "subscribers": null,
-      "codes": []
     },
     {
       "channel": "じーぷろ【APEX解説】",
@@ -893,6 +877,582 @@
           "latest_date": "2026-05-28"
         }
       ]
+    },
+    {
+      "channel": "すけこむの動画",
+      "subscribers": null,
+      "codes": [
+        {
+          "code": "LSUKECOM",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=TSeloDJopjc",
+          "dest": "https://www.amazon.co.jp/%E3%80%8C%E7%89%B9%E8%A8%B1%E5%8F%96%E5%BE%97%E6%B8%88%E3%80%8Dllano-%E3%82%BF%E3%83%BC%E3%83%9C%E3%83%96%E3%83%BC%E3%82%B9%E3%83%88%E6%8A%80%E8%A1%93-%E5%85%A8%E6%96%B9%E4%BD%8D%E9%80%81%E9%A2%A8-15-19%E3%82%A4%E3%83%B3%E3%83%81%E3%81%AB%E5%AF%BE%E5%BF%9C/dp/B0CP3N7D47?th=1",
+          "latest_date": "2026-06-19"
+        }
+      ]
+    },
+    {
+      "channel": "hiro 306h",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "ゲーミングPCチャンネル",
+      "subscribers": null,
+      "codes": [
+        {
+          "code": "GAMING",
+          "brand": null,
+          "count": 2,
+          "video_url": "https://www.youtube.com/watch?v=ZWbzYdkJ_Vs",
+          "dest": "",
+          "latest_date": "2026-07-01"
+        },
+        {
+          "code": "ERGO10",
+          "brand": null,
+          "count": 2,
+          "video_url": "https://www.youtube.com/watch?v=ZWbzYdkJ_Vs",
+          "dest": "",
+          "latest_date": "2026-07-01"
+        },
+        {
+          "code": "RMgm",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=lL3KS8NKmjQ",
+          "dest": "",
+          "latest_date": "2026-06-16"
+        }
+      ]
+    },
+    {
+      "channel": "【MDL】ゲーミングPC販売店",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "うらぬすstudio【ガジェット紹介】",
+      "subscribers": null,
+      "codes": [
+        {
+          "code": "URANUS",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=tE7nRUOeLoI",
+          "dest": "https://www.atk.store/ja-jp/products/atk-dragonfly-a9-%E7%A9%B6%E6%A5%B5%E3%81%AE%E8%BB%BD%E9%87%8F%E3%83%AF%E3%82%A4%E3%83%A4%E3%83%AC%E3%82%B9%E3%83%9E%E3%82%A6%E3%82%B9?ref=URANUS&srsltid=AfmBOoq10zWTgiTWBOBRl0YZ-RqbQVPZ3NQgUtZyxszdofNYl_ijOXfh&variant=47193565364442",
+          "latest_date": "2026-06-23"
+        },
+        {
+          "code": "LINKOO26011",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=O0oi9FzhkeU",
+          "dest": "",
+          "latest_date": "2026-06-19"
+        }
+      ]
+    },
+    {
+      "channel": "モニ研 / Monitor lab.",
+      "subscribers": null,
+      "codes": [
+        {
+          "code": "MONI2606",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=nnER3_jErVo",
+          "dest": "",
+          "latest_date": "2026-06-30"
+        },
+        {
+          "code": "YIMRIIEK",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=9lVl8ZVhw5A",
+          "dest": "https://www.amazon.co.jp/stores/page/9DE21884-6003-4203-85FC-999792B9C395?channel=UCa-zzjBBzmTanh4CDIk",
+          "latest_date": "2026-06-27"
+        }
+      ]
+    },
+    {
+      "channel": "Vi",
+      "subscribers": null,
+      "codes": [
+        {
+          "code": "05PROPRO",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=oYnaNNhkQkU",
+          "dest": "https://www.amazon.co.jp/dp/B0GR9C9K1B?th=1&linkCode=sl2&tag=jpktc05-22&linkId=ac1fdfb0d8fc8002fa1d11024fa80773&ref_=as_li_ss_tl",
+          "latest_date": "2026-06-26"
+        }
+      ]
+    },
+    {
+      "channel": "わびすけ",
+      "subscribers": null,
+      "codes": [
+        {
+          "code": "wabisuke70",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=3gi_CN9i_kA",
+          "dest": "",
+          "latest_date": "2026-05-14"
+        }
+      ]
+    },
+    {
+      "channel": "わぐ's PCラボ",
+      "subscribers": null,
+      "codes": [
+        {
+          "code": "NHs26",
+          "brand": null,
+          "count": 7,
+          "video_url": "https://www.youtube.com/watch?v=_iA1ph2TXrI",
+          "dest": "",
+          "latest_date": "2026-06-25"
+        },
+        {
+          "code": "webnew300",
+          "brand": null,
+          "count": 6,
+          "video_url": "https://www.youtube.com/watch?v=u-yfhgf2QWA",
+          "dest": "",
+          "latest_date": "2026-06-20"
+        },
+        {
+          "code": "line300",
+          "brand": null,
+          "count": 6,
+          "video_url": "https://www.youtube.com/watch?v=u-yfhgf2QWA",
+          "dest": "",
+          "latest_date": "2026-06-20"
+        },
+        {
+          "code": "20vag",
+          "brand": null,
+          "count": 6,
+          "video_url": "https://www.youtube.com/watch?v=u-yfhgf2QWA",
+          "dest": "",
+          "latest_date": "2026-06-20"
+        },
+        {
+          "code": "Cospa1_2026SS",
+          "brand": null,
+          "count": 6,
+          "video_url": "https://www.youtube.com/watch?v=u-yfhgf2QWA",
+          "dest": "https://www.sycom.co.jp/?a8=CD5kZDJIz0jb-4r7qPEu4wOOIb4fEuWQbPEOV4m3u3YIz057M0GN90EwFa4VGVrF63dumy5N6D5kKs00000014633001",
+          "latest_date": "2026-06-20"
+        },
+        {
+          "code": "cospa1_2407",
+          "brand": null,
+          "count": 6,
+          "video_url": "https://www.youtube.com/watch?v=u-yfhgf2QWA",
+          "dest": "https://shop.mining-base.co.jp/",
+          "latest_date": "2026-06-20"
+        }
+      ]
+    },
+    {
+      "channel": "Aile Ch. エイル",
+      "subscribers": null,
+      "codes": [
+        {
+          "code": "AILE490",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=H3zf5dHmits",
+          "dest": "",
+          "latest_date": "2026-06-05"
+        },
+        {
+          "code": "AILE830",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=H3zf5dHmits",
+          "dest": "",
+          "latest_date": "2026-06-05"
+        },
+        {
+          "code": "AILE1800",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=H3zf5dHmits",
+          "dest": "",
+          "latest_date": "2026-06-05"
+        },
+        {
+          "code": "AILE3300",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=H3zf5dHmits",
+          "dest": "",
+          "latest_date": "2026-06-05"
+        },
+        {
+          "code": "AILE4900",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=H3zf5dHmits",
+          "dest": "",
+          "latest_date": "2026-06-05"
+        },
+        {
+          "code": "AILE7300",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=H3zf5dHmits",
+          "dest": "",
+          "latest_date": "2026-06-05"
+        },
+        {
+          "code": "AILE11500",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=H3zf5dHmits",
+          "dest": "",
+          "latest_date": "2026-06-05"
+        }
+      ]
+    },
+    {
+      "channel": "お主義 白いゲームデバイス",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "ベスト商品セレクト",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "the比較",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "損しないPC選び - KIMERUCA / キメルカ",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "吉田製作所Y",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "賢いパソコン選び【プロ学TV】",
+      "subscribers": null,
+      "codes": [
+        {
+          "code": "HP",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=Y7JG7PQNVcs",
+          "dest": "https://www.dell.com/ja-jp/lp/price-match-guarantee",
+          "latest_date": "2026-06-10"
+        }
+      ]
+    },
+    {
+      "channel": "リコ【ゲーム情報紹介】",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "ぷらぐら",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "raizinLOL",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "ダステル - DustelBox",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "水埜アテルイ",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "SmashlogTV - VALORANT",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "saltya33",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "Rocket Jump Ninja",
+      "subscribers": null,
+      "codes": [
+        {
+          "code": "RocketJumpNinja",
+          "brand": null,
+          "count": 3,
+          "video_url": "https://www.youtube.com/watch?v=VY8G3yGsZ0M",
+          "dest": "",
+          "latest_date": "2026-06-30"
+        }
+      ]
+    },
+    {
+      "channel": "CAFUA",
+      "subscribers": null,
+      "codes": [
+        {
+          "code": "PD26KOL",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=BIpuLUVKx6s",
+          "dest": "",
+          "latest_date": "2026-07-01"
+        },
+        {
+          "code": "CAFUAPRO",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=QX8XSOeyW4M",
+          "dest": "https://jp.plaud.ai/?sca_ref=11480220.GGGBRUiiLbmzG&utm_source=kol_uppromote&utm_medium=kol&utm_campaign=11480220&utm_source=kol_uppromote&utm_medium=kol&utm_campaign=11480220",
+          "latest_date": "2026-06-07"
+        },
+        {
+          "code": "EFCLIPNCF",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=IrwzZ9Pr7L4",
+          "dest": "https://www.amazon.co.jp/EarFun-Hi-Res%E8%AA%8D%E8%A8%BC%E5%8F%96%E5%BE%97-12mm%E5%BE%84%E3%83%81%E3%82%BF%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E6%8C%AF%E5%8B%95%E6%9D%BF-%E3%83%87%E3%83%A5%E3%82%A2%E3%83%AB%E7%A3%81%E6%B0%97%E5%9B%9E%E8%B7%AF%E6%A7%8B%E9%80%A0-%E3%82%A4%E3%83%A4%E3%83%9B%E3%83%B3%E3%80%90PSE%E8%AA%8D%E8%A8%BC%E6%B8%88%E3%81%BF%E3%80%91/dp/B0GKP46WT1?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=2VNN1JB55HYPV&dib=eyJ2IjoiMSJ9.wuamV0Gncjva0bIwLoeYTEOtOugwSyTgy27H1hIOex3xBI-rhlVdBZfv8QVU_kTmvQvwa90E4Ircjf336YIJwtri03S9KrElQfeDmdlVa4kb2sqEN04-DalAh-xlqMpQdNziGm-Hz46uUVTCHymKmNvIddZdyEZEosWtomLxAkJRERQm_Lpx5S-vQhzTrTSL1jgWZz1gVMOfx5-QQ9FXQl2o8es22hwTVYL9gb_n_jWv9TlxmqsExCseDL2GePmBoN5C2yPEPslOxKRom-j-1VmaxuaWOAFXpp6cc_TeRIE.boYWe2aw4LRBo6kGFhkmLPiNDwPCtg1JcpSL6XwLmFs&dib_tag=se&keywords=EarFun%2BClip%2B2&qid=1778201973&sprefix=earfun%2Bclip%2B2,aps,382&sr=8-1-spons&ufe=app_do:amzn1.fos.f851e75d-a860-4774-84a1-525c65264f29&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&linkCode=sl2&tag=cafua-22&linkId=2c3d62a4accec993534c7bf30f81b32e&ref_=as_li_ss_tl",
+          "latest_date": "2026-05-15"
+        },
+        {
+          "code": "CAFUA015",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=PCpA_bexwCw",
+          "dest": "https://www.amazon.co.jp/stores/page/1F63D2AC-06A5-40EB-9828-21600B04F85F?channel=2605cafua&linkCode=sl2&tag=cafua-22&linkId=ba3d51819c90337b0e3406b92aad464c&ref_=as_li_ss_tl",
+          "latest_date": "2026-05-15"
+        },
+        {
+          "code": "CAFUA005",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=PCpA_bexwCw",
+          "dest": "https://www.amazon.co.jp/stores/page/1F63D2AC-06A5-40EB-9828-21600B04F85F?channel=2605cafua&linkCode=sl2&tag=cafua-22&linkId=ba3d51819c90337b0e3406b92aad464c&ref_=as_li_ss_tl",
+          "latest_date": "2026-05-15"
+        }
+      ]
+    },
+    {
+      "channel": "てるしゃん",
+      "subscribers": null,
+      "codes": [
+        {
+          "code": "BW204618",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=qsaJd1849_0",
+          "dest": "https://www.amazon.co.jp/dp/B0GTNLLFHP?th=1&linkCode=sl2&tag=teru9232-22&linkId=95c6122b117cccafbbd36fee25018a48&ref_=as_li_ss_tl",
+          "latest_date": "2026-06-28"
+        },
+        {
+          "code": "Beast",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=GXO_tkSoBd8",
+          "dest": "",
+          "latest_date": "2026-06-10"
+        }
+      ]
+    },
+    {
+      "channel": "kentoboss😈🃏",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "1tappy / わんたっぴー",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "でっぷ",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "YukaF",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "dtto.",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "えでん",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "みらたんぐ",
+      "subscribers": null,
+      "codes": [
+        {
+          "code": "miratan",
+          "brand": "バイタス",
+          "count": 2,
+          "video_url": "https://www.youtube.com/watch?v=REu_9bhJ6Ng",
+          "dest": "https://vitas.fitness/shop?argument=iQeeSDWZ&dmai=Xmira002",
+          "latest_date": "2026-05-10"
+        }
+      ]
+    },
+    {
+      "channel": "NIRU",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "カニヨイ",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "tttcheekyttt",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "Civ:Aちゃんねーる",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "4rufa",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "ゆきお",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "ゆらりまん",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "恭一郎のゲーム放送局",
+      "subscribers": null,
+      "codes": [
+        {
+          "code": "DL",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=P_CGvPgJRiY",
+          "dest": "",
+          "latest_date": "2026-06-27"
+        }
+      ]
+    },
+    {
+      "channel": "あれる",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "一ノ瀬うるは",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "エぺ文句　タケゾー",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "TIE_Gian",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "shomaru 7",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "YamatoN",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "ボドカ / Riddle - ゲーム実況",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "Lykq【らいか】",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "ZETA DIVISION",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "ふぉい / Foy",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "さつき satuking",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "メルトステラ",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "Taidaaaaa",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "Peace Apex",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "Xtsuvi",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "Ras Apex",
+      "subscribers": null,
+      "codes": []
+    },
+    {
+      "channel": "Euriece（ユリース）",
+      "subscribers": null,
+      "codes": []
     }
   ]
 }
