@@ -40,6 +40,22 @@ CHANNELS = [
     "@bazooka_okada",
     "@日本一の大胸筋ツカケン",
     "@joefitto",
+    "@mionigg",
+    "@Takomaruuun",
+    "@GamingYuyuyun",
+    "@JUNUJ",
+    "@VunnyCh",
+    "@IQ200YukaFFF",
+    "@gon_vl",
+    "@Lazvell",
+    "@NIRU1218",
+    "@tttcheekyttt",
+    "@4rufa",
+    "@gprodaisuki",
+    "@TIE_Ru",
+    "@oyakodonnosuke",
+    "@Masatoshi",
+    "@akamein",
 ]
 # 長尺・ショートそれぞれの最新何本を調べるか（合計で最大この2倍を確認）
 MAX_VIDEOS = 10
