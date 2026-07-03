@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-02 20:59",
+  "updated_at": "2026-07-03 17:41",
   "brand_urls": {
     "マイプロテイン": "https://www.myprotein.jp/",
     "VALX": "https://valx.jp/",
@@ -208,7 +208,7 @@
           "brand": "マイプロテイン",
           "count": 5,
           "video_url": "https://www.youtube.com/watch?v=r_qBt4HYSwk",
-          "dest": "https://www.myprotein.jp?affil=thg-society&c=partnerize&utm_medium=influencer&utm_campaign=1101l5498&pid=partnerize_int&is_retargeting=true&clickref=1101lDzdTAVX&af_reengagement_window=7d&af_dp=https%3A%2F%2Fwww.myprotein.jp%3Faffil%3Dthg-society%26utm_source%3DPz-1101l250304%26utm_medium%3Dinfluencer%26utm_campaign%3D1101l5498%26clickref%3D1101lDzdTAVX&af_click_lookback=7d&utm_source=Pz-1101l250304&clickid=1101lDzdTAVX&af_xp=custom",
+          "dest": "https://www.myprotein.jp?affil=thg-society&utm_campaign=1101l5498&c=partnerize&af_xp=custom&is_retargeting=true&utm_source=Pz-1101l250304&af_click_lookback=7d&af_reengagement_window=7d&af_dp=https%3A%2F%2Fwww.myprotein.jp%3Faffil%3Dthg-society%26utm_source%3DPz-1101l250304%26utm_medium%3Dinfluencer%26utm_campaign%3D1101l5498%26clickref%3D1101lDzm8x2L&clickref=1101lDzm8x2L&pid=partnerize_int&clickid=1101lDzm8x2L&utm_medium=influencer",
           "latest_date": "2026-06-29"
         },
         {
@@ -228,7 +228,7 @@
         {
           "code": "KANEKIN",
           "brand": "SUPLINX",
-          "count": 14,
+          "count": 13,
           "video_url": "https://www.youtube.com/watch?v=obY1RwBolw0",
           "dest": "https://www.deltafitness.shop/",
           "latest_date": "2026-06-18"
@@ -353,7 +353,7 @@
         {
           "code": "vitascoupon",
           "brand": "バイタス",
-          "count": 5,
+          "count": 3,
           "video_url": "https://www.youtube.com/watch?v=TQEpiW5Ks-o",
           "dest": "https://www.amazon.co.jp/VITAS-LIFEGUARD%EF%BC%88%E3%83%90%E3%82%A4%E3%82%BF%E3%82%B9%C3%97%E3%83%A9%E3%82%A4%E3%83%95%E3%82%AC%E3%83%BC%E3%83%89%EF%BC%89%E3%82%A2%E3%83%AB%E3%82%AE%E3%83%8B%E3%83%B3-%E3%83%A9%E3%82%A4%E3%83%95%E3%82%AC%E3%83%BC%E3%83%89%E9%A2%A8%E5%91%B3-L-%E3%82%A2%E3%83%AB%E3%82%AE%E3%83%8B%E3%83%B390000mg-L-%E3%82%B7%E3%83%88%E3%83%AB%E3%83%AA%E3%83%B324000mg/dp/B0FLD7S4LD?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1LEN76H7U0IQ3&dib=eyJ2IjoiMSJ9.FIKGavnDMi1YuDpHp4WMm7dss5oDn5ZbWTzesyRRdRTDDEl1gYyak1JfbLoRN4GtPzxeYxgVT602z-f3O9wzNpXvM9Po6bM-39jCxNFOswL7qDZ2lNFrKMuPQ5dBIBtQnzWKVEVaxa4qkFuiu7SjlZGAAqA_5IzVyYrm6uXrL_Hj3Qo8PIYpTs7RB3ZV2r5_MFgdSNyzmdUTGLZDER9vj8eHIMWdstkG_6szra0ID5lpTgylVYwLagJJXEYfnkJs3_Z7Xte5JeHSNQJ5Yqq9r2ljrYAntyumU2l_sDW85ck.g41-LHB7CT5eZwaYU44O8KXlRSytkSsV9vQnTfGs6r4&dib_tag=se&keywords=vitas&qid=1758962739&sprefix=vita,aps,178&sr=8-9&linkCode=ll1&tag=dean05-22&linkId=a9bb99b223200e96dd942082c669df59&language=ja_JP&ref_=as_li_ss_tl",
           "latest_date": "2026-05-31"
@@ -398,7 +398,7 @@
           "brand": "マイプロテイン",
           "count": 10,
           "video_url": "https://www.youtube.com/watch?v=O-IZ2Z3rhXA",
-          "dest": "https://www.myprotein.jp?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1782993522_be3cdeabfb74130275a9e0a6dc76a843",
+          "dest": "https://www.myprotein.jp?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1783068041_70260f59431e0dd591f8108c2bc01456",
           "latest_date": "2026-06-29"
         },
         {
@@ -454,7 +454,7 @@
           "brand": "マイプロテイン",
           "count": 10,
           "video_url": "https://www.youtube.com/watch?v=aL59dLAEqm8",
-          "dest": "https://www.myprotein.jp/p/sports-nutrition/myprotein-clear-whey-protein-white-soda-alt/16329626/?affil=thgppc&thg_ppc_campaign=12269835970&gclid=Cj0KCQjwgr_NBhDFARIsAHiUWr7sZzVIdUoIwrcGFLcAQuZuUTmfyZd1PIJ-iDfXTWdsygGbheVHqDYaAjjqEALw_wcB&affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1782993524_75471a75300d15b2a0b01b59042b558d",
+          "dest": "https://www.myprotein.jp/p/sports-nutrition/myprotein-clear-whey-protein-white-soda-alt/16329626/?affil=thgppc&thg_ppc_campaign=12269835970&gclid=Cj0KCQjwgr_NBhDFARIsAHiUWr7sZzVIdUoIwrcGFLcAQuZuUTmfyZd1PIJ-iDfXTWdsygGbheVHqDYaAjjqEALw_wcB&affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1783068043_e7c44871d13df09b745b505d0765ea26",
           "latest_date": "2026-07-01"
         },
         {
@@ -576,7 +576,7 @@
           "brand": "マイプロテイン",
           "count": 20,
           "video_url": "https://www.youtube.com/watch?v=ET8vZPQObVk",
-          "dest": "https://www.myprotein.jp/?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1782993532_845cfe4f95fcba17cdb022b262fc7715",
+          "dest": "https://www.myprotein.jp/?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1783068052_7a88c2e02b5a839024d47cf06113aa7e",
           "latest_date": "2026-07-02"
         }
       ]
@@ -803,9 +803,9 @@
           "code": "ZETALAZ",
           "brand": null,
           "count": 20,
-          "video_url": "https://www.youtube.com/watch?v=8ltKpxHFNZw",
+          "video_url": "https://www.youtube.com/watch?v=AuLA8yybaJY",
           "dest": "https://zetadivision.com/news/2021/11/24/7060",
-          "latest_date": "2026-06-30"
+          "latest_date": "2026-07-02"
         }
       ]
     },
@@ -819,7 +819,7 @@
           "count": 20,
           "video_url": "https://www.youtube.com/watch?v=gsDkJyccQOA",
           "dest": "https://www.twitch.tv/gprodaisuki",
-          "latest_date": "2026-07-02"
+          "latest_date": "2026-07-03"
         }
       ]
     },
@@ -1045,7 +1045,7 @@
           "brand": null,
           "count": 6,
           "video_url": "https://www.youtube.com/watch?v=u-yfhgf2QWA",
-          "dest": "https://www.sycom.co.jp/?a8=CD5kZDJIz0jb-4r7qPEu4wOOIb4fEuWQbPEOV4m3u3YIz057M0GN90EwFa4VGVrF63dumy5N6D5kKs00000014633001",
+          "dest": "https://www.sycom.co.jp/?a8=MISVmIytjsZ3APowTUKWP0uut3PNKWzO3UKubPQ.W.BtjsSw6sKMT-oMgsvbcbof2._WQXS72ISVGs00000014633001",
           "latest_date": "2026-06-20"
         },
         {
