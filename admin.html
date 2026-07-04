@@ -117,10 +117,8 @@
 </div>
 
 <script>
-// ===== 設定 =====
 var API_BASE = "https://coupon-overrides-api.jayendoh.workers.dev";
 
-// ===== 状態 =====
 var STATE = {
   rows: [],
   brandList: [],
@@ -194,10 +192,11 @@ function brandSelect(rowIndex, current) {
     var sel = (b === current) ? ' selected' : '';
     opts += '<option value="' + esc(b) + '"' + sel + '>' + esc(b) + '</option>';
   });
-  if (current && STATE.brandList.indexOf(current) === -1) {
+  if (current && current !== '__custom__' && STATE.brandList.indexOf(current) === -1) {
     opts += '<option value="' + esc(current) + '" selected>' + esc(current) + '（新規）</option>';
   }
-  opts += '<option value="__custom__">＋ 新しいブランド名を入力…</option>';
+  var customSel = (current === '__custom__') ? ' selected' : '';
+  opts += '<option value="__custom__"' + customSel + '>＋ 新しいブランド名を入力…</option>';
   return '<select onchange="onBrandChange(' + rowIndex + ', this)">' + opts + '</select>';
 }
 
@@ -206,6 +205,7 @@ function rowHtml(r, rowIndex) {
   var inp = STATE.inputs[k] || {};
   var curBrand = (inp.brand !== undefined) ? inp.brand : (STATE.overridesIdx[k] && STATE.overridesIdx[k].brand) || "";
   var curUrl = (inp.url !== undefined) ? inp.url : (STATE.overridesIdx[k] && STATE.overridesIdx[k].url) || "";
+  var isCustom = !!(inp.custom);
 
   var st = statusOf(r);
   var statuses = "";
@@ -213,15 +213,18 @@ function rowHtml(r, rowIndex) {
   if (st.needLink) statuses += '<span class="status link">リンクなし</span>';
   if (!st.needBrand && !st.needLink) statuses += '<span class="status ok">対応済み</span>';
 
+  var customHidden = isCustom ? '' : ' hidden';
+  var customVal = isCustom ? esc(curBrand) : '';
+
   return '<div class="row">'
     + '<div class="code-cell">'
     +   '<span class="code">' + esc(r.code) + '</span>'
     +   statuses
     +   '<span class="meta">' + esc(r.channel) + ' / ' + esc(r.date) + '</span>'
     + '</div>'
-    + '<div>' + brandSelect(rowIndex, curBrand)
-    +   '<input type="text" class="custom-brand hidden" placeholder="新しいブランド名"'
-    +     ' value="" oninput="onCustomBrand(' + rowIndex + ', this)">'
+    + '<div>' + brandSelect(rowIndex, isCustom ? '__custom__' : curBrand)
+    +   '<input type="text" class="custom-brand' + customHidden + '" placeholder="新しいブランド名"'
+    +     ' value="' + customVal + '" oninput="onCustomBrand(' + rowIndex + ', this)">'
     + '</div>'
     + '<div><input type="text" placeholder="購入ページURL（任意）" value="' + esc(curUrl) + '"'
     +     ' oninput="onUrlChange(' + rowIndex + ', this)"></div>'
@@ -247,16 +250,18 @@ function render() {
   updateDictArea();
 }
 
-// overrides を考慮した実効的な要対応状態を返す
 function statusOf(r) {
   var k = keyOf(r.code, r.channel);
   var ov = STATE.overridesIdx[k] || {};
-  var ovBrand = (ov.brand && ov.brand.trim()) ? ov.brand.trim() : "";
-  var ovUrl = (ov.url && ov.url.trim()) ? ov.url.trim() : "";
+  var inp = STATE.inputs[k] || {};
+  var curBrand = (inp.brand !== undefined) ? inp.brand : (ov.brand || "");
+  var curUrl = (inp.url !== undefined) ? inp.url : (ov.url || "");
+  curBrand = (curBrand && curBrand.trim()) ? curBrand.trim() : "";
+  curUrl = (curUrl && curUrl.trim()) ? curUrl.trim() : "";
   var brandUrls = STATE.brandUrls || {};
-  var needBrand = r.origBrandNull && !ovBrand;
-  var effBrand = ovBrand || r.brand;
-  var hasLink = r.origHasLink || !!ovUrl || !!(effBrand && brandUrls[effBrand]);
+  var needBrand = r.origBrandNull && !curBrand;
+  var effBrand = curBrand || r.brand;
+  var hasLink = r.origHasLink || !!curUrl || !!(effBrand && brandUrls[effBrand]);
   return { needBrand: needBrand, needLink: !hasLink };
 }
 
@@ -275,18 +280,27 @@ function onBrandChange(rowIndex, sel) {
   var k = keyFromIndex(rowIndex);
   var customInput = sel.parentNode.querySelector(".custom-brand");
   if (sel.value === "__custom__") {
+    // 手入力モードに切替。ここで render() すると入力欄が作り直されて
+    // フォーカスが外れ、打ち込めなくなるので、再描画しない。
+    ensureInput(k).custom = true;
+    ensureInput(k).brand = "";
     customInput.classList.remove("hidden");
+    customInput.value = "";
     customInput.focus();
-    ensureInput(k).brand = customInput.value.trim();
-  } else {
-    customInput.classList.add("hidden");
-    ensureInput(k).brand = sel.value;
+    setDirty(true);
+    return;
   }
+  ensureInput(k).custom = false;
+  customInput.classList.add("hidden");
+  ensureInput(k).brand = sel.value;
   setDirty(true);
   render();
 }
 function onCustomBrand(rowIndex, inp) {
   var k = keyFromIndex(rowIndex);
+  // 入力中は render() を呼ばない（入力欄が作り直されると打てなくなる）。
+  // 状態は保存時・フィルタ切替時に反映される。
+  ensureInput(k).custom = true;
   ensureInput(k).brand = inp.value.trim();
   setDirty(true);
 }
@@ -296,7 +310,6 @@ function onUrlChange(rowIndex, inp) {
   setDirty(true);
 }
 
-// ===== 辞書下書き生成 =====
 function newBrands() {
   var brandToUrl = {};
   Object.keys(STATE.overridesIdx).forEach(function (k) {
