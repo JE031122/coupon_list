@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-01 09:34",
+  "updated_at": "2026-10-02 09:49",
   "brand_urls": {
     "マイプロテイン": "https://www.myprotein.jp/",
     "VALX": "https://valx.jp/",
@@ -227,10 +227,10 @@
       "codes": [
         {
           "code": "KANEKIN",
-          "brand": "SUPLINX",
+          "brand": null,
           "count": 8,
           "video_url": "https://www.youtube.com/watch?v=2p3_dUdrFcU",
-          "dest": "https://www.suplinx.com/shop/e/ekanekin/?utm_source=youtube&utm_medium=referral&utm_campaign=kanekin_2026&utm_content=kanekin_cd2026olympia",
+          "dest": "https://x.gd/OicdD",
           "latest_date": "2026-09-26"
         }
       ]
@@ -308,7 +308,7 @@
           "brand": "キョクヨー",
           "count": 10,
           "video_url": "https://www.youtube.com/watch?v=XwMXb6YDIJw",
-          "dest": "https://store.kyokuyo.co.jp/password",
+          "dest": "https://store.kyokuyo.co.jp/collections/naasuke",
           "latest_date": "2026-09-29"
         }
       ]
@@ -356,7 +356,7 @@
           "brand": "マイプロテイン",
           "count": 10,
           "video_url": "https://www.youtube.com/watch?v=wgrtovVt3g0",
-          "dest": "https://www.myprotein.jp?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1790814849_6636d3b1149c522bf9d3a4828994e9e3",
+          "dest": "https://www.myprotein.jp?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1790902112_a91a3c1c55ddb858a831905007c3be27",
           "latest_date": "2026-09-30"
         },
         {
@@ -404,7 +404,7 @@
           "brand": "マクロファクター",
           "count": 10,
           "video_url": "https://www.youtube.com/watch?v=XkWF7v0-Fbg",
-          "dest": "https://apps.apple.com/jp/app/%E3%83%9E%E3%82%AF%E3%83%AD%E3%83%95%E3%82%A1%E3%82%AF%E3%82%BF%E3%83%BCpfc-%E3%83%80%E3%82%A4%E3%82%A8%E3%83%83%E3%83%88-%E9%A3%9F%E4%BA%8B%E7%AE%A1%E7%90%86-%E3%82%AB%E3%83%AD%E3%83%AA%E3%83%BC%E8%A8%88%E7%AE%97/id1553503471",
+          "dest": "https://x.gd/2U9IP",
           "latest_date": "2026-09-26"
         },
         {
@@ -428,7 +428,7 @@
           "brand": "マイプロテイン",
           "count": 10,
           "video_url": "https://www.youtube.com/watch?v=XkWF7v0-Fbg",
-          "dest": "https://www.myprotein.jp/p/sports-nutrition/myprotein-clear-whey-protein-white-soda-alt/16329626/?affil=thgppc&thg_ppc_campaign=12269835970&gclid=Cj0KCQjwgr_NBhDFARIsAHiUWr7sZzVIdUoIwrcGFLcAQuZuUTmfyZd1PIJ-iDfXTWdsygGbheVHqDYaAjjqEALw_wcB&affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1790814852_b70d3012bba92bc69b70098644e02bef",
+          "dest": "https://www.myprotein.jp/p/sports-nutrition/myprotein-clear-whey-protein-white-soda-alt/16329626/?affil=thgppc&thg_ppc_campaign=12269835970&gclid=Cj0KCQjwgr_NBhDFARIsAHiUWr7sZzVIdUoIwrcGFLcAQuZuUTmfyZd1PIJ-iDfXTWdsygGbheVHqDYaAjjqEALw_wcB&affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1790902113_cf0d9ccbc0ed5bafc7f4a6869a43c817",
           "latest_date": "2026-09-26"
         }
       ]
@@ -503,7 +503,7 @@
           "brand": "マイプロテイン",
           "count": 19,
           "video_url": "https://www.youtube.com/watch?v=d305tusnCBw",
-          "dest": "https://www.myprotein.jp/?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1790814854_7e6f336b4bcf9bee9cd6f0d32a40209f",
+          "dest": "https://www.myprotein.jp/?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1790902116_fc62a25ea9588b8ce94c9581b4033b71",
           "latest_date": "2026-09-29"
         }
       ]
@@ -583,7 +583,7 @@
           "latest_date": "2026-09-19"
         },
         {
-          "code": "NOGAMDN05",
+          "code": "NOGAMDN10",
           "brand": null,
           "count": 1,
           "video_url": "https://www.youtube.com/watch?v=2a89hlxOZWw",
@@ -753,10 +753,10 @@
         {
           "code": "ZETALAZ",
           "brand": null,
-          "count": 18,
+          "count": 19,
           "video_url": "https://www.youtube.com/watch?v=M0tkbh9cLSs",
           "dest": "https://zetadivision.com/news/2021/11/24/7060",
-          "latest_date": "2026-09-30"
+          "latest_date": "2026-10-01"
         },
         {
           "code": "NTE",
@@ -775,18 +775,10 @@
         {
           "code": "GPROU020",
           "brand": null,
-          "count": 19,
-          "video_url": "https://www.youtube.com/watch?v=rmrTO0cxpkE",
+          "count": 20,
+          "video_url": "https://www.youtube.com/watch?v=AbigILoD6sg",
           "dest": "",
-          "latest_date": "2026-10-01"
-        },
-        {
-          "code": "C623UOSE",
-          "brand": null,
-          "count": 1,
-          "video_url": "https://www.youtube.com/watch?v=LGfJOeu9MQ0",
-          "dest": "",
-          "latest_date": "2026-09-28"
+          "latest_date": "2026-10-02"
         }
       ]
     },
@@ -840,7 +832,7 @@
           "brand": null,
           "count": 1,
           "video_url": "https://www.youtube.com/watch?v=l5IvHo0RnL0",
-          "dest": "https://brain-sleep.com/products/pillow?utm_source=Twitch_pm&utm_medium=referral&utm_campaign=slp&argument=2tQSO4Al&dmai=a6a9a82071ab30",
+          "dest": "https://x.gd/uGbYM",
           "latest_date": "2026-09-10"
         },
         {
@@ -848,7 +840,7 @@
           "brand": null,
           "count": 1,
           "video_url": "https://www.youtube.com/watch?v=l5IvHo0RnL0",
-          "dest": "https://brain-sleep.com/products/comforter_allseasons?utm_source=Twitch_pm&utm_medium=referral&utm_campaign=slp&argument=2tQSO4Al&dmai=ESTW0619_7",
+          "dest": "https://x.gd/U5ogw",
           "latest_date": "2026-09-10"
         }
       ]
@@ -941,7 +933,7 @@
           "brand": null,
           "count": 1,
           "video_url": "https://www.youtube.com/watch?v=R2EfKdde9qA",
-          "dest": "https://www.amazon.co.jp/dp/B0GWJ318JB?linkCode=sl2&tag=uranusvt-22&linkId=e1fe997209d850d285ad901828c9d6f9&ref_=as_li_ss_tl&ascsubtag=srctok-497bf74dbe1d4c23&btn_type=ss&btn_ref=srctok-497bf74dbe1d4c23",
+          "dest": "https://www.amazon.co.jp/dp/B0GWJ318JB?linkCode=sl2&tag=uranusvt-22&linkId=e1fe997209d850d285ad901828c9d6f9&ref_=as_li_ss_tl&ascsubtag=srctok-2f5d244eba1bf85c&btn_type=ss&btn_ref=srctok-2f5d244eba1bf85c",
           "latest_date": "2026-08-08"
         }
       ]
@@ -1011,7 +1003,7 @@
           "brand": null,
           "count": 4,
           "video_url": "https://www.youtube.com/watch?v=IGkTGLiESOM",
-          "dest": "https://www.sycom.co.jp/?a8=1TeLrTZd5lSY72Vi083G2HKKdY2U3GcEY83Kg2oBGBzd5leiylVqXGVquGDg9gVP-BpGomev-TeL.s00000014633001",
+          "dest": "https://www.sycom.co.jp/?a8=RJ48fJ1ypSFIWbUcj3i0b5wwyIbKi0s7I3iwDbNt0tdypS4cMSUGgSlriSbDlDUEgtm0Na4GgJ48Hs00000014633001",
           "latest_date": "2026-09-26"
         },
         {
@@ -1019,7 +1011,7 @@
           "brand": null,
           "count": 4,
           "video_url": "https://www.youtube.com/watch?v=koZuuVzuZfs",
-          "dest": "https://www.sycom.co.jp/?a8=1TeLrTZd5lSY72Vi083G2HKKdY2U3GcEY83Kg2oBGBzd5leiylVqXGVquGDg9gVP-BpGomev-TeL.s00000014633001",
+          "dest": "https://www.sycom.co.jp/?a8=RJ48fJ1ypSFIWbUcj3i0b5wwyIbKi0s7I3iwDbNt0tdypS4cMSUGgSlriSbDlDUEgtm0Na4GgJ48Hs00000014633001",
           "latest_date": "2026-08-30"
         },
         {
@@ -1153,7 +1145,7 @@
           "brand": null,
           "count": 1,
           "video_url": "https://www.youtube.com/watch?v=KLOx9fNcwzw",
-          "dest": "https://jp.libernovo.com/products/libernovo-omni-dynamic-ergonomic-chair?utm_source=youtube&utm_medium=%E6%B0%B4%E5%9F%9C%E3%82%A2%E3%83%86%E3%83%AB%E3%82%A4&utm_campaign=jp_Autumn_Sale&utm_id=KOL&utm_content=long&utm_source=A8net&utm_medium=affiliate&a8=f3rzVrG9c3rjyWRkmXG.83Ujbj5.8X.eOWgkLR8743rzVrl9cX5zbX5peXienW_Wk3ikSslhVtihOWlNe-5ZSpr.83Uknrk9uXiC4sRuVsrpe96jgA.jRqBbCMyjjpADkU6ejq8jrMhbTj5.8X.eVWUzO3U8ejCCljCF7jCF8jCCkjRbijRbgjCCBjR0_jC6_jCCBjR0BjR0ljCCBjR0BjChTjCCBjR0_jC68j5peMRtmMg0Q9g0G9AWyWg87j49boRM7sRuJs00000027693001",
+          "dest": "https://jp.libernovo.com/products/libernovo-omni-dynamic-ergonomic-chair?utm_source=youtube&utm_medium=%E6%B0%B4%E5%9F%9C%E3%82%A2%E3%83%86%E3%83%AB%E3%82%A4&utm_campaign=jp_Autumn_Sale&utm_id=KOL&utm_content=long&utm_source=A8net&utm_medium=affiliate&a8=XN_DF_AwqN_IH8npClA7oNQIfIT7ol7s68Pp4noLZN_DF_zwqlTDflTJslusj898pNupdBz0FGu068zRskTtdJ_7oNQpj_pw2lucZBn2FB_JswSIPV7Inbvfc5HIIJVEpQSsIboI_50f3IT7ol7sF8QD6NQosIcczIcyLIcyoIccpInfuInfPIccvInY9IcS9IccvInYvInYzIccvInYvIc03IccvInY9IcSoITJs5nGC5PKL5HSv598H8PoLIZwf1n5LBn2is00000027693001",
           "latest_date": "2026-09-30"
         },
         {
@@ -1238,7 +1230,7 @@
           "brand": null,
           "count": 1,
           "video_url": "https://www.youtube.com/watch?v=d2dOxLicNVs",
-          "dest": "https://www.amazon.co.jp/dp/B0H8YN38YV?th=1&linkCode=sl2&tag=teru9232-22&linkId=91c560cd1966a5010e7b3569e6dbb6d2&ref_=as_li_ss_tl&ascsubtag=srctok-1901582ad3b4f02f&btn_type=ss&btn_ref=srctok-1901582ad3b4f02f",
+          "dest": "https://www.amazon.co.jp/dp/B0H8YN38YV?th=1&linkCode=sl2&tag=teru9232-22&linkId=91c560cd1966a5010e7b3569e6dbb6d2&ref_=as_li_ss_tl&ascsubtag=srctok-2fc00b2516bd390f&btn_type=ss&btn_ref=srctok-2fc00b2516bd390f",
           "latest_date": "2026-09-30"
         },
         {
@@ -1278,7 +1270,7 @@
           "brand": null,
           "count": 1,
           "video_url": "https://www.youtube.com/watch?v=QA4I5jgJv6A",
-          "dest": "https://brain-sleep.com/products/comforter_allseasons?utm_source=Twitch_pm&utm_medium=referral&utm_campaign=slp&argument=2tQSO4Al&dmai=ESTW0619_7",
+          "dest": "https://x.gd/U5ogw",
           "latest_date": "2026-08-17"
         }
       ]
@@ -1341,7 +1333,7 @@
           "brand": null,
           "count": 1,
           "video_url": "https://www.youtube.com/watch?v=Y4a5ocr6HeY",
-          "dest": "https://nte.perfectworld.com/?source_caller=bulk&onelink_id=RX86&af_click_lookback=30d&af_sub1=ob_YouTube_KOL_914&c=jp_kol&af_ad=ob_YouTube_KOL_914&pid=mkt&shortlink=KOL_JP_914",
+          "dest": "https://nte.perfectworld.com/?af_click_lookback=30d&shortlink=KOL_JP_914&source_caller=bulk&onelink_id=RX86&af_sub1=ob_YouTube_KOL_914&c=jp_kol&af_ad=ob_YouTube_KOL_914&pid=mkt",
           "latest_date": "2026-09-15"
         }
       ]
@@ -1410,7 +1402,7 @@
           "brand": null,
           "count": 1,
           "video_url": "https://www.youtube.com/watch?v=HnK9dcLnjwU",
-          "dest": "https://nte.perfectworld.com/?source_caller=bulk&onelink_id=RX86&af_sub1=ob_YouTube_KOL_892&c=jp_kol&af_ad=ob_YouTube_KOL_892&pid=mkt&af_click_lookback=30d&shortlink=KOL_JP_892",
+          "dest": "https://nte.perfectworld.com/?af_sub1=ob_YouTube_KOL_892&c=jp_kol&shortlink=KOL_JP_892&source_caller=bulk&onelink_id=RX86&af_ad=ob_YouTube_KOL_892&pid=mkt&af_click_lookback=30d",
           "latest_date": "2026-09-13"
         }
       ]
