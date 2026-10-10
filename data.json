@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-09 10:14",
+  "updated_at": "2026-10-10 09:52",
   "brand_urls": {
     "マイプロテイン": "https://www.myprotein.jp/",
     "VALX": "https://valx.jp/",
@@ -243,41 +243,41 @@
           "code": "318",
           "brand": "マイプロテイン",
           "count": 12,
-          "video_url": "https://www.youtube.com/watch?v=OTrT1TIdS5k",
+          "video_url": "https://www.youtube.com/watch?v=fFKqVBSaQ2s",
           "dest": "https://www.myprotein.jp/c/influencer/saiyaman/",
-          "latest_date": "2026-10-05"
+          "latest_date": "2026-10-09"
+        },
+        {
+          "code": "318318318",
+          "brand": "バイタス",
+          "count": 12,
+          "video_url": "https://www.youtube.com/watch?v=fFKqVBSaQ2s",
+          "dest": "https://www.amazon.co.jp/%EF%BC%B6%EF%BC%A9%EF%BC%B4%EF%BC%A1%EF%BC%B3-VITAS-%E3%83%90%E3%82%A4%E3%82%BF%E3%82%B9-%E3%82%AF%E3%83%AC%E3%82%A2%E3%83%AB%E3%82%AB%E3%83%AA%E3%83%B3%E3%83%8F%E3%82%A4%E3%83%91%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%B3%E3%82%B9-270%E7%B2%92/dp/B0BX63VK6C?&linkCode=sl1&tag=318599-22&linkId=318ef7b5994a090d88d88c4acf886550&language=ja_JP&ref_=as_li_ss_tl",
+          "latest_date": "2026-10-09"
         },
         {
           "code": "SAIYAMAN5",
           "brand": "ALL OUT",
           "count": 12,
-          "video_url": "https://www.youtube.com/watch?v=OTrT1TIdS5k",
+          "video_url": "https://www.youtube.com/watch?v=fFKqVBSaQ2s",
           "dest": "https://www.amazon.co.jp/stores/page/D1742841-82DD-4FF1-BB5A-D6D66BD392BB?channel=SAIYAMAN",
-          "latest_date": "2026-10-05"
+          "latest_date": "2026-10-09"
         },
         {
           "code": "uFitSAIYAMAN",
           "brand": null,
           "count": 12,
-          "video_url": "https://www.youtube.com/watch?v=OTrT1TIdS5k",
+          "video_url": "https://www.youtube.com/watch?v=fFKqVBSaQ2s",
           "dest": "",
-          "latest_date": "2026-10-05"
+          "latest_date": "2026-10-09"
         },
         {
           "code": "PEKOSAIYA",
           "brand": "ペコダックチキン",
           "count": 12,
-          "video_url": "https://www.youtube.com/watch?v=OTrT1TIdS5k",
+          "video_url": "https://www.youtube.com/watch?v=fFKqVBSaQ2s",
           "dest": "https://pekodak-japan.com/?utm_source=youtube&utm_medium=social&utm_campaign=gift-saiyaman",
-          "latest_date": "2026-10-05"
-        },
-        {
-          "code": "318318318",
-          "brand": "バイタス",
-          "count": 11,
-          "video_url": "https://www.youtube.com/watch?v=OTrT1TIdS5k",
-          "dest": "https://www.amazon.co.jp/s?k=%E3%83%90%E3%82%A4%E3%82%BF%E3%82%B9&i=black-friday&__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=RK61HDIUTBA5&sprefix=%E3%83%90%E3%82%A4%E3%82%BF%E3%82%B9,black-friday,145&linkCode=sl2&tag=318599-22&linkId=1e8d68bebd493e5a7a5c09c23f285ad3&language=ja_JP&ref_=as_li_ss_tl",
-          "latest_date": "2026-10-05"
+          "latest_date": "2026-10-09"
         },
         {
           "code": "318318318V20",
@@ -308,7 +308,7 @@
           "brand": "バイタス",
           "count": 10,
           "video_url": "https://www.youtube.com/watch?v=0HfozNJrtYo",
-          "dest": "https://www.amazon.co.jp/VITAS%EF%BC%88%E3%83%90%E3%82%A4%E3%82%BF%E3%82%B9%EF%BC%89-VITABURN-%E3%80%90%E3%83%8E%E3%83%B3%E3%82%AB%E3%83%95%E3%82%A7%E3%82%A4%E3%83%B3%E3%80%91-%E3%82%A2%E3%83%83%E3%82%AB%E3%83%BC%E3%83%9E%E3%83%B3%E3%82%B7%E3%82%A2-%E3%82%B3%E3%82%A8%E3%83%B3%E3%82%B6%E3%82%A4%E3%83%A0Q10/dp/B0H29C434P?linkCode=sl2&tag=shapefit22-22&linkId=77a19e64d5842e0b8a8976bb1f396493&ref_=as_li_ss_tl&ascsubtag=srctok-1c305df198f55374&btn_type=ss&btn_ref=srctok-1c305df198f55374",
+          "dest": "https://www.amazon.co.jp/VITAS%EF%BC%88%E3%83%90%E3%82%A4%E3%82%BF%E3%82%B9%EF%BC%89-VITABURN-%E3%80%90%E3%83%8E%E3%83%B3%E3%82%AB%E3%83%95%E3%82%A7%E3%82%A4%E3%83%B3%E3%80%91-%E3%82%A2%E3%83%83%E3%82%AB%E3%83%BC%E3%83%9E%E3%83%B3%E3%82%B7%E3%82%A2-%E3%82%B3%E3%82%A8%E3%83%B3%E3%82%B6%E3%82%A4%E3%83%A0Q10/dp/B0H29C434P?linkCode=sl2&tag=shapefit22-22&linkId=77a19e64d5842e0b8a8976bb1f396493&ref_=as_li_ss_tl&ascsubtag=srctok-77370c8ea231268f&btn_type=ss&btn_ref=srctok-77370c8ea231268f",
           "latest_date": "2026-10-08"
         },
         {
@@ -317,14 +317,6 @@
           "count": 10,
           "video_url": "https://www.youtube.com/watch?v=0HfozNJrtYo",
           "dest": "https://store.kyokuyo.co.jp/collections/naasuke",
-          "latest_date": "2026-10-08"
-        },
-        {
-          "code": "naasukeV15",
-          "brand": "バイタス",
-          "count": 1,
-          "video_url": "https://www.youtube.com/watch?v=0HfozNJrtYo",
-          "dest": "https://www.amazon.co.jp/VITAS-VITAS%EF%BC%88%E3%83%90%E3%82%A4%E3%82%BF%E3%82%B9%EF%BC%89%E3%83%AA%E3%83%9D%E3%82%BD%E3%83%BC%E3%83%A0%E3%83%93%E3%82%BF%E3%83%9F%E3%83%B3D%EF%BC%86V-K-60%E7%B2%92-60%E6%97%A5%E5%88%86/dp/B0HGFR8YN3?crid=C24DFEF7JF96&dib=eyJ2IjoiMSJ9.KifFpFsfxmko0mqK32akgW3_2-aV_Nv8wexHIvk3IDA1hn8JG0nYFPqWr1-X27ilrq4MAJa5xAyXIqHAjKvcL7qaHNpwYdx15-PeHwqfuNFWcRBLcyCZv0EAS4ZgpYZx68TV_9x-p3vTDoFh9Bp9oUsUpAa-yYUEj_GqN0o81iQYlix6BZ7HdeQDtKFTaaPoIvJZrcTnJdnA187PhPOVEMJH8MJ0MmhlRahAp3YWppu0LJABqvXjKVbn-FvAK1BOGIM7UoDOlwqWDr7i1xfGNAE4pOXKjCBdYUmUydmU-YI.WyKl8v7fer-FQgGV1bwBxMyJp2fBpbfS81IgPEwXip4&dib_tag=se&keywords=%E3%83%93%E3%82%BF%E3%83%9F%E3%83%B3d%26k+vitas&qid=1790816443&sprefix=%2Caps%2C235&sr=8-5&linkCode=sl2&tag=shapefit22-22&linkId=89f5e93a47a848e292f9cf6a427d4b0b&ref_=as_li_ss_tl&ascsubtag=srctok-1a8f0a67a68a7a36&btn_type=ss&btn_ref=srctok-1a8f0a67a68a7a36",
           "latest_date": "2026-10-08"
         }
       ]
@@ -372,7 +364,7 @@
           "brand": "マイプロテイン",
           "count": 9,
           "video_url": "https://www.youtube.com/watch?v=G8VXeg--rEU",
-          "dest": "https://www.myprotein.jp?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1791508463_91cd5229556b3513ca9fda1df9075807",
+          "dest": "https://www.myprotein.jp?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1791593502_dcc8a1550aecd37aaae9b41ba1a25388",
           "latest_date": "2026-10-02"
         },
         {
@@ -436,7 +428,7 @@
           "brand": "マイプロテイン",
           "count": 10,
           "video_url": "https://www.youtube.com/watch?v=pdZ7d89ZnrQ",
-          "dest": "https://www.myprotein.jp/p/sports-nutrition/myprotein-clear-whey-protein-white-soda-alt/16329626/?affil=thgppc&thg_ppc_campaign=12269835970&gclid=Cj0KCQjwgr_NBhDFARIsAHiUWr7sZzVIdUoIwrcGFLcAQuZuUTmfyZd1PIJ-iDfXTWdsygGbheVHqDYaAjjqEALw_wcB&affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1791508466_41073036b5535a056e7ce943de7f6bea",
+          "dest": "https://www.myprotein.jp/p/sports-nutrition/myprotein-clear-whey-protein-white-soda-alt/16329626/?affil=thgppc&thg_ppc_campaign=12269835970&gclid=Cj0KCQjwgr_NBhDFARIsAHiUWr7sZzVIdUoIwrcGFLcAQuZuUTmfyZd1PIJ-iDfXTWdsygGbheVHqDYaAjjqEALw_wcB&affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1791593505_7a08b244da52c7cb7c5d967a18900239",
           "latest_date": "2026-10-03"
         }
       ]
@@ -509,9 +501,9 @@
         {
           "code": "HAGA",
           "brand": "マイプロテイン",
-          "count": 20,
+          "count": 19,
           "video_url": "https://www.youtube.com/watch?v=kq3H0mXQZS4",
-          "dest": "https://www.myprotein.jp/?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1791508468_29e0f333db12c487d299f4a1436d835f",
+          "dest": "https://www.myprotein.jp/?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1791593508_f339c01cb144fb12aa63393a8d966adc",
           "latest_date": "2026-10-08"
         }
       ]
@@ -542,7 +534,7 @@
         {
           "code": "shin",
           "brand": "バイタス",
-          "count": 8,
+          "count": 7,
           "video_url": "https://www.youtube.com/watch?v=O7o7VgAaNRs",
           "dest": "https://vitas.fitness/shop?argument=iQeeSDWZ&dmai=YTshin002",
           "latest_date": "2026-10-05"
@@ -550,7 +542,7 @@
         {
           "code": "shin",
           "brand": "SAIJIRUSHI",
-          "count": 8,
+          "count": 7,
           "video_url": "https://www.youtube.com/watch?v=O7o7VgAaNRs",
           "dest": "https://saijirushi.co.jp/",
           "latest_date": "2026-10-05"
@@ -624,9 +616,9 @@
           "code": "TESTOSTERONE",
           "brand": "バイタス",
           "count": 19,
-          "video_url": "https://www.youtube.com/watch?v=BaDMqB_hvtk",
+          "video_url": "https://www.youtube.com/watch?v=1qV4k2CGZVw",
           "dest": "https://vitas.fitness/shop?argument=iQeeSDWZ&dmai=YTOGITANI",
-          "latest_date": "2026-10-08"
+          "latest_date": "2026-10-09"
         }
       ]
     },
@@ -637,18 +629,18 @@
         {
           "code": "DAIKYOUKIN2",
           "brand": "AMBiQUE",
-          "count": 20,
+          "count": 19,
           "video_url": "https://www.youtube.com/watch?v=o0uRVpHHv3w",
           "dest": "https://www.amazon.co.jp/dp/B0DBZJ93QN/ref=cm_sw_r_as_gl_api_gl_i_dl_HBT81086B3F7AGSPFACB?linkCode=ml1&tag=kenta111444-22",
-          "latest_date": "2026-10-08"
+          "latest_date": "2026-10-09"
         },
         {
           "code": "TSUKAKEN10",
           "brand": "ALL OUT",
-          "count": 20,
+          "count": 19,
           "video_url": "https://www.youtube.com/watch?v=o0uRVpHHv3w",
           "dest": "https://www.amazon.co.jp/stores/page/D1742841-82DD-4FF1-BB5A-D6D66BD392BB?channel=tsukaken",
-          "latest_date": "2026-10-08"
+          "latest_date": "2026-10-09"
         },
         {
           "code": "PEKOKEN",
@@ -746,9 +738,9 @@
           "code": "ZETALAZ",
           "brand": null,
           "count": 19,
-          "video_url": "https://www.youtube.com/watch?v=jsLmrhgIXcs",
+          "video_url": "https://www.youtube.com/watch?v=6zSCzxnL-sI",
           "dest": "https://zetadivision.com/news/2021/11/24/7060",
-          "latest_date": "2026-10-08"
+          "latest_date": "2026-10-09"
         }
       ]
     },
@@ -760,9 +752,9 @@
           "code": "GPROU020",
           "brand": null,
           "count": 19,
-          "video_url": "https://www.youtube.com/watch?v=HyTmwR-ouAI",
+          "video_url": "https://www.youtube.com/watch?v=c1KdU53S8QE",
           "dest": "",
-          "latest_date": "2026-10-09"
+          "latest_date": "2026-10-10"
         }
       ]
     },
@@ -953,7 +945,7 @@
           "brand": null,
           "count": 5,
           "video_url": "https://www.youtube.com/watch?v=Nt6_-SD0U54",
-          "dest": "https://www.sycom.co.jp/?a8=2Co3OCRMmFQ9TvKs_icjvpzzM9vwcjZW9icz.vuhjhyMmFoskFopDqKM8qH.S.K7DhajuLo0DCo35s00000014633001",
+          "dest": "https://www.sycom.co.jp/?a8=fsRuVsrpeMkziAgtlqB9AC..pzADB9h3zqB.WAbj9j5peMRtmMRCmMBC_9_WyWg87j49boRI7sRuJs00000014633001",
           "latest_date": "2026-10-03"
         },
         {
@@ -961,7 +953,7 @@
           "brand": null,
           "count": 3,
           "video_url": "https://www.youtube.com/watch?v=koZuuVzuZfs",
-          "dest": "https://www.sycom.co.jp/?a8=2Co3OCRMmFQ9TvKs_icjvpzzM9vwcjZW9icz.vuhjhyMmFoskFopDqKM8qH.S.K7DhajuLo0DCo35s00000014633001",
+          "dest": "https://www.sycom.co.jp/?a8=fsRuVsrpeMkziAgtlqB9AC..pzADB9h3zqB.WAbj9j5peMRtmMRCmMBC_9_WyWg87j49boRI7sRuJs00000014633001",
           "latest_date": "2026-08-30"
         },
         {
@@ -1091,11 +1083,19 @@
       "subscribers": null,
       "codes": [
         {
+          "code": "ATERUI20",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=yGQNEN-yDrc",
+          "dest": "https://www.amazon.co.jp/RAPOO-8K%E3%83%9D%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0%E3%83%AC%E3%83%BC%E3%83%88-%E6%9C%80%E5%A4%A7750%E6%99%82%E9%96%93%E3%81%AE%E3%83%90%E3%83%83%E3%83%86%E3%83%AA%E3%83%BC%E5%AF%BF%E5%91%BD-1%E5%84%84%E5%9B%9E%E3%81%AE%E3%83%A1%E3%82%AB%E3%83%8B%E3%82%AB%E3%83%AB%E3%82%B9%E3%82%A4%E3%83%83%E3%83%81-10%E5%80%8B%E3%81%AE%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9E%E3%83%96%E3%83%AB%E3%83%9C%E3%82%BF%E3%83%B3/dp/B0FWBXG8WG?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=15CBSWYYPV4BL&dib=eyJ2IjoiMSJ9.7uhJ9pwbZ3y2VCqL6Wx7T40tTBAto6DdUkVcVAuuPpZ4nbMHUNIGY-3RAjmFleTONtmAOuKR2hMJPbxHnPFsgz5MWkbGe_OiOo9EuxdcBXF2Hp_sf8p_rfCq3U02NoOkyXEXcMUF4SydsaAxnVskH4domV4uOExtj3sUigPQMTwE-hjqrthRvYILcxhMCJsYN0Hlo6pRODyC1UJXzbicqxHZs3cSneA8_NKhzOB0OrTF7BZRFlrgx2Y-2vYs8uKFt0tDvoG2Mi3MqqK0ydN8GmVKJOZTUaU5whHIjSY_CDg.miFg77gEXE0vbwf2kHfTeyCsScg-Ag5AfhG2SXpjS1A&dib_tag=se&keywords=rapoo%2Bvt&qid=1791521102&sprefix=rapoo%2Bvt%2Caps%2C252&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&linkCode=sl2&tag=mytwitter0fb-22&linkId=551ecf5e0a46886559c0a3cd7185b0ed&ref_=as_li_ss_tl&ascsubtag=srctok-55641aefe3ed3053&btn_type=ss&btn_ref=srctok-55641aefe3ed3053",
+          "latest_date": "2026-10-09"
+        },
+        {
           "code": "AteruiMizuno",
           "brand": null,
           "count": 1,
           "video_url": "https://www.youtube.com/watch?v=KLOx9fNcwzw",
-          "dest": "https://jp.libernovo.com/products/libernovo-omni-dynamic-ergonomic-chair?utm_source=youtube&utm_medium=%E6%B0%B4%E5%9F%9C%E3%82%A2%E3%83%86%E3%83%AB%E3%82%A4&utm_campaign=jp_Autumn_Sale&utm_id=KOL&utm_content=long&utm_source=A8net&utm_medium=affiliate&a8=znwaHwFPfnw-81IiqDF4hn5-l-N4hD4vd1CitIhZGnwaHwEPfDNalDNuvDrvK1g1inri7OEUHVrUd1EjvJNA7uw4hn5iKwiP_DrbGOI_HOwuvP.-Cy4-IX6lb38--uyei5.v-Xh-w3UlR-N4hD4vH15adn5hv-bbE-bWZ-bWh-bbi-Ilr-IlC-bb6-IQg-b.g-bb6-IQ6-IQE-bb6-IQ6-bUR-bb6-IQg-b.h-Nuv3IVq3IbZSCuq3R181ChZ-GPl0I3ZOI_2s00000027693001",
+          "dest": "https://jp.libernovo.com/products/libernovo-omni-dynamic-ergonomic-chair?utm_source=youtube&utm_medium=%E6%B0%B4%E5%9F%9C%E3%82%A2%E3%83%86%E3%83%AB%E3%82%A4&utm_campaign=jp_Autumn_Sale&utm_id=KOL&utm_content=long&utm_source=A8net&utm_medium=affiliate&a8=0eGQ9GrVoeGOgmB.WYrkCelOhOEkCYk3jmy.JBCpieGQ9GUVoYEQhYE73Y43vmAm.e4.KNUb924bjmUs3dEuK7GkCel.vG.VZY48iNBZ9NG73VIOy_kOB1Rh8DgOO7_M.lI3O1COGDbhaOEkCYk39mlQjelC3O88UO8wpO8wCO88.OBh4OBhyO88ROBfAO8IAO88ROBfROBfUO88ROBfRO8baO88ROBfAO8ICOE73DB2WDB8WDR8An_mgmyCpOiVhcBDpNBZLs00000027693001",
           "latest_date": "2026-09-30"
         },
         {
@@ -1145,6 +1145,14 @@
           "latest_date": "2026-09-18"
         },
         {
+          "code": "CAFUAQS40",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=cHqRQTJvKDc",
+          "dest": "",
+          "latest_date": "2026-10-09"
+        },
+        {
           "code": "10CAFUEA",
           "brand": null,
           "count": 1,
@@ -1187,7 +1195,7 @@
           "brand": null,
           "count": 1,
           "video_url": "https://www.youtube.com/watch?v=d2dOxLicNVs",
-          "dest": "https://www.amazon.co.jp/dp/B0H8YN38YV?th=1&linkCode=sl2&tag=teru9232-22&linkId=91c560cd1966a5010e7b3569e6dbb6d2&ref_=as_li_ss_tl&ascsubtag=srctok-5422ddf6081c9473&btn_type=ss&btn_ref=srctok-5422ddf6081c9473",
+          "dest": "https://www.amazon.co.jp/dp/B0H8YN38YV?th=1&linkCode=sl2&tag=teru9232-22&linkId=91c560cd1966a5010e7b3569e6dbb6d2&ref_=as_li_ss_tl&ascsubtag=srctok-0226303807d26fc8&btn_type=ss&btn_ref=srctok-0226303807d26fc8",
           "latest_date": "2026-09-30"
         },
         {
@@ -1320,16 +1328,7 @@
     {
       "channel": "YamatoN",
       "subscribers": null,
-      "codes": [
-        {
-          "code": "NTE",
-          "brand": null,
-          "count": 1,
-          "video_url": "https://www.youtube.com/watch?v=HnK9dcLnjwU",
-          "dest": "https://nte.perfectworld.com/?c=jp_kol&af_ad=ob_YouTube_KOL_892&pid=mkt&shortlink=KOL_JP_892&source_caller=bulk&onelink_id=RX86&af_click_lookback=30d&af_sub1=ob_YouTube_KOL_892",
-          "latest_date": "2026-09-13"
-        }
-      ]
+      "codes": []
     },
     {
       "channel": "ボドカ / Riddle - ゲーム実況",
