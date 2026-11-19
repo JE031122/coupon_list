@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-18 11:55",
+  "updated_at": "2026-11-19 11:35",
   "brand_urls": {
     "マイプロテイン": "https://www.myprotein.jp/",
     "VALX": "https://valx.jp/",
@@ -220,7 +220,7 @@
         {
           "code": "KANEKIN",
           "brand": "SUPLINX",
-          "count": 5,
+          "count": 4,
           "video_url": "https://www.youtube.com/watch?v=v_N0z0MjsLw",
           "dest": "https://www.suplinx.com/shop/e/ekanekin/?utm_source=youtube&utm_medium=referral&utm_campaign=kanekin_2026&utm_content=kanekin_cd2026olympia",
           "latest_date": "2026-10-07"
@@ -234,7 +234,7 @@
         {
           "code": "318",
           "brand": "マイプロテイン",
-          "count": 11,
+          "count": 10,
           "video_url": "https://www.youtube.com/watch?v=M190yirS52w",
           "dest": "https://www.myprotein.jp/c/influencer/saiyaman/",
           "latest_date": "2026-11-15"
@@ -242,7 +242,7 @@
         {
           "code": "318318318",
           "brand": "バイタス",
-          "count": 9,
+          "count": 8,
           "video_url": "https://www.youtube.com/watch?v=M190yirS52w",
           "dest": "https://www.amazon.co.jp/%EF%BC%B6%EF%BC%A9%EF%BC%B4%EF%BC%A1%EF%BC%B3-VITAS-%E3%83%90%E3%82%A4%E3%82%BF%E3%82%B9-%E3%82%AF%E3%83%AC%E3%82%A2%E3%83%AB%E3%82%AB%E3%83%AA%E3%83%B3%E3%83%8F%E3%82%A4%E3%83%91%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%B3%E3%82%B9-270%E7%B2%92/dp/B0BX63VK6C?&linkCode=sl1&tag=318599-22&linkId=318ef7b5994a090d88d88c4acf886550&language=ja_JP&ref_=as_li_ss_tl",
           "latest_date": "2026-11-15"
@@ -250,7 +250,7 @@
         {
           "code": "SAIYAMAN5",
           "brand": "ALL OUT",
-          "count": 9,
+          "count": 8,
           "video_url": "https://www.youtube.com/watch?v=M190yirS52w",
           "dest": "https://www.amazon.co.jp/stores/page/D1742841-82DD-4FF1-BB5A-D6D66BD392BB?channel=SAIYAMAN",
           "latest_date": "2026-11-15"
@@ -258,7 +258,7 @@
         {
           "code": "uFitSAIYAMAN",
           "brand": null,
-          "count": 9,
+          "count": 8,
           "video_url": "https://www.youtube.com/watch?v=M190yirS52w",
           "dest": "",
           "latest_date": "2026-11-15"
@@ -266,7 +266,7 @@
         {
           "code": "PEKOSAIYA",
           "brand": "ペコダックチキン",
-          "count": 9,
+          "count": 8,
           "video_url": "https://www.youtube.com/watch?v=M190yirS52w",
           "dest": "https://pekodak-japan.com/?utm_source=youtube&utm_medium=social&utm_campaign=gift-saiyaman",
           "latest_date": "2026-11-15"
@@ -348,7 +348,7 @@
           "brand": "マイプロテイン",
           "count": 9,
           "video_url": "https://www.youtube.com/watch?v=fxFpoSDzsRw",
-          "dest": "https://www.myprotein.jp?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1794970479_35ba56b7f30f037ca0251d48b9ffd38f",
+          "dest": "https://www.myprotein.jp?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1795055683_adc4e4d2c822dfd467c3c0e8edd64a16",
           "latest_date": "2026-10-24"
         },
         {
@@ -404,7 +404,7 @@
           "brand": "マイプロテイン",
           "count": 10,
           "video_url": "https://www.youtube.com/watch?v=Sd1u7l7RSlY",
-          "dest": "https://www.myprotein.jp/p/sports-nutrition/myprotein-clear-whey-protein-white-soda-alt/16329626/?affil=thgppc&thg_ppc_campaign=12269835970&gclid=Cj0KCQjwgr_NBhDFARIsAHiUWr7sZzVIdUoIwrcGFLcAQuZuUTmfyZd1PIJ-iDfXTWdsygGbheVHqDYaAjjqEALw_wcB&affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1794970482_bff27826f96fee9a335dbb87c0756bbb",
+          "dest": "https://www.myprotein.jp/p/sports-nutrition/myprotein-clear-whey-protein-white-soda-alt/16329626/?affil=thgppc&thg_ppc_campaign=12269835970&gclid=Cj0KCQjwgr_NBhDFARIsAHiUWr7sZzVIdUoIwrcGFLcAQuZuUTmfyZd1PIJ-iDfXTWdsygGbheVHqDYaAjjqEALw_wcB&affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1795055685_57b7256d0f318f3f2e8a27cf91dcc04f",
           "latest_date": "2026-11-14"
         }
       ]
@@ -429,26 +429,26 @@
         {
           "code": "SHIELD2606",
           "brand": "男DAYS",
-          "count": 1,
-          "video_url": "https://www.youtube.com/watch?v=o7Q2eyi8PP4",
+          "count": 2,
+          "video_url": "https://www.youtube.com/watch?v=MYW_YZ1ffMI",
           "dest": "https://x.gd/qBy1f",
-          "latest_date": "2026-11-12"
+          "latest_date": "2026-11-18"
         },
         {
           "code": "FLOW2606",
           "brand": "男DAYS",
-          "count": 1,
-          "video_url": "https://www.youtube.com/watch?v=o7Q2eyi8PP4",
+          "count": 2,
+          "video_url": "https://www.youtube.com/watch?v=MYW_YZ1ffMI",
           "dest": "https://item.rakuten.co.jp/5star-honpo/h-trf001/",
-          "latest_date": "2026-11-12"
+          "latest_date": "2026-11-18"
         },
         {
           "code": "PRO202606",
           "brand": "男DAYS",
-          "count": 1,
-          "video_url": "https://www.youtube.com/watch?v=o7Q2eyi8PP4",
+          "count": 2,
+          "video_url": "https://www.youtube.com/watch?v=MYW_YZ1ffMI",
           "dest": "https://item.rakuten.co.jp/levante/h-trp001/",
-          "latest_date": "2026-11-12"
+          "latest_date": "2026-11-18"
         },
         {
           "code": "ARUARU2610",
@@ -473,9 +473,9 @@
           "code": "JIN10",
           "brand": null,
           "count": 10,
-          "video_url": "https://www.youtube.com/watch?v=VOZGlvzuxgo",
+          "video_url": "https://www.youtube.com/watch?v=xdhRfBg6Gxo",
           "dest": "",
-          "latest_date": "2026-11-16"
+          "latest_date": "2026-11-18"
         },
         {
           "code": "LANSFORD",
@@ -509,9 +509,9 @@
           "code": "HAGA",
           "brand": "マイプロテイン",
           "count": 20,
-          "video_url": "https://www.youtube.com/watch?v=bH9ze2NpePk",
-          "dest": "https://www.myprotein.jp/?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1794970509_bb89f36eac639b67767580110de6b45b",
-          "latest_date": "2026-11-17"
+          "video_url": "https://www.youtube.com/watch?v=gAPNmVTbD-I",
+          "dest": "https://www.myprotein.jp/?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1795055711_fea26528ed5fb87de08aedbd66d5bc87",
+          "latest_date": "2026-11-18"
         }
       ]
     },
@@ -586,10 +586,10 @@
         {
           "code": "SGIR",
           "brand": "iHerb",
-          "count": 6,
-          "video_url": "https://www.youtube.com/watch?v=KPdy80J_4n8",
+          "count": 7,
+          "video_url": "https://www.youtube.com/watch?v=ap9iElNgATA",
           "dest": "",
-          "latest_date": "2026-11-13"
+          "latest_date": "2026-11-18"
         }
       ]
     },
@@ -622,7 +622,7 @@
           "count": 20,
           "video_url": "https://www.youtube.com/watch?v=QF463UCEDlw",
           "dest": "https://www.amazon.co.jp/stores/page/D1742841-82DD-4FF1-BB5A-D6D66BD392BB?channel=tsukaken",
-          "latest_date": "2026-11-17"
+          "latest_date": "2026-11-18"
         },
         {
           "code": "DAIKYOUKIN3",
@@ -630,7 +630,7 @@
           "count": 11,
           "video_url": "https://www.youtube.com/watch?v=QF463UCEDlw",
           "dest": "https://www.amazon.co.jp/dp/B0CFY3RKRY/ref=cm_sw_r_as_gl_api_gl_i_Q46XCP5P939DCWB6G3Q8?linkCode=ml1&tag=kenta111444-22",
-          "latest_date": "2026-11-17"
+          "latest_date": "2026-11-18"
         },
         {
           "code": "DAIKYOUKIN2",
@@ -704,17 +704,17 @@
           "code": "JUNUJ",
           "brand": null,
           "count": 10,
-          "video_url": "https://www.youtube.com/watch?v=VwY59MPE4Vc",
+          "video_url": "https://www.youtube.com/watch?v=WNyZYDrZxbc",
           "dest": "https://fantechworld.com/?sca_ref=5631715.USYJiQdsjF",
-          "latest_date": "2026-11-11"
+          "latest_date": "2026-11-18"
         },
         {
           "code": "JuNuJ1010",
           "brand": null,
           "count": 10,
-          "video_url": "https://www.youtube.com/watch?v=VwY59MPE4Vc",
+          "video_url": "https://www.youtube.com/watch?v=WNyZYDrZxbc",
           "dest": "https://wallhack.com/?dt_id=1253790",
-          "latest_date": "2026-11-11"
+          "latest_date": "2026-11-18"
         }
       ]
     },
@@ -750,9 +750,9 @@
           "code": "GPROU020",
           "brand": null,
           "count": 20,
-          "video_url": "https://www.youtube.com/watch?v=Ie0ZmT4955Y",
+          "video_url": "https://www.youtube.com/watch?v=IbMVBExqQvQ",
           "dest": "",
-          "latest_date": "2026-11-18"
+          "latest_date": "2026-11-19"
         }
       ]
     },
@@ -801,14 +801,6 @@
           "video_url": "https://www.youtube.com/watch?v=o5Wuas309hE",
           "dest": "",
           "latest_date": "2026-10-21"
-        },
-        {
-          "code": "kaikae3000",
-          "brand": null,
-          "count": 1,
-          "video_url": "https://www.youtube.com/watch?v=WoFoX_A-Mt8",
-          "dest": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3598508&pid=887582117&vc_url=https%3A%2F%2Fwww.dospara.co.jp%2FTC50%2FMC25269.html",
-          "latest_date": "2026-09-20"
         }
       ]
     },
@@ -900,15 +892,15 @@
         {
           "code": "Cospa1_2026FW",
           "brand": null,
-          "count": 9,
+          "count": 8,
           "video_url": "https://www.youtube.com/watch?v=spJnpqHu8gU",
-          "dest": "https://www.sycom.co.jp/?a8=SG_fMGlctJC7bQaY.OADQB88c7QLADI27OA8NQ6wDwictJ_YsDagUJaBzDQNTNaRowhD6n_goG_fqs00000014633001",
+          "dest": "https://www.sycom.co.jp/?a8=adkgodm_SnrBw8bHsD.c8lGG_B8v.c5KBD.GY8EJcJj_SnkHXckarckHCc6YhYbUAJFcEQkiAdkg9s00000014633001",
           "latest_date": "2026-11-15"
         },
         {
           "code": "cospa1_2407",
           "brand": null,
-          "count": 9,
+          "count": 8,
           "video_url": "https://www.youtube.com/watch?v=spJnpqHu8gU",
           "dest": "https://shop.mining-base.co.jp/",
           "latest_date": "2026-11-15"
