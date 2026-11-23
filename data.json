@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-22 10:19",
+  "updated_at": "2026-11-23 10:43",
   "brand_urls": {
     "マイプロテイン": "https://www.myprotein.jp/",
     "VALX": "https://valx.jp/",
@@ -220,7 +220,7 @@
         {
           "code": "KANEKIN",
           "brand": "SUPLINX",
-          "count": 4,
+          "count": 3,
           "video_url": "https://www.youtube.com/watch?v=v_N0z0MjsLw",
           "dest": "https://www.suplinx.com/shop/e/ekanekin/?utm_source=youtube&utm_medium=referral&utm_campaign=kanekin_2026&utm_content=kanekin_cd2026olympia",
           "latest_date": "2026-10-07"
@@ -281,16 +281,7 @@
     {
       "channel": "ぷろたん日記",
       "subscribers": null,
-      "codes": [
-        {
-          "code": "PROTEIN1214",
-          "brand": null,
-          "count": 1,
-          "video_url": "https://www.youtube.com/watch?v=iRDM0x9X4Ac",
-          "dest": "",
-          "latest_date": "2026-10-19"
-        }
-      ]
+      "codes": []
     },
     {
       "channel": "なーすけFitness",
@@ -346,15 +337,15 @@
         {
           "code": "JUNPEI",
           "brand": "マイプロテイン",
-          "count": 9,
+          "count": 8,
           "video_url": "https://www.youtube.com/watch?v=fxFpoSDzsRw",
-          "dest": "https://www.myprotein.jp?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1795310332_04123bb38cda2b87ea3455ad4d4004cc",
+          "dest": "https://www.myprotein.jp?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1795398153_8dcc9934da9ca24727bf6410352b497b",
           "latest_date": "2026-10-24"
         },
         {
           "code": "BGT6534",
           "brand": "iHerb",
-          "count": 9,
+          "count": 8,
           "video_url": "https://www.youtube.com/watch?v=fxFpoSDzsRw",
           "dest": "",
           "latest_date": "2026-10-24"
@@ -404,7 +395,7 @@
           "brand": "マイプロテイン",
           "count": 10,
           "video_url": "https://www.youtube.com/watch?v=ekUkN9QPQYU",
-          "dest": "https://www.myprotein.jp/p/sports-nutrition/myprotein-clear-whey-protein-white-soda-alt/16329626/?affil=thgppc&thg_ppc_campaign=12269835970&gclid=Cj0KCQjwgr_NBhDFARIsAHiUWr7sZzVIdUoIwrcGFLcAQuZuUTmfyZd1PIJ-iDfXTWdsygGbheVHqDYaAjjqEALw_wcB&affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1795310334_e4f431ea6706e0b54990482b520f38dd",
+          "dest": "https://www.myprotein.jp/p/sports-nutrition/myprotein-clear-whey-protein-white-soda-alt/16329626/?affil=thgppc&thg_ppc_campaign=12269835970&gclid=Cj0KCQjwgr_NBhDFARIsAHiUWr7sZzVIdUoIwrcGFLcAQuZuUTmfyZd1PIJ-iDfXTWdsygGbheVHqDYaAjjqEALw_wcB&affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1795398156_1cc9d4de7606d056c4823f5f3a189840",
           "latest_date": "2026-11-21"
         }
       ]
@@ -418,14 +409,6 @@
       "channel": "筋肉あるある",
       "subscribers": null,
       "codes": [
-        {
-          "code": "ARUARU10",
-          "brand": "SUPLINX",
-          "count": 3,
-          "video_url": "https://www.youtube.com/watch?v=13QM54XcDio",
-          "dest": "",
-          "latest_date": "2026-10-18"
-        },
         {
           "code": "SHIELD2606",
           "brand": "男DAYS",
@@ -449,6 +432,14 @@
           "video_url": "https://www.youtube.com/watch?v=MYW_YZ1ffMI",
           "dest": "https://item.rakuten.co.jp/levante/h-trp001/",
           "latest_date": "2026-11-18"
+        },
+        {
+          "code": "ARUARU10",
+          "brand": "SUPLINX",
+          "count": 2,
+          "video_url": "https://www.youtube.com/watch?v=13QM54XcDio",
+          "dest": "",
+          "latest_date": "2026-10-18"
         },
         {
           "code": "ARUARU2610",
@@ -510,7 +501,7 @@
           "brand": "マイプロテイン",
           "count": 20,
           "video_url": "https://www.youtube.com/watch?v=gAPNmVTbD-I",
-          "dest": "https://www.myprotein.jp/?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1795310361_1fa7853abdc9ebc165531fe6678fd2c8",
+          "dest": "https://www.myprotein.jp/?affil=awin&utm_content=CreatorIQ+Website&utm_term=&utm_source=AWin_946733&utm_medium=affiliate&utm_campaign=AffiliateWin&sv1=affiliate&sv_campaign_id=946733&awc=10751_1795398183_616368ace519032238bd82a494a441f6",
           "latest_date": "2026-11-21"
         }
       ]
@@ -622,7 +613,7 @@
           "count": 20,
           "video_url": "https://www.youtube.com/watch?v=QF463UCEDlw",
           "dest": "https://www.amazon.co.jp/stores/page/D1742841-82DD-4FF1-BB5A-D6D66BD392BB?channel=tsukaken",
-          "latest_date": "2026-11-21"
+          "latest_date": "2026-11-22"
         },
         {
           "code": "DAIKYOUKIN3",
@@ -630,7 +621,7 @@
           "count": 11,
           "video_url": "https://www.youtube.com/watch?v=QF463UCEDlw",
           "dest": "https://www.amazon.co.jp/dp/B0CFY3RKRY/ref=cm_sw_r_as_gl_api_gl_i_Q46XCP5P939DCWB6G3Q8?linkCode=ml1&tag=kenta111444-22",
-          "latest_date": "2026-11-21"
+          "latest_date": "2026-11-22"
         },
         {
           "code": "DAIKYOUKIN2",
@@ -745,9 +736,9 @@
           "code": "ZETALAZ",
           "brand": null,
           "count": 20,
-          "video_url": "https://www.youtube.com/watch?v=7vtFyKQetIw",
+          "video_url": "https://www.youtube.com/watch?v=xdh6HVJ3NZY",
           "dest": "https://zetadivision.com/news/2021/11/24/7060",
-          "latest_date": "2026-11-21"
+          "latest_date": "2026-11-22"
         }
       ]
     },
@@ -759,7 +750,7 @@
           "code": "GPROU020",
           "brand": null,
           "count": 20,
-          "video_url": "https://www.youtube.com/watch?v=F4guIbv7e9g",
+          "video_url": "https://www.youtube.com/watch?v=xsXZ_XHQfVc",
           "dest": "",
           "latest_date": "2026-11-22"
         }
@@ -903,7 +894,7 @@
           "brand": null,
           "count": 9,
           "video_url": "https://www.youtube.com/watch?v=KdpLCfBbipQ",
-          "dest": "https://www.sycom.co.jp/?a8=6trbQtXCZpm.qUE0dvGzUsWWC.U7Gzju.vGW3UO9z9JCZpr0ezrpkpEpYzl353EN891zORrw8trbcs00000014633001",
+          "dest": "https://www.sycom.co.jp/?a8=h3s4_3t.TzdULrFuYoNArW--.UrQNAqaUoN-Pr1vAvD.TzsuHAszHRFjHAGPwPFmkvJA1CsOk3s47s00000014633001",
           "latest_date": "2026-11-21"
         },
         {
@@ -923,66 +914,130 @@
         {
           "code": "AILE103",
           "brand": null,
-          "count": 1,
-          "video_url": "https://www.youtube.com/watch?v=vmFjeaePlUY",
+          "count": 2,
+          "video_url": "https://www.youtube.com/watch?v=tMI-yjCaT64",
           "dest": "",
-          "latest_date": "2026-11-05"
+          "latest_date": "2026-11-22"
         },
         {
           "code": "AILE105",
           "brand": null,
-          "count": 1,
-          "video_url": "https://www.youtube.com/watch?v=vmFjeaePlUY",
+          "count": 2,
+          "video_url": "https://www.youtube.com/watch?v=tMI-yjCaT64",
           "dest": "",
-          "latest_date": "2026-11-05"
+          "latest_date": "2026-11-22"
         },
         {
           "code": "AILE110",
           "brand": null,
-          "count": 1,
-          "video_url": "https://www.youtube.com/watch?v=vmFjeaePlUY",
+          "count": 2,
+          "video_url": "https://www.youtube.com/watch?v=tMI-yjCaT64",
           "dest": "",
-          "latest_date": "2026-11-05"
+          "latest_date": "2026-11-22"
         },
         {
           "code": "AILE120",
           "brand": null,
-          "count": 1,
-          "video_url": "https://www.youtube.com/watch?v=vmFjeaePlUY",
+          "count": 2,
+          "video_url": "https://www.youtube.com/watch?v=tMI-yjCaT64",
           "dest": "",
-          "latest_date": "2026-11-05"
+          "latest_date": "2026-11-22"
         },
         {
           "code": "AILE135",
           "brand": null,
-          "count": 1,
-          "video_url": "https://www.youtube.com/watch?v=vmFjeaePlUY",
+          "count": 2,
+          "video_url": "https://www.youtube.com/watch?v=tMI-yjCaT64",
           "dest": "",
-          "latest_date": "2026-11-05"
+          "latest_date": "2026-11-22"
         },
         {
           "code": "AILE45",
           "brand": null,
-          "count": 1,
-          "video_url": "https://www.youtube.com/watch?v=vmFjeaePlUY",
+          "count": 2,
+          "video_url": "https://www.youtube.com/watch?v=tMI-yjCaT64",
           "dest": "",
-          "latest_date": "2026-11-05"
+          "latest_date": "2026-11-22"
         },
         {
           "code": "AILE170",
           "brand": null,
-          "count": 1,
-          "video_url": "https://www.youtube.com/watch?v=vmFjeaePlUY",
+          "count": 2,
+          "video_url": "https://www.youtube.com/watch?v=tMI-yjCaT64",
           "dest": "",
-          "latest_date": "2026-11-05"
+          "latest_date": "2026-11-22"
         },
         {
           "code": "AILE182",
           "brand": null,
-          "count": 1,
-          "video_url": "https://www.youtube.com/watch?v=vmFjeaePlUY",
+          "count": 2,
+          "video_url": "https://www.youtube.com/watch?v=tMI-yjCaT64",
           "dest": "",
-          "latest_date": "2026-11-05"
+          "latest_date": "2026-11-22"
+        },
+        {
+          "code": "IFPOWLPZ",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=tMI-yjCaT64",
+          "dest": "",
+          "latest_date": "2026-11-22"
+        },
+        {
+          "code": "IFP22XRE",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=tMI-yjCaT64",
+          "dest": "",
+          "latest_date": "2026-11-22"
+        },
+        {
+          "code": "IFPCMK2P",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=tMI-yjCaT64",
+          "dest": "",
+          "latest_date": "2026-11-22"
+        },
+        {
+          "code": "IFPAICKN",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=tMI-yjCaT64",
+          "dest": "",
+          "latest_date": "2026-11-22"
+        },
+        {
+          "code": "IFPFQEWI",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=tMI-yjCaT64",
+          "dest": "",
+          "latest_date": "2026-11-22"
+        },
+        {
+          "code": "IFPTXVCS",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=tMI-yjCaT64",
+          "dest": "",
+          "latest_date": "2026-11-22"
+        },
+        {
+          "code": "IFPBFFZN",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=tMI-yjCaT64",
+          "dest": "",
+          "latest_date": "2026-11-22"
+        },
+        {
+          "code": "IFPVF7KO",
+          "brand": null,
+          "count": 1,
+          "video_url": "https://www.youtube.com/watch?v=tMI-yjCaT64",
+          "dest": "",
+          "latest_date": "2026-11-22"
         },
         {
           "code": "AILE1100",
